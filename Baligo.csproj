@@ -53,8 +53,8 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Engine.cs" />
-    <Compile Include="Launcher.cs" />
+    <Compile Include="BaligoEngine.cs" />
+    <Compile Include="BaligoLauncher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

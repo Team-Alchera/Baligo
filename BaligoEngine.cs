@@ -2,17 +2,17 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Alchera
+namespace Baligo
 {
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class Engine : Game
+    public class BaligoEngine : Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        public Engine()
+        public BaligoEngine()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";

@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace Alchera
+namespace Baligo
 {
 #if WINDOWS || LINUX
     /// <summary>
     /// The main class.
     /// </summary>
-    public static class Launcher
+    public static class BaligoLauncher
     {
         /// <summary>
         /// The main entry point for the application.
@@ -14,8 +14,8 @@ namespace Alchera
         [STAThread]
         static void Main()
         {
-            using (var game = new Engine())
-                game.Run();
+            BaligoEngine mainEngine = new BaligoEngine();
+            mainEngine.Run();
         }
     }
 #endif
