@@ -27,7 +27,8 @@ namespace Baligo
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            graphics.IsFullScreen = true;
+            Window.IsBorderless = true;
             base.Initialize();
         }
 
