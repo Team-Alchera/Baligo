@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Baligo
+namespace Baligo.Main
 {
 #if WINDOWS || LINUX
     /// <summary>
