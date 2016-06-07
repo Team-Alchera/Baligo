@@ -1,4 +1,5 @@
 ﻿using Baligo.Content;
+using Baligo.Content.Fonts;
 using Baligo.Input;
 using Baligo.States;
 using Microsoft.Xna.Framework;
@@ -126,6 +127,7 @@ namespace Baligo.Main
             graphicsDeviceManager.PreferredBackBufferHeight = Height;
             graphicsDeviceManager.PreferredBackBufferWidth = Width;
 
+            // graphicsDeviceManager.IsFullScreen = true;
             Window.IsBorderless = true;
         }
 
