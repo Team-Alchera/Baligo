@@ -126,8 +126,9 @@ namespace Baligo.Main
         {
             graphicsDeviceManager.PreferredBackBufferHeight = Height;
             graphicsDeviceManager.PreferredBackBufferWidth = Width;
-
-            // graphicsDeviceManager.IsFullScreen = true;
+            /* Fullscreen
+             graphicsDeviceManager.IsFullScreen = true;
+            */
             Window.IsBorderless = true;
         }
 

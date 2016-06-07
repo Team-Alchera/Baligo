@@ -6,7 +6,7 @@ namespace Baligo.Entity.Characters
 {
     public class Player : ICharacter
     {
-        Vector2 Position = new Vector2(0,0);
+        
 
         public void Init()
         {
@@ -17,6 +17,11 @@ namespace Baligo.Entity.Characters
         {
 
         }
+
+        public Vector2 Position { get; set; }
+        public int Health { get; set; }
+        public int Damage { get; set; }
+        public bool IsAlive { get; set; }
 
         public void Draw(SpriteBatch spriteBatch)
         {
