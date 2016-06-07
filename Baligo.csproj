@@ -53,10 +53,20 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Entity\Characters\Monster.cs" />
-    <Compile Include="Entity\Characters\Player.cs" />
+    <Compile Include="Entity\Characters\Enemies\Boss.cs" />
+    <Compile Include="Entity\Characters\Enemies\Creep.cs" />
+    <Compile Include="Entity\Characters\Enemies\Monster.cs" />
+    <Compile Include="Entity\Characters\Players\Player.cs" />
     <Compile Include="Engine\GameEngine.cs" />
+    <Compile Include="Entity\Characters\Players\Priest.cs" />
+    <Compile Include="Entity\Characters\Players\Warrior.cs" />
+    <Compile Include="Entity\Characters\Players\Wizard.cs" />
     <Compile Include="Entity\Interfaces\ICharacter.cs" />
+    <Compile Include="Entity\Interfaces\ICollectable.cs" />
+    <Compile Include="Entity\Items\DamagePotion.cs" />
+    <Compile Include="Entity\Items\HealthPotion.cs" />
+    <Compile Include="Entity\Items\Item.cs" />
+    <Compile Include="Entity\Items\ManaPotion.cs" />
     <Compile Include="Main\BaligoEngine.cs" />
     <Compile Include="Main\BaligoLauncher.cs" />
     <Compile Include="Content\Fonts\Fonts.cs" />
