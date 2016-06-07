@@ -53,8 +53,10 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Entity\Characters\Monster.cs" />
+    <Compile Include="Entity\Characters\Player.cs" />
     <Compile Include="Engine\GameEngine.cs" />
-    <Compile Include="Interfaces\ICharacterSprite.cs" />
+    <Compile Include="Entity\Interfaces\ICharacter.cs" />
     <Compile Include="Main\BaligoEngine.cs" />
     <Compile Include="Main\BaligoLauncher.cs" />
     <Compile Include="Content\Fonts\Fonts.cs" />
@@ -94,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\Fonts\Arial.spritefont" />
+    <None Include="GameDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Levels\" />
