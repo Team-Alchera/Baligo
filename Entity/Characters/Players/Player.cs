@@ -6,6 +6,23 @@ namespace Baligo.Entity.Characters.Players
 {
     public abstract class Player : ICharacter
     {
+        private static Player _currentPlayerClass;
+
+        public Player CurrentPlayerClass
+        {
+            get
+            {
+                return _currentPlayerClass;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    _currentPlayerClass = value;
+                }
+            }
+        }
+
         public Vector2 Position { get; set; }
         public int Health { get; set; }
         public int Damage { get; set; }

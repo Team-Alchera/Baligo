@@ -1,5 +1,6 @@
 ﻿using System;
 using Baligo.Entity.Interfaces;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Baligo.Entity.Items
 {
@@ -9,9 +10,22 @@ namespace Baligo.Entity.Items
         public int DamagePoints { get; set; }
         public int ManaPoints { get; set; }
 
+        // Default will be true
         public virtual bool IsItemCollected()
         {
-            throw new NotImplementedException();
+            return true;
+        }
+
+        public virtual void Init()
+        {
+        }
+
+        public virtual void Update()
+        {
+        }
+
+        public virtual void Draw(SpriteBatch spriteBatch)
+        {
         }
     }
 }

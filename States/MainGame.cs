@@ -7,8 +7,14 @@ namespace Baligo.States
 {
     public class MainGame : State
     {
+        public override void Init()
+        {
+
+        }
+
         public override void Update()
         {
+
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -18,10 +24,6 @@ namespace Baligo.States
                 "GAME",
                 new Vector2(BaligoEngine.Width / 2 - 150, BaligoEngine.Height / 2 - 20),
                 Color.White);
-        }
-
-        public override void Init()
-        {
         }
     }
 }

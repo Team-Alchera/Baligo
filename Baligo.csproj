@@ -56,6 +56,7 @@
     <Compile Include="Entity\Characters\Enemies\Boss.cs" />
     <Compile Include="Entity\Characters\Enemies\Creep.cs" />
     <Compile Include="Entity\Characters\Enemies\Monster.cs" />
+    <Compile Include="Entity\Characters\Players\Hunter.cs" />
     <Compile Include="Entity\Characters\Players\Player.cs" />
     <Compile Include="Engine\GameEngine.cs" />
     <Compile Include="Entity\Characters\Players\Priest.cs" />
