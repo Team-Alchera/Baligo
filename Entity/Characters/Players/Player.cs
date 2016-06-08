@@ -11,6 +11,12 @@ namespace Baligo.Entity.Characters.Players
         public int Damage { get; set; }
         public bool IsAlive { get; set; }
 
+        protected abstract void Attack();
+
+        protected abstract void Heal();
+
+        protected abstract void CastSpell();
+
         public abstract void Init();
 
         public abstract void Update();
