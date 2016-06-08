@@ -1,6 +1,7 @@
 ﻿using Baligo.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using TexturePackerLoader;
 
 namespace Baligo.Entity.Characters.Players
 {
@@ -54,7 +55,10 @@ namespace Baligo.Entity.Characters.Players
          */
         public override void Update()
         {
-            
+            while (InputManager.AIsPressed)
+            {
+             // var spriteSheetLoader = new SpriteSheetLoader();
+            } 
             Draw(
                 new SpriteBatch(
                     new GraphicsDevice(
