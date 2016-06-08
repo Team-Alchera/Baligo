@@ -4,10 +4,10 @@ namespace Baligo.Input
 {
     public static class InputManager
     {
-        public static bool W { get; private set; }
-        public static bool A { get; private set; }
-        public static bool D { get; private set; }
-        public static bool S { get; private set; }
+        public static bool WIsPressed { get; private set; }
+        public static bool AIsPressed { get; private set; }
+        public static bool DIsPressed { get; private set; }
+        public static bool SIsPressed { get; private set; }
 
         public static bool Space { get; private set; }
         public static bool Enter { get; private set; }
@@ -15,10 +15,10 @@ namespace Baligo.Input
 
         public static void Update()
         {
-            W = Keyboard.GetState().IsKeyDown(Keys.W);
-            A = Keyboard.GetState().IsKeyDown(Keys.A);
-            D = Keyboard.GetState().IsKeyDown(Keys.D);
-            S = Keyboard.GetState().IsKeyDown(Keys.S);
+            WIsPressed = Keyboard.GetState().IsKeyDown(Keys.W);
+            AIsPressed = Keyboard.GetState().IsKeyDown(Keys.A);
+            DIsPressed = Keyboard.GetState().IsKeyDown(Keys.D);
+            SIsPressed = Keyboard.GetState().IsKeyDown(Keys.S);
 
             Space = Keyboard.GetState().IsKeyDown(Keys.Space);
             Enter = Keyboard.GetState().IsKeyDown(Keys.Enter);

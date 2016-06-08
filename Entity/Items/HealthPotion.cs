@@ -2,5 +2,10 @@
 {
     public class HealthPotion : Item
     {
+        public HealthPotion()
+        {
+           
+        }
+
     }
 }
