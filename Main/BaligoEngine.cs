@@ -1,5 +1,4 @@
-﻿using Baligo.Content;
-using Baligo.Content.Fonts;
+﻿using Baligo.Content.Fonts;
 using Baligo.Input;
 using Baligo.States;
 using Microsoft.Xna.Framework;
@@ -13,8 +12,8 @@ namespace Baligo.Main
     /// </summary>
     public class BaligoEngine : Game
     {
-        GraphicsDeviceManager graphicsDeviceManager;
-        SpriteBatch spriteBatch;
+        private readonly GraphicsDeviceManager graphicsDeviceManager;
+        private SpriteBatch spriteBatch;
 
         // States
         public static DeadMenu DeadMenuState;

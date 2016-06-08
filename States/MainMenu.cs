@@ -10,7 +10,7 @@ namespace Baligo.States
     {
         public override void Update()
         {
-            if (InputManager.A)
+            if (InputManager.AIsPressed)
             {
                 State.SetCurrentState(BaligoEngine.DeadMenuState);
             }
