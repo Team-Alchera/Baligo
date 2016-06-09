@@ -33,6 +33,8 @@ namespace Baligo.States
 
             // Draw current player class
             Player.CurrentPlayerClass.Draw(spriteBatch);
+
+            Assets.PlayerMage.Draw(spriteBatch,0,0);
         }
     }
 }

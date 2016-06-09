@@ -17,7 +17,7 @@ namespace Baligo.Graphics
         public static Tile CursorNormal;
         public static Tile CursorActive;
         public static Tile PlayerHunterArrow;
-
+        
         public static void LoadAssets(ContentManager content)
         {
             PlayerHunter = new Tile(content.Load<Texture2D>("Textures/Player/Player"));

@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Baligo.Entity.Characters.Enemies
 {
-    public class EnemiesMain : Creature
+    class EnemiesMain : Creature
     {
         public override void Update(GameTime gmaTime)
         {
