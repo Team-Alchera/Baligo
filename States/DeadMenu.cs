@@ -8,12 +8,8 @@ namespace Baligo.States
 {
     public class DeadMenu : State
     {
-        public override void Update()
+        public override void Update(GameTime gameTime)
         {
-            if (InputManager.DIsPressed)
-            {
-                State.SetCurrentState(BaligoEngine.MainMenuState);
-            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)

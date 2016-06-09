@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Baligo.States
 {
@@ -16,7 +17,7 @@ namespace Baligo.States
             _currentState = state;
         }
 
-        public abstract void Update();
+        public abstract void Update(GameTime gameTime);
 
         public abstract void Draw(SpriteBatch spriteBatch);
 
