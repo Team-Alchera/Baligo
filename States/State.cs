@@ -5,6 +5,7 @@ namespace Baligo.States
 {
     public abstract class State
     {
+        // Field
         private static State _currentState;
 
         public static State GetCurrentState()

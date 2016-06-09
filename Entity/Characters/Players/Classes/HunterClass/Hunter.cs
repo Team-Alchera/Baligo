@@ -29,8 +29,8 @@ namespace Baligo.Entity.Characters.Players.Classes.HunterClass
             {
                 if (_countDown == 0)
                 {
-                    _arrows.Add(new Arrow(Position, new Vector2(Mouse.GetState().X, Mouse.GetState().Y)));
-                    _countDown = 15;
+                 _arrows.Add(new Arrow(Position, new Vector2(Mouse.GetState().X, Mouse.GetState().Y)));
+                 _countDown = 15;
                 }
             }
 
