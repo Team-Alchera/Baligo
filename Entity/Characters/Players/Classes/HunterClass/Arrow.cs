@@ -12,7 +12,7 @@ namespace Baligo.Entity.Characters.Players.Classes.HunterClass
     public class Arrow
     {
         private const int Damage = 10;
-        private int Speed = 10;
+        private const int Speed = 20;
         private Vector2 _position;
         private Vector2 _direction;
 
@@ -21,6 +21,9 @@ namespace Baligo.Entity.Characters.Players.Classes.HunterClass
         public Arrow(Vector2 position, Vector2 direction)
         {
             _position = position;
+            _position.X += 16;
+            _position.Y += 32;
+
             _direction = direction;
 
             _velocity = -(_position - _direction);
