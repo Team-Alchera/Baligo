@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Baligo.Entity.Characters.Players.Classes;
+using Baligo.Entity.Characters.Players.Classes.HunterClass;
+using Baligo.Entity.Characters.Players.Classes.MageClass;
+using Baligo.Entity.Characters.Players.Classes.WarriorClass;
 using Baligo.Graphics;
 using Baligo.Input;
 using Microsoft.Xna.Framework;
@@ -12,28 +16,33 @@ namespace Baligo.Entity.Characters.Players
 {
     public class PlayerMain : Creature
     {
+        public PlayerMain CurrentPlayerClass;
+        public Hunter HunterClass;
+        public Mage MageClass;
+        public Warrior WarriorClass;
+
         // Sprite Sheet
-        private Texture2D PlayerTexture;
-        private const int SpeedOfAnimations = 50;
+        protected Texture2D PlayerTexture;
+        protected const int SpeedOfAnimations = 50;
 
         // Animations
-        private readonly Animation WalkLeft;
-        private readonly Animation WalkRight;
-        private readonly Animation WalkUp;
-        private readonly Animation WalkDown;
+        protected readonly Animation WalkLeft;
+        protected readonly Animation WalkRight;
+        protected readonly Animation WalkUp;
+        protected readonly Animation WalkDown;
 
         // Orientation
         protected Rectangle Orientation;
 
         public PlayerMain()
         {
-            this.PlayerTexture = Assets.Player.Texture;
+            this.PlayerTexture = Assets.PlayerHunter.Texture;
             this.Health = 100;
             this.Armor = 100;
             this.Damage = 10;
             this.IsAlive = true;
             this.Speed = 5;
-
+            
             // Position
             Position = new Vector2(600, 500);
 
@@ -47,26 +56,41 @@ namespace Baligo.Entity.Characters.Players
             Orientation = new Rectangle(0, 64 * 11, 64, 64);
         }
 
+        public void Init()
+        {
+            // Init Player Classes
+            HunterClass = new Hunter();
+            MageClass = new Mage();
+            WarriorClass = new Warrior();
+
+            // Set Default Class
+            CurrentPlayerClass = HunterClass;
+        }
+
         public override void Update(GameTime gmaTime)
         {
             if (InputManager.AIsPressed)
             {
                 Position.X -= Speed;
+                // WalkLeft.Update(gmaTime);
                 Orientation = new Rectangle(0, 64 * 9, 64, 64);
             }
             if (InputManager.DIsPressed)
             {
                 Position.X += Speed;
+                // WalkRight.Update(gmaTime);
                 Orientation = new Rectangle(0, 64 * 11, 64, 64);
             }
             if (InputManager.WIsPressed)
             {
                 Position.Y -= Speed;
+                // WalkUp.Update(gmaTime);
                 Orientation = new Rectangle(0, 64 * 12, 64, 64);
             }
             if (InputManager.SIsPressed)
             {
                 Position.Y += Speed;
+                // WalkDown.Update(gmaTime);
                 Orientation = new Rectangle(0, 64 * 10, 64, 64);
             }
 

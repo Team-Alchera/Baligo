@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Baligo.Graphics;
+using Baligo.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -18,7 +19,7 @@ namespace Baligo.Entity.Custom_Mouse
             int currentY = Mouse.GetState().Y;
 
             spriteBatch.Draw(
-                Mouse.GetState().LeftButton == ButtonState.Pressed
+                InputManager.LeftButtomDown
                     ? Assets.CursorActive.Texture
                     : Assets.CursorNormal.Texture, new Vector2(currentX, currentY), null, Color.White);
         }

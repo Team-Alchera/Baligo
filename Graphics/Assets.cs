@@ -11,15 +11,21 @@ namespace Baligo.Graphics
 {
     public static class Assets
     {
-        public static Tile Player;
+        public static Tile PlayerHunter;
+        public static Tile PlayerMage;
+        public static Tile PlayerWarrior;
         public static Tile CursorNormal;
         public static Tile CursorActive;
+        public static Tile PlayerHunterArrow;
 
         public static void LoadAssets(ContentManager content)
         {
-            Player = new Tile(content.Load<Texture2D>("Textures/Player/Player"));
+            PlayerHunter = new Tile(content.Load<Texture2D>("Textures/Player/Player"));
+            PlayerMage = new Tile(content.Load<Texture2D>("Textures/Player/Player"));
+            PlayerWarrior = new Tile(content.Load<Texture2D>("Textures/Player/Player"));
             CursorNormal = new Tile(content.Load<Texture2D>("Textures/Cursor/pointer"));
             CursorActive = new Tile(content.Load<Texture2D>("Textures/Cursor/pointer_active"));
+            PlayerHunterArrow = new Tile(content.Load<Texture2D>("Textures/Player/arrow"));
         }
     }
 }

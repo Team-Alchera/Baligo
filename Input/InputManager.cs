@@ -18,6 +18,8 @@ namespace Baligo.Input
         public static bool EnterIsPressed { get; private set; }
         public static bool EscapeIsPressed { get; private set; }
 
+        public static bool LeftButtomDown { get; private set; }
+
         public static void Update()
         {
             KeyboardState currentKeyboardState = Keyboard.GetState();
@@ -38,6 +40,9 @@ namespace Baligo.Input
             SpaceIsPressed = currentKeyboardState.IsKeyDown(Keys.Space);
             EnterIsPressed = currentKeyboardState.IsKeyDown(Keys.Enter);
             EscapeIsPressed = currentKeyboardState.IsKeyDown(Keys.Escape);
+
+            // Mouse
+            LeftButtomDown = Mouse.GetState().LeftButton == ButtonState.Pressed;
         }
     }
 }

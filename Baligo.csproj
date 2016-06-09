@@ -55,6 +55,10 @@
   <ItemGroup>
     <Compile Include="Entity\Characters\Creature.cs" />
     <Compile Include="Entity\Characters\Enemies\EnemiesMain.cs" />
+    <Compile Include="Entity\Characters\Players\Classes\HunterClass\Arrow.cs" />
+    <Compile Include="Entity\Characters\Players\Classes\HunterClass\Hunter.cs" />
+    <Compile Include="Entity\Characters\Players\Classes\MageClass\Mage.cs" />
+    <Compile Include="Entity\Characters\Players\Classes\WarriorClass\Warrior.cs" />
     <Compile Include="Entity\Characters\Players\PlayerMain.cs" />
     <Compile Include="Entity\Custom Mouse\CustomMaouse.cs" />
     <Compile Include="Graphics\Animation.cs" />
@@ -80,7 +84,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Textures\Player.png" />
+    <Content Include="Content\Textures\Cursor\pointer.png" />
+    <Content Include="Content\Textures\Cursor\pointer_active.png" />
+    <Content Include="Content\Textures\Player\arrow.png" />
+    <Content Include="Content\Textures\Player\arrow1.png" />
+    <Content Include="Content\Textures\Player\Player.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
