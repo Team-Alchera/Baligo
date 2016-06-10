@@ -24,7 +24,7 @@ namespace Baligo.Graphics
         public static Tile LavaBackground;
         public static Tile ClosedDoor;
         public static Tile Fountain;
-
+        
         public static void LoadAssets(ContentManager content)
         {
             PlayerHunter = new Tile(content.Load<Texture2D>("Textures/Player/Player"));
