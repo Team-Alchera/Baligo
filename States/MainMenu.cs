@@ -1,4 +1,5 @@
 ﻿using Baligo.Content.Fonts;
+using Baligo.Graphics;
 using Baligo.Input;
 using Baligo.Main;
 using Microsoft.Xna.Framework;
@@ -8,21 +9,18 @@ namespace Baligo.States
 {
     public class MainMenu : State
     {
-        public override void Update()
+        public override void Update(GameTime gameTime)
         {
-            if (InputManager.AIsPressed)
-            {
-                State.SetCurrentState(BaligoEngine.DeadMenuState);
-            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(
-                Fonts.Arial, 
+                Fonts.Arial,
                 "MAIN MENU",
                 new Vector2(BaligoEngine.Width / 2 - 150, BaligoEngine.Height / 2 - 20),
                 Color.White);
+            
         }
 
         public override void Init()

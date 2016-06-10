@@ -1,9 +1,11 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Baligo.States
 {
     public abstract class State
     {
+        // Field
         private static State _currentState;
 
         public static State GetCurrentState()
@@ -16,7 +18,7 @@ namespace Baligo.States
             _currentState = state;
         }
 
-        public abstract void Update();
+        public abstract void Update(GameTime gameTime);
 
         public abstract void Draw(SpriteBatch spriteBatch);
 

@@ -1,4 +1,6 @@
 ﻿using Baligo.Content.Fonts;
+using Baligo.Entity.Custom_Mouse;
+using Baligo.Graphics;
 using Baligo.Input;
 using Baligo.States;
 using Microsoft.Xna.Framework;
@@ -37,21 +39,24 @@ namespace Baligo.Main
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components
+        /// related content.  Calling base.LoadAssets will enumerate through any components
         /// and initialize them as well.
         /// </summary>
         protected override void Initialize()
         {
-            // Initialize states
+            // Load all assets
+            Assets.LoadAssets(Content);
+
+            // Load states
             DeadMenuState = new DeadMenu();
             MainMenuState = new MainMenu();
             MainGameState = new MainGame();
             PauseMenuState = new PauseMenu();
             StatsMenuState = new StatsMenu();
 
-            // Set Default Enter State
-            if (State.GetCurrentState() == null)
-                State.SetCurrentState(MainMenuState);
+            // Set Default EnterIsPressed State
+            State.SetCurrentState(MainGameState);
+            MainGameState.Init();
 
             base.Initialize();
         }
@@ -64,7 +69,7 @@ namespace Baligo.Main
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            
             LoadTextures();
             LoadFonts();
         }
@@ -90,7 +95,7 @@ namespace Baligo.Main
 
             // Update current state
             if (State.GetCurrentState() != null)
-                State.GetCurrentState().Update();
+                State.GetCurrentState().Update(gameTime);
 
             // Update input
             InputManager.Update();
@@ -106,11 +111,15 @@ namespace Baligo.Main
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            
+
             spriteBatch.Begin();
 
+            // Draw State Frame
             if (State.GetCurrentState() != null)
                 State.GetCurrentState().Draw(spriteBatch);
+
+            // Draw CursorNormal
+            CustomMaouse.Draw(spriteBatch);
 
             spriteBatch.End();
 
@@ -125,7 +134,8 @@ namespace Baligo.Main
         {
             graphicsDeviceManager.PreferredBackBufferHeight = Height;
             graphicsDeviceManager.PreferredBackBufferWidth = Width;
-            /* Fullscreen
+
+            /* Full screen
              graphicsDeviceManager.IsFullScreen = true;
             */
             Window.IsBorderless = true;

@@ -7,7 +7,7 @@ namespace Baligo.States
 {
     public class PauseMenu : State
     {
-        public override void Update()
+        public override void Update(GameTime gameTime)
         {
         }
 
