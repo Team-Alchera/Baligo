@@ -134,7 +134,7 @@ namespace Baligo.Main
         /// <summary>
         /// Loads all the textures
         /// </summary>
-        public static void LoadTextures()
+        public void LoadTextures()
         {
 
         }
