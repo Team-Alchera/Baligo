@@ -98,9 +98,7 @@ namespace Baligo.States
                     }
                 }
             }
-
-            // Test
-
+            
             // Draw current player class
             Player.CurrentPlayerClass.Draw(spriteBatch);
         }

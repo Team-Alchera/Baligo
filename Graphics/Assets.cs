@@ -24,7 +24,10 @@ namespace Baligo.Graphics
         public static Tile LavaBackground;
         public static Tile ClosedDoor;
         public static Tile Fountain;
-        
+        // Debug Mode
+        public static Tile RedRectangle1;
+        public static Tile RedRectangle2;
+
         public static void LoadAssets(ContentManager content)
         {
             PlayerHunter = new Tile(content.Load<Texture2D>("Textures/Player/Player"));
@@ -40,6 +43,8 @@ namespace Baligo.Graphics
             LavaBackground = new Tile(content.Load<Texture2D>("Textures/Tiles/floor/lava3"));
             ClosedDoor = new Tile(content.Load<Texture2D>("Textures/Tiles/dngn_closed_door"));
             Fountain = new Tile(content.Load<Texture2D>("Textures/Tiles/dngn_blue_fountain"));
+            RedRectangle1 = new Tile(content.Load<Texture2D>("Textures/Tiles/travel_exclusion"));
+            RedRectangle2 = new Tile(content.Load<Texture2D>("Textures/Tiles/travel_exclusion_centre"));
         }
     }
 }

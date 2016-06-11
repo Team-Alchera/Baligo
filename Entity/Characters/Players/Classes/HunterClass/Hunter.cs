@@ -13,44 +13,50 @@ namespace Baligo.Entity.Characters.Players.Classes.HunterClass
 {
     public class Hunter : PlayerMain
     {
-        private readonly List<Arrow> _arrows;
-        private int _countDown;
+        // Fields
+        public readonly List<Arrow> Arrows;
+        public int CountDown;
 
+        // Constructor
         public Hunter()
         {
             PlayerTexture = Assets.PlayerHunter.Texture;
-            _arrows = new List<Arrow>();
-            _countDown = 15;
+            Arrows = new List<Arrow>();
+            CountDown = 15;
         }
 
         public override void Update(GameTime gmaTime)
         {
+            // If an arrow is fired and countDown allows its
             if (InputManager.LeftButtomDown)
             {
-                if (_countDown == 0)
+                if (CountDown == 0)
                 {
-                 _arrows.Add(new Arrow(Position, new Vector2(Mouse.GetState().X, Mouse.GetState().Y)));
-                 _countDown = 15;
+                 Arrows.Add(new Arrow(Position, new Vector2(Mouse.GetState().X, Mouse.GetState().Y)));
+                 CountDown = 15;
                 }
             }
 
-            foreach (var arrow in _arrows)
+            // Update each arrow
+            foreach (var arrow in Arrows)
                 arrow.Update();
 
-            if (_countDown - 1 >= 0)
-                _countDown--;
+            // Work with countDown
+            if (CountDown - 1 >= 0)
+                CountDown--;
 
+            // Update the main player functions
             base.Update(gmaTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            foreach (var arrow in _arrows)
+            // Draw Every Arrow
+            foreach (var arrow in Arrows)
                 arrow.Draw(spriteBatch);
 
+            // Draw Player with animation
             base.Draw(spriteBatch);
         }
-
-
     }
 }

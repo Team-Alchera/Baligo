@@ -20,6 +20,11 @@ namespace Baligo.Input
 
         public static bool LeftButtomDown { get; private set; }
 
+        public static bool F1IsPressed { get; private set; }
+        public static bool F2IsPressed { get; private set; }
+        public static bool F3IsPressed { get; private set; }
+        public static bool F4IsPressed { get; private set; }
+
         public static void Update()
         {
             KeyboardState currentKeyboardState = Keyboard.GetState();
@@ -43,6 +48,12 @@ namespace Baligo.Input
 
             // Mouse
             LeftButtomDown = Mouse.GetState().LeftButton == ButtonState.Pressed;
+
+            // F1 F2 F3 F4
+            F1IsPressed = currentKeyboardState.IsKeyDown(Keys.F1);
+            F2IsPressed = currentKeyboardState.IsKeyDown(Keys.F2);
+            F3IsPressed = currentKeyboardState.IsKeyDown(Keys.F3);
+            F4IsPressed = currentKeyboardState.IsKeyDown(Keys.F4);
         }
     }
 }

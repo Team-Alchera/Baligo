@@ -9,6 +9,7 @@ using Baligo.Entity.Characters.Players.Classes.MageClass;
 using Baligo.Entity.Characters.Players.Classes.WarriorClass;
 using Baligo.Graphics;
 using Baligo.Input;
+using Baligo.Main;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -16,6 +17,7 @@ namespace Baligo.Entity.Characters.Players
 {
     public class PlayerMain : Creature
     {
+        // Classes
         public PlayerMain CurrentPlayerClass;
         public Hunter HunterClass;
         public Mage MageClass;
@@ -24,6 +26,9 @@ namespace Baligo.Entity.Characters.Players
         // Sprite Sheet
         protected Texture2D PlayerTexture;
         protected const int SpeedOfAnimations = 50;
+
+        // Collision
+        public Rectangle CollisionBox;
 
         // Animations
         protected readonly Animation WalkLeft;
@@ -34,15 +39,17 @@ namespace Baligo.Entity.Characters.Players
         // Orientation
         protected Rectangle Orientation;
 
+        // Constructor
         public PlayerMain()
         {
-            this.PlayerTexture = Assets.PlayerHunter.Texture;
-            this.Health = 100;
-            this.Armor = 100;
-            this.Damage = 10;
-            this.IsAlive = true;
-            this.Speed = 5;
-            
+            // Set Parameters
+            PlayerTexture = Assets.PlayerHunter.Texture;
+            Health = 100;
+            Armor = 100;
+            Damage = 10;
+            IsAlive = true;
+            Speed = 5;
+
             // Position
             Position = new Vector2(600, 500);
 
@@ -54,6 +61,9 @@ namespace Baligo.Entity.Characters.Players
 
             // Orientation
             Orientation = new Rectangle(0, 64 * 11, 64, 64);
+
+            // Collision
+            CollisionBox = new Rectangle((int)Position.X, (int)Position.Y, 44, 54);
         }
 
         public void Init()
@@ -69,59 +79,56 @@ namespace Baligo.Entity.Characters.Players
 
         public override void Update(GameTime gmaTime)
         {
+            // Move and pick the orientation
             if (InputManager.AIsPressed)
             {
                 Position.X -= Speed;
-                // WalkLeft.Update(gmaTime);
                 Orientation = new Rectangle(0, 64 * 9, 64, 64);
             }
             if (InputManager.DIsPressed)
             {
                 Position.X += Speed;
-                // WalkRight.Update(gmaTime);
                 Orientation = new Rectangle(0, 64 * 11, 64, 64);
             }
             if (InputManager.WIsPressed)
             {
                 Position.Y -= Speed;
-                // WalkUp.Update(gmaTime);
                 Orientation = new Rectangle(0, 64 * 12, 64, 64);
             }
             if (InputManager.SIsPressed)
             {
                 Position.Y += Speed;
-                // WalkDown.Update(gmaTime);
                 Orientation = new Rectangle(0, 64 * 10, 64, 64);
             }
 
+            // Update all animations
             WalkLeft.Update(gmaTime);
             WalkRight.Update(gmaTime);
             WalkDown.Update(gmaTime);
             WalkUp.Update(gmaTime);
+
+            // Update the collision box
+            CollisionBox.X = (int) Position.X + 10;
+            CollisionBox.Y = (int) Position.Y + 10;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            // Pick the right animation to draw
             if (InputManager.AIsPressed)
-            {
                 spriteBatch.Draw(PlayerTexture, Position, WalkLeft.GetBoundsForFrame(), Color.White);
-            }
             else if (InputManager.DIsPressed)
-            {
                 spriteBatch.Draw(PlayerTexture, Position, WalkRight.GetBoundsForFrame(), Color.White);
-            }
             else if (InputManager.WIsPressed)
-            {
                 spriteBatch.Draw(PlayerTexture, Position, WalkUp.GetBoundsForFrame(), Color.White);
-            }
             else if (InputManager.SIsPressed)
-            {
                 spriteBatch.Draw(PlayerTexture, Position, WalkDown.GetBoundsForFrame(), Color.White);
-            }
             else // Stand Positon in last Orientation
-            {
                 spriteBatch.Draw(PlayerTexture, Position, Orientation, Color.White);
-            }
+
+            // Draw player collision if debug is active
+            if (BaligoEngine.IsDebugModeActive)
+                spriteBatch.Draw(Assets.RedRectangle1.Texture, new Vector2(CollisionBox.X,CollisionBox.Y), CollisionBox, Color.White);
         }
     }
 }

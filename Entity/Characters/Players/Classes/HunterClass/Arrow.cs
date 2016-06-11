@@ -13,59 +13,57 @@ namespace Baligo.Entity.Characters.Players.Classes.HunterClass
 {
     public class Arrow
     {
-        private const int Damage = 10;
-        private const int Speed = 20;
-        private Vector2 _position;
-        private Vector2 _direction;
-        private float _angle;
-
-        private Vector2 _velocity;
+        public Rectangle CollisionBox;
+        public const int Damage = 10;
+        public const int Speed = 15;
+        public Vector2 Position;
+        public Vector2 Direction;
+        public float Angle;
+        public Vector2 Velocity;
 
         public Arrow(Vector2 position, Vector2 direction)
         {
-            _position = position;
-            _position.X += 16;
-            _position.Y += 32;
+            // Set Parameters
+            Position = position;
+            Position.X += 16;
+            Position.Y += 32;
+            Direction = direction;
 
-            _direction = direction;
-
-            _velocity = -(_position - _direction);
-            _velocity.Normalize();
+            // Calculate Velocity
+            Velocity = -(Position - Direction);
+            Velocity.Normalize();
 
             // Calculate Angle
+            var toCalcAngle = Position - direction;
+            Angle = (float)Math.Atan2(toCalcAngle.Y, toCalcAngle.X);
 
-            Vector2 toCalcAngle = position - direction;
-            _angle = (float) Math.Atan2(toCalcAngle.Y, toCalcAngle.X);
-            
+            // Create Collision
+            CollisionBox = new Rectangle((int)Position.X, (int)Position.Y, 10, 10);
         }
 
         public void Update()
         {
-            _position.X += _velocity.X * Speed;
-            _position.Y += _velocity.Y * Speed;
+            // Update Position
+            Position.X += Velocity.X * Speed;
+            Position.Y += Velocity.Y * Speed;
+
+            // Update Collision
+            CollisionBox.X = (int)Position.X;
+            CollisionBox.Y = (int)Position.Y - 5;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Assets.PlayerHunterArrow.DrawWithRotation(spriteBatch, (int)_position.X, (int)_position.Y, _angle);
-            
-        }
+            // Draw Arrow
+            Assets.PlayerHunterArrow.DrawWithRotation(spriteBatch, (int)Position.X, (int)Position.Y, Angle);
 
-        public double AngleFrom3PointsInDegrees(double x1, double y1,
-            double x2, double y2,
-            double x3, double y3)
-        {
-            double a = x2 - x1;
-            double b = y2 - y1;
-            double c = x3 - x2;
-            double d = y3 - y2;
-
-            double atanA = Math.Atan2(a, b);
-            double atanB = Math.Atan2(c, d);
-
-            return (atanA - atanB) * (-180 / Math.PI);
-            // if Second line is counterclockwise from 1st line angle is 
-            // positive, else negative
+            // Draw Arrow Collision if debug is active
+            if (BaligoEngine.IsDebugModeActive)
+            {
+                spriteBatch.Draw(Assets.RedRectangle2.Texture, new Vector2(CollisionBox.X, CollisionBox.Y),
+                    CollisionBox,
+                    Color.White);
+            }
         }
     }
 }

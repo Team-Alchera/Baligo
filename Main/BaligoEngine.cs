@@ -25,8 +25,11 @@ namespace Baligo.Main
         public static StatsMenu StatsMenuState;
 
         // Window
-        public static int Height = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
-        public static int Width = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+        public static int Height = 768;
+        public static int Width = 1344;
+
+        // Debug Mode
+        public static bool IsDebugModeActive;
 
         public BaligoEngine()
         {
@@ -58,6 +61,9 @@ namespace Baligo.Main
             State.SetCurrentState(MainGameState);
             MainGameState.Init();
 
+            // Set default state for debug mode
+            IsDebugModeActive = false;
+
             base.Initialize();
         }
 
@@ -69,7 +75,7 @@ namespace Baligo.Main
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            
+
             LoadTextures();
             LoadFonts();
         }
@@ -88,6 +94,7 @@ namespace Baligo.Main
         /// checking for collisions, gathering input, and playing audio.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        private int waitTime = 15;
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
@@ -100,7 +107,16 @@ namespace Baligo.Main
             // Update input
             InputManager.Update();
 
+            // Update Debug Mode State
+            if (InputManager.F1IsPressed && waitTime == 0)
+            {
+                IsDebugModeActive = !IsDebugModeActive;
+                waitTime = 15;
+            }
+
             // Do not touch
+            if (waitTime - 1 >= 0)
+                waitTime--;
             base.Update(gameTime);
         }
 
@@ -121,6 +137,16 @@ namespace Baligo.Main
             // Draw CursorNormal
             CustomMaouse.Draw(spriteBatch);
 
+            // Debug Mode Show
+            if (IsDebugModeActive)
+            {
+                spriteBatch.DrawString(
+                    Fonts.Arial,
+                    "Debug",
+                    new Vector2(0, 0),
+                    Color.Red);
+            }
+
             spriteBatch.End();
 
             // Do not touch
@@ -135,10 +161,8 @@ namespace Baligo.Main
             graphicsDeviceManager.PreferredBackBufferHeight = Height;
             graphicsDeviceManager.PreferredBackBufferWidth = Width;
 
-            /* Full screen
-             graphicsDeviceManager.IsFullScreen = true;
-            */
-            Window.IsBorderless = true;
+            // Full screen
+            graphicsDeviceManager.IsFullScreen = true;
         }
 
         /// <summary>
