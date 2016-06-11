@@ -27,7 +27,7 @@ namespace Baligo.Entity.Characters.Players.Classes.HunterClass
 
         public override void Update(GameTime gmaTime)
         {
-            // If an arrow is fired and countDown allows its
+            // If an arrow is fired and countDown allows it
             if (InputManager.LeftButtomDown)
             {
                 if (CountDown == 0)
@@ -56,6 +56,8 @@ namespace Baligo.Entity.Characters.Players.Classes.HunterClass
                 arrow.Draw(spriteBatch);
 
             // Draw Player with animation
+
+           
             base.Draw(spriteBatch);
         }
     }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Baligo.Entity.Characters.Players.Classes;
-using Baligo.Entity.Characters.Players.Classes.HunterClass;
+﻿using Baligo.Entity.Characters.Players.Classes.HunterClass;
 using Baligo.Entity.Characters.Players.Classes.MageClass;
 using Baligo.Entity.Characters.Players.Classes.WarriorClass;
 using Baligo.Graphics;
@@ -12,6 +6,7 @@ using Baligo.Input;
 using Baligo.Main;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace Baligo.Entity.Characters.Players
 {
@@ -27,6 +22,9 @@ namespace Baligo.Entity.Characters.Players
         protected Texture2D PlayerTexture;
         protected const int SpeedOfAnimations = 50;
 
+        //Mouse position
+        public MouseState MousePosition { get; }
+
         // Collision
         public Rectangle CollisionBox;
 
@@ -35,6 +33,10 @@ namespace Baligo.Entity.Characters.Players
         protected readonly Animation WalkRight;
         protected readonly Animation WalkUp;
         protected readonly Animation WalkDown;
+        protected readonly Animation ShootArrowLeft;
+        protected readonly Animation ShootArrowRight;
+        protected readonly Animation ShootArrowUp;
+        protected readonly Animation ShootArrowDown;
 
         // Orientation
         protected Rectangle Orientation;
@@ -42,6 +44,7 @@ namespace Baligo.Entity.Characters.Players
         // Constructor
         public PlayerMain()
         {
+            
             // Set Parameters
             PlayerTexture = Assets.PlayerHunter.Texture;
             Health = 100;
@@ -58,6 +61,10 @@ namespace Baligo.Entity.Characters.Players
             WalkRight = new Animation(SpeedOfAnimations, 11, 9);
             WalkUp = new Animation(SpeedOfAnimations, 8, 9);
             WalkDown = new Animation(SpeedOfAnimations, 10, 9);
+            ShootArrowLeft = new Animation(SpeedOfAnimations, 17, 12);
+            ShootArrowRight = new Animation(SpeedOfAnimations, 19, 12);
+            ShootArrowUp = new Animation(SpeedOfAnimations, 16, 12);
+            ShootArrowDown = new Animation(SpeedOfAnimations, 18, 12);
 
             // Orientation
             Orientation = new Rectangle(0, 64 * 11, 64, 64);
@@ -106,14 +113,17 @@ namespace Baligo.Entity.Characters.Players
             WalkRight.Update(gmaTime);
             WalkDown.Update(gmaTime);
             WalkUp.Update(gmaTime);
-
+            ShootArrowLeft.Update(gmaTime);
+            ShootArrowRight.Update(gmaTime);
+            ShootArrowUp.Update(gmaTime);
+            ShootArrowDown.Update(gmaTime);
             // Update the collision box
-            CollisionBox.X = (int) Position.X + 10;
-            CollisionBox.Y = (int) Position.Y + 10;
+            CollisionBox.X = (int)Position.X + 10;
+            CollisionBox.Y = (int)Position.Y + 10;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
-        {
+        {            
             // Pick the right animation to draw
             if (InputManager.AIsPressed)
                 spriteBatch.Draw(PlayerTexture, Position, WalkLeft.GetBoundsForFrame(), Color.White);
@@ -126,9 +136,34 @@ namespace Baligo.Entity.Characters.Players
             else // Stand Positon in last Orientation
                 spriteBatch.Draw(PlayerTexture, Position, Orientation, Color.White);
 
-            // Draw player collision if debug is active
-            if (BaligoEngine.IsDebugModeActive)
-                spriteBatch.Draw(Assets.RedRectangle1.Texture, new Vector2(CollisionBox.X,CollisionBox.Y), CollisionBox, Color.White);
+            /*  тук стреля докато ходиш, но стреля и през гъза си. малко по-горе ще видиш public MouseState MousePosition { get; } =>
+             *   => той ти дава достъп до мишката, да и правиш каквото поискаш общо взето 
+             *
+             *      
+             *   if (InputManager.LeftButtomDown && InputManager.AIsPressed)
+             *   {
+             *       spriteBatch.Draw(PlayerTexture, Position, ShootArrowLeft.GetBoundsForFrame(), Color.White);
+             *   }
+             *   else if (InputManager.LeftButtomDown && InputManager.DIsPressed)
+             *   {
+             *       spriteBatch.Draw(PlayerTexture, Position, ShootArrowRight.GetBoundsForFrame(), Color.White);
+             *   }
+             *   else if (InputManager.LeftButtomDown && InputManager.WIsPressed)
+             *   {
+             *       spriteBatch.Draw(PlayerTexture, Position, ShootArrowUp.GetBoundsForFrame(), Color.White);
+             *   }
+             *   else if (InputManager.LeftButtomDown && InputManager.SIsPressed)
+             *   {
+             *       spriteBatch.Draw(PlayerTexture, Position, ShootArrowDown.GetBoundsForFrame(), Color.White);
+             *   }
+             *   P.S. Сега видях, че си ползвал Mouse класа в InputManager-a и се чувствам глупаво :D
+             */
+                // Draw player collision if debug is active
+                if (BaligoEngine.IsDebugModeActive)
+                    spriteBatch.Draw(Assets.RedRectangle1.Texture, new Vector2(CollisionBox.X, CollisionBox.Y), CollisionBox, Color.White);
+                    
+                    
+             
         }
     }
 }
