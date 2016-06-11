@@ -3,6 +3,7 @@ using Baligo.Entity.Custom_Mouse;
 using Baligo.Graphics;
 using Baligo.Input;
 using Baligo.States;
+using Baligo.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -63,6 +64,9 @@ namespace Baligo.Main
 
             // Set default state for debug mode
             IsDebugModeActive = false;
+
+            // Init worlds
+            WorldManager.Init();
 
             base.Initialize();
         }

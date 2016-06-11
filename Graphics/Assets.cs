@@ -30,21 +30,26 @@ namespace Baligo.Graphics
 
         public static void LoadAssets(ContentManager content)
         {
-            PlayerHunter = new Tile(content.Load<Texture2D>("Textures/Player/Player"));
-            PlayerMage = new Tile(content.Load<Texture2D>("Textures/Player/Player"));
-            PlayerWarrior = new Tile(content.Load<Texture2D>("Textures/Player/Player"));
-            CursorNormal = new Tile(content.Load<Texture2D>("Textures/Cursor/pointer"));
-            CursorActive = new Tile(content.Load<Texture2D>("Textures/Cursor/pointer_active"));
-            PlayerHunterArrow = new Tile(content.Load<Texture2D>("Textures/Player/arrow"));
-            GrassTypeOneBackground = new Tile(content.Load<Texture2D>("Textures/Tiles/floor/grass/grass_full"));
-            GrassTypeTwoBackground = new Tile(content.Load<Texture2D>("Textures/Tiles/floor/grass/grass_s"));
-            WallBackground = new Tile(content.Load<Texture2D>("Textures/Tiles/wall/stone_brick1"));
-            TreeBackground = new Tile(content.Load<Texture2D>("Textures/Tiles/wall/tree1_red"));
-            LavaBackground = new Tile(content.Load<Texture2D>("Textures/Tiles/floor/lava3"));
-            ClosedDoor = new Tile(content.Load<Texture2D>("Textures/Tiles/dngn_closed_door"));
-            Fountain = new Tile(content.Load<Texture2D>("Textures/Tiles/dngn_blue_fountain"));
-            RedRectangle1 = new Tile(content.Load<Texture2D>("Textures/Tiles/travel_exclusion"));
-            RedRectangle2 = new Tile(content.Load<Texture2D>("Textures/Tiles/travel_exclusion_centre"));
+            // When you create a tile give:
+            // 1. Texture with content.Load - Texture2D
+            // 2. ID - Integer
+            // 3. IsSolid - Boolean (optional)
+
+            PlayerHunter = new Tile(content.Load<Texture2D>("Textures/Player/Player"), 0);
+            PlayerMage = new Tile(content.Load<Texture2D>("Textures/Player/Player"), 1);
+            PlayerWarrior = new Tile(content.Load<Texture2D>("Textures/Player/Player"), 2);
+            CursorNormal = new Tile(content.Load<Texture2D>("Textures/Cursor/pointer"), 3);
+            CursorActive = new Tile(content.Load<Texture2D>("Textures/Cursor/pointer_active"), 4);
+            PlayerHunterArrow = new Tile(content.Load<Texture2D>("Textures/Player/arrow"), 5);
+            GrassTypeOneBackground = new Tile(content.Load<Texture2D>("Textures/Tiles/floor/grass/grass_full"), 6);
+            GrassTypeTwoBackground = new Tile(content.Load<Texture2D>("Textures/Tiles/floor/grass/grass_s"), 7);
+            WallBackground = new Tile(content.Load<Texture2D>("Textures/Tiles/wall/stone_brick1"), 8);
+            TreeBackground = new Tile(content.Load<Texture2D>("Textures/Tiles/wall/tree1_red"), 9);
+            LavaBackground = new Tile(content.Load<Texture2D>("Textures/Tiles/floor/lava3"), 10);
+            ClosedDoor = new Tile(content.Load<Texture2D>("Textures/Tiles/dngn_closed_door"), 11);
+            Fountain = new Tile(content.Load<Texture2D>("Textures/Tiles/dngn_blue_fountain"), 12);
+            RedRectangle1 = new Tile(content.Load<Texture2D>("Textures/Tiles/travel_exclusion"), 13);
+            RedRectangle2 = new Tile(content.Load<Texture2D>("Textures/Tiles/travel_exclusion_centre"), 14);
         }
     }
 }

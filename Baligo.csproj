@@ -7,7 +7,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{4EE8F7F2-AECF-40EF-BF51-227B61B5601D}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Baligo</RootNamespace>
     <AssemblyName>Baligo</AssemblyName>
@@ -52,6 +52,9 @@
   <PropertyGroup>
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Entity\Characters\Creature.cs" />
     <Compile Include="Entity\Characters\Enemies\EnemiesMain.cs" />
@@ -75,6 +78,8 @@
     <Compile Include="States\PauseMenu.cs" />
     <Compile Include="States\State.cs" />
     <Compile Include="States\StatsMenu.cs" />
+    <Compile Include="World\World.cs" />
+    <Compile Include="World\WorldManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -84,6 +89,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Levels\Level2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Levels\Level3.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Levels\Level1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Textures\Cursor\pointer.png" />
     <Content Include="Content\Textures\Cursor\pointer_active.png" />
     <Content Include="Content\Textures\Effects\arrow0.png" />
@@ -1549,7 +1563,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\Levels\" />
     <Folder Include="Entity\Items\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -10,19 +10,33 @@ namespace Baligo.Graphics
 {
     public class Tile
     {
+        // Store all the tiles
+        public static Tile[] Tiles = new Tile[256];
         public Texture2D Texture;
         public Rectangle Bounds;
         public bool IsSolid;
 
-        public Tile(Texture2D texture,bool isSolid = false)
+        // Constructor
+        public Tile(Texture2D texture,int id,bool isSolid = false)
         {
             this.Texture = texture;
             this.Bounds = new Rectangle(0, 0, Texture.Width, Texture.Height);
             this.IsSolid = isSolid;
+            Tiles[id] = this;
         }
 
+        // Get Tile from id
+        public static Tile GetTile(int id)
+        {
+            return Tiles[id];
+        }
+        
         public void Update()
         {
+            if (IsSolid)
+            {
+                // implement
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch, int x, int y)
