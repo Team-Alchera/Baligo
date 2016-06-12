@@ -147,7 +147,7 @@ namespace Baligo.Main
                 spriteBatch.DrawString(
                     Fonts.Arial,
                     "Debug",
-                    new Vector2(0, 0),
+                    new Vector2(45, 32),
                     Color.Red);
             }
 
@@ -166,7 +166,9 @@ namespace Baligo.Main
             graphicsDeviceManager.PreferredBackBufferWidth = Width;
 
             // Full screen
-            graphicsDeviceManager.IsFullScreen = true;
+            // graphicsDeviceManager.IsFullScreen = true;
+
+            Window.IsBorderless = true;
         }
 
         /// <summary>

@@ -43,7 +43,7 @@ namespace Baligo.Graphics
             PlayerHunterArrow = new Tile(content.Load<Texture2D>("Textures/Player/arrow"), 5);
             GrassTypeOneBackground = new Tile(content.Load<Texture2D>("Textures/Tiles/floor/grass/grass_full"), 6);
             GrassTypeTwoBackground = new Tile(content.Load<Texture2D>("Textures/Tiles/floor/grass/grass_s"), 7);
-            WallBackground = new Tile(content.Load<Texture2D>("Textures/Tiles/wall/stone_brick1"), 8);
+            WallBackground = new Tile(content.Load<Texture2D>("Textures/Tiles/wall/stone_brick1"), 8, true);
             TreeBackground = new Tile(content.Load<Texture2D>("Textures/Tiles/wall/tree1_red"), 9);
             LavaBackground = new Tile(content.Load<Texture2D>("Textures/Tiles/floor/lava3"), 10);
             ClosedDoor = new Tile(content.Load<Texture2D>("Textures/Tiles/dngn_closed_door"), 11);

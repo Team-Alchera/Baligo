@@ -27,8 +27,8 @@ namespace Baligo.States
             // Update current player class
             Player.CurrentPlayerClass.Update(gameTime);
 
-             // Update World
-             WorldManager.GetCurrentWorld().Update();
+            // Update World
+            WorldManager.GetCurrentWorld().Update();
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -38,10 +38,10 @@ namespace Baligo.States
                 "GAME\nPress Left Bottom to shoot\nWORK IN PROGRESS\n",
                 new Vector2(BaligoEngine.Width / 2 - 150, BaligoEngine.Height / 2 - 20),
                 Color.White);
-            
+
             // Render World
             WorldManager.GetCurrentWorld().Draw(spriteBatch);
-            
+
             // Draw current player class
             Player.CurrentPlayerClass.Draw(spriteBatch);
         }

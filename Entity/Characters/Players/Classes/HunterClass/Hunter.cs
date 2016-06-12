@@ -56,8 +56,7 @@ namespace Baligo.Entity.Characters.Players.Classes.HunterClass
                 arrow.Draw(spriteBatch);
 
             // Draw Player with animation
-
-           
+            
             base.Draw(spriteBatch);
         }
     }

@@ -1,9 +1,12 @@
-﻿using Baligo.Entity.Characters.Players.Classes.HunterClass;
+﻿using System;
+using Baligo.Content.Fonts;
+using Baligo.Entity.Characters.Players.Classes.HunterClass;
 using Baligo.Entity.Characters.Players.Classes.MageClass;
 using Baligo.Entity.Characters.Players.Classes.WarriorClass;
 using Baligo.Graphics;
 using Baligo.Input;
 using Baligo.Main;
+using Baligo.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -23,7 +26,7 @@ namespace Baligo.Entity.Characters.Players
         protected const int SpeedOfAnimations = 50;
 
         //Mouse position
-        public MouseState MousePosition { get; }
+        public MouseState MousePosition { get; set; }
 
         // Collision
         public Rectangle CollisionBox;
@@ -33,6 +36,7 @@ namespace Baligo.Entity.Characters.Players
         protected readonly Animation WalkRight;
         protected readonly Animation WalkUp;
         protected readonly Animation WalkDown;
+
         protected readonly Animation ShootArrowLeft;
         protected readonly Animation ShootArrowRight;
         protected readonly Animation ShootArrowUp;
@@ -40,11 +44,15 @@ namespace Baligo.Entity.Characters.Players
 
         // Orientation
         protected Rectangle Orientation;
+        protected Animation ShootStanding;
+
+        // Angle
+        public float Angle;
+        public Vector2 Direction;
 
         // Constructor
         public PlayerMain()
         {
-            
             // Set Parameters
             PlayerTexture = Assets.PlayerHunter.Texture;
             Health = 100;
@@ -68,9 +76,13 @@ namespace Baligo.Entity.Characters.Players
 
             // Orientation
             Orientation = new Rectangle(0, 64 * 11, 64, 64);
+            ShootStanding = ShootArrowRight;
 
             // Collision
             CollisionBox = new Rectangle((int)Position.X, (int)Position.Y, 44, 54);
+
+            // Get First Direction
+            Direction = new Vector2(MousePosition.X, MousePosition.Y);
         }
 
         public void Init()
@@ -86,28 +98,61 @@ namespace Baligo.Entity.Characters.Players
 
         public override void Update(GameTime gmaTime)
         {
+            Vector2 storePosition = Position;
+
             // Move and pick the orientation
             if (InputManager.AIsPressed)
             {
                 Position.X -= Speed;
                 Orientation = new Rectangle(0, 64 * 9, 64, 64);
+                ShootStanding = ShootArrowLeft;
             }
             if (InputManager.DIsPressed)
             {
                 Position.X += Speed;
                 Orientation = new Rectangle(0, 64 * 11, 64, 64);
+                ShootStanding = ShootArrowRight;
             }
             if (InputManager.WIsPressed)
             {
                 Position.Y -= Speed;
                 Orientation = new Rectangle(0, 64 * 12, 64, 64);
+                ShootStanding = ShootArrowUp;
             }
             if (InputManager.SIsPressed)
             {
                 Position.Y += Speed;
                 Orientation = new Rectangle(0, 64 * 10, 64, 64);
+                ShootStanding = ShootArrowDown;
+            }
+            
+            // Update the collision box
+            CollisionBox.X = (int)Position.X + 10;
+            CollisionBox.Y = (int)Position.Y + 10;
+
+            // Calculate if in collision
+            for (int row = 0; row < 24; row++)
+            {
+                for (int col = 0; col < 42; col++)
+                {
+                    if (WorldManager.GetCurrentWorld().WorldData[row, col].CollisionBox.Intersects(this.CollisionBox) &&
+                        WorldManager.GetCurrentWorld().WorldData[row, col].is)
+                    {
+                        Position = storePosition;
+                    }
+                }
             }
 
+            // Calculate Angle
+            MousePosition = Mouse.GetState();
+            Direction.X = MousePosition.X;
+            Direction.Y = MousePosition.Y;
+            Vector2 tempPosition = Position;
+            tempPosition.X += 32;
+            tempPosition.Y += 32;
+            var toCalcAngle = tempPosition - Direction;
+            Angle = (float)Math.Atan2(toCalcAngle.Y, toCalcAngle.X);
+            
             // Update all animations
             WalkLeft.Update(gmaTime);
             WalkRight.Update(gmaTime);
@@ -117,53 +162,52 @@ namespace Baligo.Entity.Characters.Players
             ShootArrowRight.Update(gmaTime);
             ShootArrowUp.Update(gmaTime);
             ShootArrowDown.Update(gmaTime);
-            // Update the collision box
-            CollisionBox.X = (int)Position.X + 10;
-            CollisionBox.Y = (int)Position.Y + 10;
+            ShootStanding.Update(gmaTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
-        {            
+        {
             // Pick the right animation to draw
             if (InputManager.AIsPressed)
-                spriteBatch.Draw(PlayerTexture, Position, WalkLeft.GetBoundsForFrame(), Color.White);
+            {
+                spriteBatch.Draw(PlayerTexture, Position,
+                    InputManager.LeftButtomDown ? ShootArrowLeft.GetBoundsForFrame() : WalkLeft.GetBoundsForFrame(),
+                    Color.White);
+            }
             else if (InputManager.DIsPressed)
-                spriteBatch.Draw(PlayerTexture, Position, WalkRight.GetBoundsForFrame(), Color.White);
+            {
+                spriteBatch.Draw(PlayerTexture, Position,
+                    InputManager.LeftButtomDown ? ShootArrowRight.GetBoundsForFrame() : WalkRight.GetBoundsForFrame(),
+                    Color.White);
+            }
             else if (InputManager.WIsPressed)
-                spriteBatch.Draw(PlayerTexture, Position, WalkUp.GetBoundsForFrame(), Color.White);
+            {
+                spriteBatch.Draw(PlayerTexture, Position,
+                    InputManager.LeftButtomDown ? ShootArrowUp.GetBoundsForFrame() : WalkUp.GetBoundsForFrame(),
+                    Color.White);
+            }
             else if (InputManager.SIsPressed)
-                spriteBatch.Draw(PlayerTexture, Position, WalkDown.GetBoundsForFrame(), Color.White);
+            {
+                spriteBatch.Draw(PlayerTexture, Position,
+                    InputManager.LeftButtomDown ? ShootArrowDown.GetBoundsForFrame() : WalkDown.GetBoundsForFrame(),
+                    Color.White);
+            }
             else // Stand Positon in last Orientation
-                spriteBatch.Draw(PlayerTexture, Position, Orientation, Color.White);
+            {
+                spriteBatch.Draw(PlayerTexture, Position,
+                    InputManager.LeftButtomDown ? ShootStanding.GetBoundsForFrame() : Orientation, Color.White);
+            }
 
-            /*  тук стреля докато ходиш, но стреля и през гъза си. малко по-горе ще видиш public MouseState MousePosition { get; } =>
-             *   => той ти дава достъп до мишката, да и правиш каквото поискаш общо взето 
-             *
-             *      
-             *   if (InputManager.LeftButtomDown && InputManager.AIsPressed)
-             *   {
-             *       spriteBatch.Draw(PlayerTexture, Position, ShootArrowLeft.GetBoundsForFrame(), Color.White);
-             *   }
-             *   else if (InputManager.LeftButtomDown && InputManager.DIsPressed)
-             *   {
-             *       spriteBatch.Draw(PlayerTexture, Position, ShootArrowRight.GetBoundsForFrame(), Color.White);
-             *   }
-             *   else if (InputManager.LeftButtomDown && InputManager.WIsPressed)
-             *   {
-             *       spriteBatch.Draw(PlayerTexture, Position, ShootArrowUp.GetBoundsForFrame(), Color.White);
-             *   }
-             *   else if (InputManager.LeftButtomDown && InputManager.SIsPressed)
-             *   {
-             *       spriteBatch.Draw(PlayerTexture, Position, ShootArrowDown.GetBoundsForFrame(), Color.White);
-             *   }
-             *   P.S. Сега видях, че си ползвал Mouse класа в InputManager-a и се чувствам глупаво :D
-             */
-                // Draw player collision if debug is active
-                if (BaligoEngine.IsDebugModeActive)
-                    spriteBatch.Draw(Assets.RedRectangle1.Texture, new Vector2(CollisionBox.X, CollisionBox.Y), CollisionBox, Color.White);
-                    
-                    
-             
+            // Draw player collision if debug is active
+            if (BaligoEngine.IsDebugModeActive)
+            {
+                spriteBatch.Draw(Assets.RedRectangle1.Texture, new Vector2(CollisionBox.X, CollisionBox.Y), CollisionBox, Color.White);
+                spriteBatch.DrawString(
+                    Fonts.Arial,
+                    Angle.ToString(),
+                    new Vector2(250, 32),
+                    Color.Wheat);
+            }
         }
     }
 }
