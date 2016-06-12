@@ -57,7 +57,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Entity\Characters\Creature.cs" />
-    <Compile Include="Entity\Characters\Enemies\EnemiesMain.cs" />
+    <Compile Include="Entity\Characters\Enemies\EnemyMain.cs" />
     <Compile Include="Entity\Characters\Players\Classes\HunterClass\Arrow.cs" />
     <Compile Include="Entity\Characters\Players\Classes\HunterClass\Hunter.cs" />
     <Compile Include="Entity\Characters\Players\Classes\MageClass\Mage.cs" />
@@ -1563,6 +1563,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\Textures\Enemies\" />
     <Folder Include="Entity\Items\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
