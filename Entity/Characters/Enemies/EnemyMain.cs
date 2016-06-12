@@ -58,6 +58,7 @@ namespace Baligo.Entity.Characters.Enemies
 
             // Orientation
             Orientation = new Rectangle(0, 64 * 11, 64, 64);
+        }
 
             // Collision
 
