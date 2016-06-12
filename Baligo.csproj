@@ -191,6 +191,7 @@
     <Content Include="Content\Textures\Effects\throwing_net5.png" />
     <Content Include="Content\Textures\Effects\throwing_net6.png" />
     <Content Include="Content\Textures\Effects\throwing_net7.png" />
+    <Content Include="Content\Textures\Enemies\Enemy.png" />
     <Content Include="Content\Textures\Items\amulet\artefact\urand_air.png" />
     <Content Include="Content\Textures\Items\amulet\artefact\urand_bloodlust.png" />
     <Content Include="Content\Textures\Items\amulet\artefact\urand_brooch_of_shielding.png" />
@@ -1563,7 +1564,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\Textures\Enemies\" />
     <Folder Include="Entity\Items\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

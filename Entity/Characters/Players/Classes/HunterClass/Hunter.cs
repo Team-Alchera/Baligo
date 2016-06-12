@@ -32,14 +32,24 @@ namespace Baligo.Entity.Characters.Players.Classes.HunterClass
             {
                 if (CountDown == 0)
                 {
-                 Arrows.Add(new Arrow(Position, new Vector2(Mouse.GetState().X, Mouse.GetState().Y)));
-                 CountDown = 15;
+                    Arrows.Add(new Arrow(Position, new Vector2(Mouse.GetState().X, Mouse.GetState().Y)));
+                    CountDown = 15;
+                    Console.WriteLine("ARROW FIRED ID: " + Arrows.Count);
                 }
             }
 
             // Update each arrow
-            foreach (var arrow in Arrows)
-                arrow.Update();
+            for (int arrowId = 0; arrowId < Arrows.Count; arrowId++)
+            {
+                if (Arrows[arrowId].Timer > 0)
+                {
+                    Arrows[arrowId].Update();
+                }
+                else
+                {
+                    Arrows.RemoveAt(arrowId);
+                }
+            }
 
             // Work with countDown
             if (CountDown - 1 >= 0)
@@ -56,7 +66,7 @@ namespace Baligo.Entity.Characters.Players.Classes.HunterClass
                 arrow.Draw(spriteBatch);
 
             // Draw Player with animation
-            
+
             base.Draw(spriteBatch);
         }
     }

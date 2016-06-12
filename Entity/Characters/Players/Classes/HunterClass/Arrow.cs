@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Baligo.Content.Fonts;
 using Baligo.Graphics;
 using Baligo.Main;
+using Baligo.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -20,6 +21,8 @@ namespace Baligo.Entity.Characters.Players.Classes.HunterClass
         public Vector2 Direction;
         public float Angle;
         public Vector2 Velocity;
+        public bool IsActive;
+        public int Timer;
 
         public Arrow(Vector2 position, Vector2 direction)
         {
@@ -39,17 +42,43 @@ namespace Baligo.Entity.Characters.Players.Classes.HunterClass
 
             // Create Collision
             CollisionBox = new Rectangle((int)Position.X, (int)Position.Y, 10, 10);
+
+            // Set default active state and timer
+            IsActive = true;
+            Timer = 900;
         }
 
         public void Update()
         {
-            // Update Position
-            Position.X += Velocity.X * Speed;
-            Position.Y += Velocity.Y * Speed;
+            if (IsActive)
+            {
+                // Update Position
+                Position.X += Velocity.X * Speed;
+                Position.Y += Velocity.Y * Speed;
 
-            // Update Collision
-            CollisionBox.X = (int)Position.X;
-            CollisionBox.Y = (int)Position.Y - 5;
+                // Update Collision
+                CollisionBox.X = (int)Position.X;
+                CollisionBox.Y = (int)Position.Y - 5;
+
+                // Check Collision
+                for (int row = 0; row < 24; row++)
+                {
+                    for (int col = 0; col < 42; col++)
+                    {
+                        Tile currentTile = WorldManager.GetCurrentWorld().WorldData[row, col];
+
+                        if (currentTile.CollisionBox.Intersects(this.CollisionBox) && currentTile.IsSolid)
+                        {
+                            IsActive = false;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (Timer - 1 >= 0)
+                    Timer--;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)

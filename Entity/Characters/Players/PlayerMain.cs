@@ -96,32 +96,49 @@ namespace Baligo.Entity.Characters.Players
             CurrentPlayerClass = HunterClass;
         }
 
+        private Vector2 _lastPosition;
         public override void Update(GameTime gmaTime)
         {
-            Vector2 storePosition = Position;
+
 
             // Move and pick the orientation
             if (InputManager.AIsPressed)
             {
                 Position.X -= Speed;
+                if (CheckCollision(Position))
+                {
+                    Position.X += Speed;
+                }
                 Orientation = new Rectangle(0, 64 * 9, 64, 64);
                 ShootStanding = ShootArrowLeft;
             }
             if (InputManager.DIsPressed)
             {
                 Position.X += Speed;
+                if (CheckCollision(Position))
+                {
+                    Position.X -= Speed;
+                }
                 Orientation = new Rectangle(0, 64 * 11, 64, 64);
                 ShootStanding = ShootArrowRight;
             }
             if (InputManager.WIsPressed)
             {
                 Position.Y -= Speed;
+                if (CheckCollision(Position))
+                {
+                    Position.Y += Speed;
+                }
                 Orientation = new Rectangle(0, 64 * 12, 64, 64);
                 ShootStanding = ShootArrowUp;
             }
             if (InputManager.SIsPressed)
             {
                 Position.Y += Speed;
+                if (CheckCollision(Position))
+                {
+                    Position.Y -= Speed;
+                }
                 Orientation = new Rectangle(0, 64 * 10, 64, 64);
                 ShootStanding = ShootArrowDown;
             }
@@ -129,20 +146,7 @@ namespace Baligo.Entity.Characters.Players
             // Update the collision box
             CollisionBox.X = (int)Position.X + 10;
             CollisionBox.Y = (int)Position.Y + 10;
-
-            // Calculate if in collision
-            for (int row = 0; row < 24; row++)
-            {
-                for (int col = 0; col < 42; col++)
-                {
-                    if (WorldManager.GetCurrentWorld().WorldData[row, col].CollisionBox.Intersects(this.CollisionBox) &&
-                        WorldManager.GetCurrentWorld().WorldData[row, col].IsSolid)
-                    {
-                        Position = storePosition;
-                    }
-                }
-            }
-
+            
             // Calculate Angle
             MousePosition = Mouse.GetState();
             Direction.X = MousePosition.X;
@@ -163,6 +167,8 @@ namespace Baligo.Entity.Characters.Players
             ShootArrowUp.Update(gmaTime);
             ShootArrowDown.Update(gmaTime);
             ShootStanding.Update(gmaTime);
+
+            _lastPosition = Position;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -208,6 +214,27 @@ namespace Baligo.Entity.Characters.Players
                     new Vector2(250, 32),
                     Color.Wheat);
             }
+        }
+
+        private bool CheckCollision(Vector2 Position)
+        {
+            CollisionBox.X = (int)Position.X + 10;
+            CollisionBox.Y = (int)Position.Y + 10;
+
+            for (int row = 0; row < 24; row++)
+            {
+                for (int col = 0; col < 42; col++)
+                {
+                    Tile currentTile = WorldManager.GetCurrentWorld().WorldData[row, col];
+
+                    if (currentTile.CollisionBox.Intersects(this.CollisionBox) && currentTile.IsSolid)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
     }
 }
