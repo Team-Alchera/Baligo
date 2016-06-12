@@ -11,6 +11,7 @@ namespace Baligo.Entity.Characters
     public abstract class Creature
     {
         public Vector2 Position;
+        public string Name;
         public int Health;
         public int Armor;
         public int Damage;

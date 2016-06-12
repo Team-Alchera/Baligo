@@ -27,6 +27,8 @@ namespace Baligo.Graphics
         // Debug Mode
         public static Tile RedRectangle1;
         public static Tile RedRectangle2;
+        //enemy
+        public static Tile Enemy;
 
         public static void LoadAssets(ContentManager content)
         {
@@ -50,6 +52,7 @@ namespace Baligo.Graphics
             Fountain = new Tile(content.Load<Texture2D>("Textures/Tiles/dngn_blue_fountain"), 12);
             RedRectangle1 = new Tile(content.Load<Texture2D>("Textures/Tiles/travel_exclusion"), 13);
             RedRectangle2 = new Tile(content.Load<Texture2D>("Textures/Tiles/travel_exclusion_centre"), 14);
+            Enemy = new Tile(content.Load<Texture2D>("Textures/Enemies/Enemy"), 15);
         }
     }
 }
