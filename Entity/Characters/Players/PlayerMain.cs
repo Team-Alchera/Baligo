@@ -136,7 +136,7 @@ namespace Baligo.Entity.Characters.Players
                 for (int col = 0; col < 42; col++)
                 {
                     if (WorldManager.GetCurrentWorld().WorldData[row, col].CollisionBox.Intersects(this.CollisionBox) &&
-                        WorldManager.GetCurrentWorld().WorldData[row, col].is)
+                        WorldManager.GetCurrentWorld().WorldData[row, col].IsSolid)
                     {
                         Position = storePosition;
                     }

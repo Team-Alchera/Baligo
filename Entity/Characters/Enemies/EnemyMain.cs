@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System;
 using System.Collections.Generic;
 using Baligo.Graphics;
 using Baligo.Input;
@@ -11,6 +11,12 @@ namespace Baligo.Entity.Characters.Enemies
     public class EnemyMain : Creature
     {
         // Sprite Sheet
+        //defines if the enemy is Boss or standard enemy
+        public bool isBoss;
+        //stores list of item IDs to be used to defeat the enemy
+        public List<int> itemsOfDefeat;
+        private Texture2D EnemyTexture;
+        public string EnemyName { get; private set; }
         protected Texture2D PlayerTexture;
         protected const int SpeedOfAnimations = 50;
 
@@ -60,14 +66,6 @@ namespace Baligo.Entity.Characters.Enemies
             Orientation = new Rectangle(0, 64 * 11, 64, 64);
         }
 
-            // Collision
-
-            //defines if the enemy is Boss or standard enemy
-            public bool isBoss;
-        //stores list of item IDs to be used to defeat the enemy
-        public List<int> itemsOfDefeat;
-        private Texture2D EnemyTexture;
-        public string EnemyName { get; private set; }
         public void Init()
         {
         }
