@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Baligo.Console;
 using Baligo.Graphics;
 using Baligo.Input;
 using Microsoft.Xna.Framework;
@@ -32,9 +33,9 @@ namespace Baligo.Entity.Characters.Players.Classes.HunterClass
             {
                 if (CountDown == 0)
                 {
-                    Arrows.Add(new Arrow(Position, new Vector2(Mouse.GetState().X, Mouse.GetState().Y)));
+                    Arrows.Add(new Arrow(Position, new Vector2(Mouse.GetState().X, Mouse.GetState().Y), Arrows.Count + 1));
                     CountDown = 15;
-                    Console.WriteLine("ARROW FIRED ID: " + Arrows.Count);
+                    BaligoConsole.WriteLine("Arrow Spawned ID: " + Arrows.Count, Color.LimeGreen);
                 }
             }
 
@@ -47,6 +48,7 @@ namespace Baligo.Entity.Characters.Players.Classes.HunterClass
                 }
                 else
                 {
+                    BaligoConsole.WriteLine("Arrow Removed ID: " + Arrows[arrowId].Id, Color.Red);
                     Arrows.RemoveAt(arrowId);
                 }
             }

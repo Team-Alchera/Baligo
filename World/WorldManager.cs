@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Baligo.Console;
+using Microsoft.Xna.Framework;
 
 namespace Baligo.World
 {
@@ -25,6 +27,12 @@ namespace Baligo.World
             Level1 = new World("Level1.txt");
             Level2 = new World("Level2.txt");
             Level3 = new World("Level3.txt");
+
+            BaligoConsole.WriteLine("Loaded level_1",Color.Magenta);
+            BaligoConsole.WriteLine("Loaded level_2",Color.Magenta);
+            BaligoConsole.WriteLine("Loaded level_3",Color.Magenta);
+            BaligoConsole.WriteLine("Current World: " + _currentWorld, Color.Magenta);
+            BaligoConsole.WriteLine("=======", Color.Yellow);
 
             // Add the worlds
             Worlds.Add("level_1", Level1);

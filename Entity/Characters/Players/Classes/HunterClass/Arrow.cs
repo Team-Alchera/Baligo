@@ -23,9 +23,12 @@ namespace Baligo.Entity.Characters.Players.Classes.HunterClass
         public Vector2 Velocity;
         public bool IsActive;
         public int Timer;
+        public int Id;
 
-        public Arrow(Vector2 position, Vector2 direction)
+        public Arrow(Vector2 position, Vector2 direction,int id)
         {
+            Id = id;
+
             // Set Parameters
             Position = position;
             Position.X += 16;
@@ -37,7 +40,7 @@ namespace Baligo.Entity.Characters.Players.Classes.HunterClass
             Velocity.Normalize();
 
             // Calculate Angle
-            var toCalcAngle = Position - direction;
+            var toCalcAngle =  Position - direction;
             Angle = (float)Math.Atan2(toCalcAngle.Y, toCalcAngle.X);
 
             // Create Collision
@@ -58,7 +61,7 @@ namespace Baligo.Entity.Characters.Players.Classes.HunterClass
 
                 // Update Collision
                 CollisionBox.X = (int)Position.X;
-                CollisionBox.Y = (int)Position.Y - 5;
+                CollisionBox.Y = (int)Position.Y -5; 
 
                 // Check Collision
                 for (int row = 0; row < 24; row++)

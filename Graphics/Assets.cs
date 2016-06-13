@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Baligo.Console;
 using Baligo.Main;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -27,8 +29,10 @@ namespace Baligo.Graphics
         // Debug Mode
         public static Tile RedRectangle1;
         public static Tile RedRectangle2;
-        //enemy
+        // enemy
         public static Tile Enemy;
+        // Console
+        public static Tile ConsoleTile;
 
         public static void LoadAssets(ContentManager content)
         {
@@ -52,7 +56,14 @@ namespace Baligo.Graphics
             Fountain = new Tile(content.Load<Texture2D>("Textures/Tiles/dngn_blue_fountain"), 12);
             RedRectangle1 = new Tile(content.Load<Texture2D>("Textures/Tiles/travel_exclusion"), 13);
             RedRectangle2 = new Tile(content.Load<Texture2D>("Textures/Tiles/travel_exclusion_centre"), 14);
+            // Enemy
             Enemy = new Tile(content.Load<Texture2D>("Textures/Enemies/Enemy"), 15);
+            // Console
+            ConsoleTile = new Tile(content.Load<Texture2D>("Textures/Console"), 16);
+
+            // Info
+            BaligoConsole.WriteLine("All assets loaded !",Color.Magenta);
+            BaligoConsole.WriteLine("=======",Color.Yellow);
         }
     }
 }

@@ -25,6 +25,8 @@ namespace Baligo.Input
         public static bool F3IsPressed { get; private set; }
         public static bool F4IsPressed { get; private set; }
 
+        public static bool ConsoleKey { get; private set; }
+
         public static void Update()
         {
             KeyboardState currentKeyboardState = Keyboard.GetState();
@@ -54,6 +56,9 @@ namespace Baligo.Input
             F2IsPressed = currentKeyboardState.IsKeyDown(Keys.F2);
             F3IsPressed = currentKeyboardState.IsKeyDown(Keys.F3);
             F4IsPressed = currentKeyboardState.IsKeyDown(Keys.F4);
+
+            // Console Key
+            ConsoleKey = currentKeyboardState.IsKeyDown(Keys.OemTilde);
         }
     }
 }

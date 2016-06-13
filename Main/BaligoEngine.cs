@@ -1,4 +1,5 @@
-﻿using Baligo.Content.Fonts;
+﻿using Baligo.Console;
+using Baligo.Content.Fonts;
 using Baligo.Entity.Custom_Mouse;
 using Baligo.Graphics;
 using Baligo.Input;
@@ -31,6 +32,7 @@ namespace Baligo.Main
 
         // Debug Mode
         public static bool IsDebugModeActive;
+        public static bool IsConsoleActive;
 
         public BaligoEngine()
         {
@@ -48,6 +50,9 @@ namespace Baligo.Main
         /// </summary>
         protected override void Initialize()
         {
+            // Init console
+            BaligoConsole.Init();
+
             // Load all assets
             Assets.LoadAssets(Content);
 
@@ -61,9 +66,13 @@ namespace Baligo.Main
             // Set Default EnterIsPressed State
             State.SetCurrentState(MainGameState);
             MainGameState.Init();
+            BaligoConsole.WriteLine("All states initialized !", Color.Magenta);
+            BaligoConsole.WriteLine("Current state is: Nain Game", Color.Magenta);
+            BaligoConsole.WriteLine("=======", Color.Yellow);
 
             // Set default state for debug mode
             IsDebugModeActive = false;
+            IsConsoleActive = false;
 
             // Init worlds
             WorldManager.Init();
@@ -115,6 +124,15 @@ namespace Baligo.Main
             if (InputManager.F1IsPressed && waitTime == 0)
             {
                 IsDebugModeActive = !IsDebugModeActive;
+                BaligoConsole.WriteLine(IsDebugModeActive ? "Debug mode: ACTIVE" : "Debug mode: DISABLED", Color.Magenta);
+
+                waitTime = 15;
+            }
+
+            // Update Console State 
+            if (InputManager.ConsoleKey && waitTime == 0)
+            {
+                IsConsoleActive = !IsConsoleActive;
                 waitTime = 15;
             }
 
@@ -151,6 +169,12 @@ namespace Baligo.Main
                     Color.Red);
             }
 
+            // Console Show
+            if (IsConsoleActive)
+            {
+                BaligoConsole.Draw(spriteBatch);
+            }
+
             spriteBatch.End();
 
             // Do not touch
@@ -166,9 +190,9 @@ namespace Baligo.Main
             graphicsDeviceManager.PreferredBackBufferWidth = Width;
 
             // Full screen
-            // graphicsDeviceManager.IsFullScreen = true;
+             graphicsDeviceManager.IsFullScreen = true;
 
-            Window.IsBorderless = true;
+            // Window.IsBorderless = true;
         }
 
         /// <summary>
@@ -185,6 +209,7 @@ namespace Baligo.Main
         public void LoadFonts()
         {
             Fonts.Arial = this.Content.Load<SpriteFont>("Fonts/Arial");
+            Fonts.Console = this.Content.Load<SpriteFont>("Fonts/Console");
         }
     }
 }
