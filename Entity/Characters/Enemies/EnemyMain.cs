@@ -1,4 +1,4 @@
-﻿//using System;
+﻿using System;
 using System.Collections.Generic;
 using Baligo.Graphics;
 using Baligo.Input;
@@ -10,14 +10,15 @@ namespace Baligo.Entity.Characters.Enemies
 {
     public class EnemyMain : Creature
     {
-        // Sprite Sheet
         //defines if the enemy is Boss or standard enemy
         public bool isBoss;
         //stores list of item IDs to be used to defeat the enemy
         public List<int> itemsOfDefeat;
-        private Texture2D EnemyTexture;
-        public string EnemyName { get; private set; }
-        protected Texture2D PlayerTexture;
+        // class
+        public EnemyMain CurrentEnemy;
+
+        //Sprite Sheet
+        protected Texture2D EnemyTexture;
         protected const int SpeedOfAnimations = 50;
 
         // Collision
@@ -39,9 +40,7 @@ namespace Baligo.Entity.Characters.Enemies
         // Constructor
         public EnemyMain()
         {
-
             // Set Parameters
-            EnemyName = "";
             EnemyTexture = Assets.Enemy.Texture;
             Health = 100;
             Armor = 100;
@@ -50,7 +49,7 @@ namespace Baligo.Entity.Characters.Enemies
             Speed = 5;
 
             // Position
-            Position = new Vector2(600, 500);
+            Position = new Vector2(40, 40);
 
             // Animation
             WalkLeft = new Animation(SpeedOfAnimations, 9, 9);
@@ -64,10 +63,14 @@ namespace Baligo.Entity.Characters.Enemies
 
             // Orientation
             Orientation = new Rectangle(0, 64 * 11, 64, 64);
+
+            //Collision
+            CollisionBox = new Rectangle((int)Position.X, (int)Position.Y, 44, 54);
         }
 
         public void Init()
         {
+            CurrentEnemy = new EnemyMain();
         }
 
         public override void Update(GameTime gmaTime)
@@ -104,15 +107,15 @@ namespace Baligo.Entity.Characters.Enemies
         {
             // Pick the right animation to draw
             if (InputManager.AIsPressed)
-                spriteBatch.Draw(PlayerTexture, Position, WalkLeft.GetBoundsForFrame(), Color.White);
+                spriteBatch.Draw(EnemyTexture, Position, WalkLeft.GetBoundsForFrame(), Color.White);
             else if (InputManager.DIsPressed)
-                spriteBatch.Draw(PlayerTexture, Position, WalkRight.GetBoundsForFrame(), Color.White);
+                spriteBatch.Draw(EnemyTexture, Position, WalkRight.GetBoundsForFrame(), Color.White);
             else if (InputManager.WIsPressed)
-                spriteBatch.Draw(PlayerTexture, Position, WalkUp.GetBoundsForFrame(), Color.White);
+                spriteBatch.Draw(EnemyTexture, Position, WalkUp.GetBoundsForFrame(), Color.White);
             else if (InputManager.SIsPressed)
-                spriteBatch.Draw(PlayerTexture, Position, WalkDown.GetBoundsForFrame(), Color.White);
+                spriteBatch.Draw(EnemyTexture, Position, WalkDown.GetBoundsForFrame(), Color.White);
             else // Stand Positon in last Orientation
-                spriteBatch.Draw(PlayerTexture, Position, Orientation, Color.White);
+                spriteBatch.Draw(EnemyTexture, Position, Orientation, Color.White);
             if (BaligoEngine.IsDebugModeActive)
                 spriteBatch.Draw(Assets.RedRectangle1.Texture, new Vector2(CollisionBox.X, CollisionBox.Y), CollisionBox, Color.White);
         }

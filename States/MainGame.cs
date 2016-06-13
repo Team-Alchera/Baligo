@@ -1,6 +1,7 @@
 ﻿using System;
 using Baligo.Content.Fonts;
 using Baligo.Entity.Characters.Players;
+using Baligo.Entity.Characters.Enemies;
 using Baligo.Graphics;
 using Baligo.Input;
 using Baligo.Main;
@@ -13,13 +14,15 @@ namespace Baligo.States
     public class MainGame : State
     {
         protected PlayerMain Player;
+        protected EnemyMain Enemy;
 
         public override void Init()
         {
             Player = new PlayerMain();
             Player.Init();
 
-
+            Enemy = new EnemyMain();
+            Enemy.Init();
         }
 
         public override void Update(GameTime gameTime)
@@ -41,6 +44,12 @@ namespace Baligo.States
 
             // Render World
             WorldManager.GetCurrentWorld().Draw(spriteBatch);
+
+            // Draw obstacles
+            Assets.Fountain.Draw(spriteBatch, 608, 608);
+
+            // Draw enemy
+            Enemy.CurrentEnemy.Draw(spriteBatch);
 
             // Draw current player class
             Player.CurrentPlayerClass.Draw(spriteBatch);

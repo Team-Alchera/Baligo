@@ -223,7 +223,7 @@ namespace Baligo.Entity.Characters.Players
 
             for (int row = 0; row < 24; row++)
             {
-                for (int col = 0; col < 42; col++)
+                for (int col = 0; col < 43; col++)
                 {
                     Tile currentTile = WorldManager.GetCurrentWorld().WorldData[row, col];
 

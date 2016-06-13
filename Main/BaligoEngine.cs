@@ -186,8 +186,8 @@ namespace Baligo.Main
         /// </summary>
         private void SetBorderless()
         {
-            graphicsDeviceManager.PreferredBackBufferHeight = Height;
-            graphicsDeviceManager.PreferredBackBufferWidth = Width;
+            graphicsDeviceManager.PreferredBackBufferHeight = 768;
+            graphicsDeviceManager.PreferredBackBufferWidth = 1366;
 
             // Full screen
              graphicsDeviceManager.IsFullScreen = true;

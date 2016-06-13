@@ -12,7 +12,7 @@ namespace Baligo.World
     public class World
     {
         public Tile[,] WorldData;
-        private const int WordWidth = 42;
+        private const int WordWidth = 43;
         private const int WorldHeigth = 24;
         private const int TileSize = 32;
         private readonly string _pathToWorld;
@@ -35,7 +35,7 @@ namespace Baligo.World
         {
             for (int row = 0; row < 24; row++)
             {
-                for (int col = 0; col < 42; col++)
+                for (int col = 0; col < 43; col++)
                 {
                     WorldData[row,col].Draw(spriteBatch, TileSize * col, TileSize * row);
                 }
