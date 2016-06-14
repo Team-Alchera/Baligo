@@ -75,29 +75,6 @@ namespace Baligo.Entity.Characters.Enemies
 
         public override void Update(GameTime gmaTime)
         {
-            // Move and pick the orientation
-            if (InputManager.AIsPressed)
-            {
-                Position.X -= Speed;
-                Orientation = new Rectangle(0, 64 * 9, 64, 64);
-            }
-            if (InputManager.DIsPressed)
-            {
-                Position.X += Speed;
-                Orientation = new Rectangle(0, 64 * 11, 64, 64);
-            }
-            if (InputManager.WIsPressed)
-            {
-                Position.Y -= Speed;
-                Orientation = new Rectangle(0, 64 * 12, 64, 64);
-            }
-            if (InputManager.SIsPressed)
-            {
-                Position.Y += Speed;
-                Orientation = new Rectangle(0, 64 * 10, 64, 64);
-            }
-
-
             // Update the collision box
             CollisionBox.X = (int)Position.X + 10;
             CollisionBox.Y = (int)Position.Y + 10;
@@ -105,17 +82,8 @@ namespace Baligo.Entity.Characters.Enemies
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            // Pick the right animation to draw
-            if (InputManager.AIsPressed)
-                spriteBatch.Draw(EnemyTexture, Position, WalkLeft.GetBoundsForFrame(), Color.White);
-            else if (InputManager.DIsPressed)
-                spriteBatch.Draw(EnemyTexture, Position, WalkRight.GetBoundsForFrame(), Color.White);
-            else if (InputManager.WIsPressed)
-                spriteBatch.Draw(EnemyTexture, Position, WalkUp.GetBoundsForFrame(), Color.White);
-            else if (InputManager.SIsPressed)
-                spriteBatch.Draw(EnemyTexture, Position, WalkDown.GetBoundsForFrame(), Color.White);
-            else // Stand Positon in last Orientation
-                spriteBatch.Draw(EnemyTexture, Position, Orientation, Color.White);
+            spriteBatch.Draw(EnemyTexture, Position, Orientation, Color.White);
+
             if (BaligoEngine.IsDebugModeActive)
                 spriteBatch.Draw(Assets.RedRectangle1.Texture, new Vector2(CollisionBox.X, CollisionBox.Y), CollisionBox, Color.White);
         }

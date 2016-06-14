@@ -1,4 +1,5 @@
-﻿using Baligo.Console;
+﻿
+using Baligo.Console;
 using Baligo.Content.Fonts;
 using Baligo.Entity.Custom_Mouse;
 using Baligo.Graphics;
