@@ -33,6 +33,8 @@ namespace Baligo.Graphics
         public static Tile Enemy;
         // Console
         public static Tile ConsoleTile;
+        // Potion
+        public static Tile Cyan;
 
         public static void LoadAssets(ContentManager content)
         {
@@ -60,6 +62,7 @@ namespace Baligo.Graphics
             Enemy = new Tile(content.Load<Texture2D>("Textures/Enemies/Enemy"), 15);
             // Console
             ConsoleTile = new Tile(content.Load<Texture2D>("Textures/Console"), 16);
+            Cyan = new Tile(content.Load<Texture2D>("Textures/Items/potion/cyan"), 17);
 
             // Info
             BaligoConsole.WriteLine("All assets loaded !",Color.Magenta);
