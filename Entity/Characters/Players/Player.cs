@@ -10,8 +10,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Baligo.Entity.Characters.Players
 {
-    public class Player : Character
-    {
+    public class Player : Character{
         // Classes
         public Player CurrentPlayerClass;
         public Hunter HunterClass;

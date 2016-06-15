@@ -1,24 +1,192 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Baligo.BaligoEngine" Collapsed="true">
-    <Position X="2" Y="0.75" Width="1.5" />
+  <Class Name="Baligo.Console.BaligoConsole" Collapsed="true">
+    <Position X="15.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAEEAAAAAAAwAAAAAAAAAAAAAAAAgAAAAAAAAAAAQ=</HashCode>
-      <FileName>BaligoEngine.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAgAIAAAAAAAAAAAAAAAAAAACAQAAAAA=</HashCode>
+      <FileName>Console\BaligoConsole.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Baligo.BaligoLauncher" Collapsed="true">
-    <Position X="4.5" Y="0.75" Width="1.5" />
+  <Class Name="Baligo.Console.Message" Collapsed="true">
+    <Position X="12.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAgAAAAAA=</HashCode>
+      <FileName>Console\BaligoConsole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baligo.Content.Fonts.Fonts" Collapsed="true">
+    <Position X="15.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Content\Fonts\Fonts.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baligo.Entity.Characters.Character" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQACACAAAAAAgAgAAAAAAQBAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Characters\Character.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baligo.Entity.Characters.Enemies.Enemy" Collapsed="true">
+    <Position X="7.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwBAgAAAQAAAgAAAAQAABAQgAAAAAAAEAAGAAAQBQA=</HashCode>
+      <FileName>Entity\Characters\Enemies\Enemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baligo.Entity.Characters.Players.Hunter" Collapsed="true">
+    <Position X="5.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAQAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Entity\Characters\Players\Hunter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baligo.Entity.Characters.Players.Mage" Collapsed="true">
+    <Position X="0.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Characters\Players\Mage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baligo.Entity.Characters.Players.Player" Collapsed="true">
+    <Position X="3" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwBAhAAAYAAAgEAACAACAAQgCAAAASAAEAGAAAaBQA=</HashCode>
+      <FileName>Entity\Characters\Players\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baligo.Entity.Characters.Players.Warrior" Collapsed="true">
+    <Position X="3" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Characters\Players\Warrior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baligo.Entity.Custom_Mouse.CustomMaouse" Collapsed="true">
+    <Position X="14" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Custom Mouse\CustomMaouse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baligo.Entity.Items.Item" Collapsed="true">
+    <Position X="1.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAgAgAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Items\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baligo.Entity.Items.Potions.Cyan" Collapsed="true">
+    <Position X="2.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Entity\Items\Potions\Cyan.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baligo.Entity.Items.Weapons.Arrow" Collapsed="true">
+    <Position X="0.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAACAAAAAAgAgECAAAAABAAAAAAAAAEAAAAAEAQA=</HashCode>
+      <FileName>Entity\Items\Weapons\Arrow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baligo.Graphics.Animation" Collapsed="true">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAgAAAAAAAAUAAAAAAABAAAAhAAAAAAAAAA=</HashCode>
+      <FileName>Graphics\Animation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baligo.Graphics.Assets" Collapsed="true">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAiBIAhAAAAAAATAAgAAAEAAAACQAANAAAAAAAAA=</HashCode>
+      <FileName>Graphics\Assets.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baligo.Graphics.Tile" Collapsed="true">
+    <Position X="14" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAABggAAAAAAAAAAAAAAAgIAAAIAAAAAAwA=</HashCode>
+      <FileName>Graphics\Tile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baligo.Input.InputManager" Collapsed="true">
+    <Position X="17.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FAQAgIDAAAAQAAQAgIAAAAAQAAABAAAAAABCACAAABA=</HashCode>
+      <FileName>Input\InputManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baligo.Main.BaligoEngine" Collapsed="true">
+    <Position X="17.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEEEEABABABwAACACQAEAAAAAAAAAAAAgAAAAAggw=</HashCode>
+      <FileName>Main\BaligoEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baligo.Main.BaligoLauncher" Collapsed="true">
+    <Position X="12.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
-      <FileName>BaligoLauncher.cs</FileName>
+      <FileName>Main\BaligoLauncher.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alchera.GameEngine">
-    <Position X="2" Y="2" Width="1.5" />
+  <Class Name="Baligo.States.DeadMenu" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Engine\GameEngine.cs</FileName>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>States\DeadMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baligo.States.MainGame" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAgAAAAAAAgAAAAAAAAAAAAAAAAAAAAACAQAAAAA=</HashCode>
+      <FileName>States\MainGame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baligo.States.MainMenu" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>States\MainMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baligo.States.PauseMenu" Collapsed="true">
+    <Position X="9.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>States\PauseMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baligo.States.State" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAIAAAAAAAAAIgAAAAAAACAAAAAAA=</HashCode>
+      <FileName>States\State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baligo.States.StatsMenu" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>States\StatsMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baligo.World.World" Collapsed="true">
+    <Position X="15.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAFAAAAAAAgEAAAAAAAIgAAAAAAAAAgAAAAAAAIA=</HashCode>
+      <FileName>World\World.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Baligo.World.WorldManager" Collapsed="true">
+    <Position X="17.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAEAEAAQABAAACAAAAAAA=</HashCode>
+      <FileName>World\WorldManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

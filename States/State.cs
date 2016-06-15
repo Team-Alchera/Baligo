@@ -6,16 +6,16 @@ namespace Baligo.States
     public abstract class State
     {
         // Field
-        private static State _currentState;
+        private static State currentState;
 
         public static State GetCurrentState()
         {
-            return _currentState;
+            return currentState;
         }
 
         public static void SetCurrentState(State state)
         {
-            _currentState = state;
+            currentState = state;
         }
 
         public abstract void Update(GameTime gameTime);

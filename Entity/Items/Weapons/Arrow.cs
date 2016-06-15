@@ -1,30 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Baligo.Content.Fonts;
-using Baligo.Entity.Items;
 using Baligo.Graphics;
 using Baligo.Main;
 using Baligo.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Baligo.Entity.Characters.Players.Classes.HunterClass
+namespace Baligo.Entity.Items.Weapons
 {
     public class Arrow: Item
     {
         public Rectangle CollisionBox;
         public const int Damage = 10;
         public const int Speed = 15;
-        public Vector2 Position;
         public Vector2 Direction;
         public float Angle;
         public Vector2 Velocity;
         public bool IsActive;
         public int Timer;
-        public int Id;
 
         public Arrow(Vector2 position, Vector2 direction,int id)
         {
@@ -85,7 +77,12 @@ namespace Baligo.Entity.Characters.Players.Classes.HunterClass
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Update(GameTime gmaTime)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
         {
             // Draw Arrow
             Assets.PlayerHunterArrow.DrawWithRotation(spriteBatch, (int)Position.X, (int)Position.Y, Angle);

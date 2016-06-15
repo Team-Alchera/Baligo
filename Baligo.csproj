@@ -57,8 +57,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Console\BaligoConsole.cs" />
+    <Compile Include="Contracts\ICollectable.cs" />
     <Compile Include="Entity\Characters\Character.cs" />
-    <Compile Include="Entity\Characters\Enemies\EnemyMain.cs" />
+    <Compile Include="Entity\Characters\Enemies\Enemy.cs" />
     <Compile Include="Entity\Items\Weapons\Arrow.cs" />
     <Compile Include="Entity\Characters\Players\Hunter.cs" />
     <Compile Include="Entity\Characters\Players\Mage.cs" />
@@ -1562,6 +1563,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Content\Fonts\Arial.spritefont" />
     <None Include="Content\Fonts\Console.spritefont" />
     <None Include="GameDiagram.cd" />

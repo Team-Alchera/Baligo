@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using Baligo.Entity.Characters.Players.Classes.HunterClass;
+using Baligo.Console;
+using Baligo.Entity.Items.Weapons;
 using Baligo.Graphics;
 using Baligo.Input;
 using Microsoft.Xna.Framework;

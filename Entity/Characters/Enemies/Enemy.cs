@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Baligo.Graphics;
-using Baligo.Input;
 using Baligo.Main;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Baligo.Entity.Characters.Enemies
 {
-    public class EnemyMain : Character
+    public class Enemy : Character
     {
         //defines if the enemy is Boss or standard enemy
         public bool isBoss;
         //stores list of item IDs to be used to defeat the enemy
         public List<int> itemsOfDefeat;
         // class
-        public EnemyMain CurrentEnemy;
+        public Enemy CurrentEnemy;
 
         //Sprite Sheet
         protected Texture2D EnemyTexture;
@@ -38,7 +36,7 @@ namespace Baligo.Entity.Characters.Enemies
         protected Rectangle Orientation;
 
         // Constructor
-        public EnemyMain()
+        public Enemy()
         {
             // Set Parameters
             EnemyTexture = Assets.Enemy.Texture;
@@ -70,7 +68,7 @@ namespace Baligo.Entity.Characters.Enemies
 
         public void Init()
         {
-            CurrentEnemy = new EnemyMain();
+            CurrentEnemy = new Enemy();
         }
 
         public override void Update(GameTime gmaTime)

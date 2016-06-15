@@ -11,7 +11,7 @@ namespace Baligo.World
     public static class WorldManager
     {
         public static Dictionary<string, World> Worlds;
-        private static string _currentWorld;
+        private static string currentWorld;
 
         // All the worlds
         public static World Level1;
@@ -21,7 +21,7 @@ namespace Baligo.World
         public static void Init()
         {
             Worlds = new Dictionary<string, World>();
-            _currentWorld = "level_1";
+            currentWorld = "level_1";
 
             // Create worlds
             Level1 = new World("Level1.txt");
@@ -31,7 +31,7 @@ namespace Baligo.World
             BaligoConsole.WriteLine("Loaded level_1",Color.Magenta);
             BaligoConsole.WriteLine("Loaded level_2",Color.Magenta);
             BaligoConsole.WriteLine("Loaded level_3",Color.Magenta);
-            BaligoConsole.WriteLine("Current World: " + _currentWorld, Color.Magenta);
+            BaligoConsole.WriteLine("Current World: " + currentWorld, Color.Magenta);
             BaligoConsole.WriteLine("=======", Color.Yellow);
 
             // Add the worlds
@@ -42,12 +42,12 @@ namespace Baligo.World
 
         public static void SetCurrentWorld(string nameOfWorld)
         {
-            _currentWorld = nameOfWorld;
+            currentWorld = nameOfWorld;
         }
 
         public static World GetCurrentWorld()
         {
-            return Worlds[_currentWorld];
+            return Worlds[currentWorld];
         }
     }
 }

@@ -15,13 +15,13 @@ namespace Baligo.World
         private const int WordWidth = 43;
         private const int WorldHeigth = 24;
         private const int TileSize = 32;
-        private readonly string _pathToWorld;
+        private readonly string pathToWorld;
         private const string DefaultPath = "./Content/Levels/";
 
         public World(string worldName)
         {
             WorldData = new Tile[WorldHeigth, WordWidth];
-            _pathToWorld = DefaultPath + worldName;
+            pathToWorld = DefaultPath + worldName;
 
             LoadWord();
         }
@@ -44,7 +44,7 @@ namespace Baligo.World
 
         public void LoadWord()
         {
-            string[] fileData = File.ReadLines(_pathToWorld).ToArray();
+            string[] fileData = File.ReadLines(pathToWorld).ToArray();
 
             int row = 0;
             int col = 0;
