@@ -57,6 +57,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Console\BaligoConsole.cs" />
+    <Compile Include="Contracts\ICharacter.cs" />
     <Compile Include="Contracts\ICollectable.cs" />
     <Compile Include="Entity\Characters\Character.cs" />
     <Compile Include="Entity\Characters\Enemies\Enemy.cs" />
@@ -1563,10 +1564,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
+    <None Include="GameDiagram.cd" />
     <None Include="Content\Fonts\Arial.spritefont" />
     <None Include="Content\Fonts\Console.spritefont" />
-    <None Include="GameDiagram.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

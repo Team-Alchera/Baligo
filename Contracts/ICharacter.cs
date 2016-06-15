@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Baligo.Contracts
 {
-    interface ICharacter
+    public interface ICharacter
     {
+        void Update(GameTime gmaTime);
+        void Draw(SpriteBatch spriteBatch);
+        void Init();
     }
 }

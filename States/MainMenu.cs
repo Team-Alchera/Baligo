@@ -1,6 +1,4 @@
 ﻿using Baligo.Content.Fonts;
-using Baligo.Graphics;
-using Baligo.Input;
 using Baligo.Main;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

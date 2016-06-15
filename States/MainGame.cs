@@ -1,9 +1,7 @@
-﻿using System;
-using Baligo.Content.Fonts;
+﻿using Baligo.Content.Fonts;
 using Baligo.Entity.Characters.Players;
 using Baligo.Entity.Characters.Enemies;
 using Baligo.Graphics;
-using Baligo.Input;
 using Baligo.Main;
 using Baligo.World;
 using Microsoft.Xna.Framework;
@@ -15,6 +13,7 @@ namespace Baligo.States
     {
         protected Player Player;
         protected Enemy Enemy;
+
 
         public override void Init()
         {

@@ -66,7 +66,7 @@ namespace Baligo.Entity.Characters.Enemies
             CollisionBox = new Rectangle((int)Position.X, (int)Position.Y, 44, 54);
         }
 
-        public void Init()
+        public override void Init()
         {
             CurrentEnemy = new Enemy();
         }

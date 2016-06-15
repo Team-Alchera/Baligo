@@ -81,7 +81,7 @@ namespace Baligo.Entity.Characters.Players
             Direction = new Vector2(MousePosition.X, MousePosition.Y);
         }
 
-        public void Init()
+        public override void Init()
         {
             // Init Player Classes
             HunterClass = new Hunter();

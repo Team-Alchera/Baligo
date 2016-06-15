@@ -1,6 +1,6 @@
-﻿
-using Baligo.Console;
+﻿using Baligo.Console;
 using Baligo.Content.Fonts;
+using Baligo.Entity.Characters;
 using Baligo.Entity.Custom_Mouse;
 using Baligo.Graphics;
 using Baligo.Input;
@@ -19,7 +19,7 @@ namespace Baligo.Main
     {
         private readonly GraphicsDeviceManager graphicsDeviceManager;
         private SpriteBatch spriteBatch;
-
+       
         // States
         public static DeadMenu DeadMenuState;
         public static MainMenu MainMenuState;
