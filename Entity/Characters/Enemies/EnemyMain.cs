@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Baligo.Entity.Characters.Enemies
 {
-    public class EnemyMain : Creature
+    public class EnemyMain : Character
     {
         //defines if the enemy is Boss or standard enemy
         public bool isBoss;

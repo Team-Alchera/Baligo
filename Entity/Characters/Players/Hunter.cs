@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Baligo.Console;
+﻿using System.Collections.Generic;
+using Baligo.Entity.Characters.Players.Classes.HunterClass;
 using Baligo.Graphics;
 using Baligo.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Baligo.Entity.Characters.Players.Classes.HunterClass
+namespace Baligo.Entity.Characters.Players
 {
-    public class Hunter : PlayerMain
+    public class Hunter : Player
     {
         // Fields
         public readonly List<Arrow> Arrows;

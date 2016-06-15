@@ -13,12 +13,12 @@ namespace Baligo.States
 {
     public class MainGame : State
     {
-        protected PlayerMain Player;
+        protected Player Player;
         protected EnemyMain Enemy;
 
         public override void Init()
         {
-            Player = new PlayerMain();
+            Player = new Player();
             Player.Init();
 
             Enemy = new EnemyMain();

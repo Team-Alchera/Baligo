@@ -57,13 +57,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Console\BaligoConsole.cs" />
-    <Compile Include="Entity\Characters\Creature.cs" />
+    <Compile Include="Entity\Characters\Character.cs" />
     <Compile Include="Entity\Characters\Enemies\EnemyMain.cs" />
-    <Compile Include="Entity\Characters\Players\Classes\HunterClass\Arrow.cs" />
-    <Compile Include="Entity\Characters\Players\Classes\HunterClass\Hunter.cs" />
-    <Compile Include="Entity\Characters\Players\Classes\MageClass\Mage.cs" />
-    <Compile Include="Entity\Characters\Players\Classes\WarriorClass\Warrior.cs" />
-    <Compile Include="Entity\Characters\Players\PlayerMain.cs" />
+    <Compile Include="Entity\Items\Weapons\Arrow.cs" />
+    <Compile Include="Entity\Characters\Players\Hunter.cs" />
+    <Compile Include="Entity\Characters\Players\Mage.cs" />
+    <Compile Include="Entity\Characters\Players\Warrior.cs" />
+    <Compile Include="Entity\Characters\Players\Player.cs" />
     <Compile Include="Entity\Custom Mouse\CustomMaouse.cs" />
     <Compile Include="Entity\Items\Item.cs" />
     <Compile Include="Entity\Items\Potions\Cyan.cs" />

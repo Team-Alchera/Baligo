@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Baligo.Content.Fonts;
+using Baligo.Entity.Items;
 using Baligo.Graphics;
 using Baligo.Main;
 using Baligo.World;
@@ -12,7 +13,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Baligo.Entity.Characters.Players.Classes.HunterClass
 {
-    public class Arrow
+    public class Arrow: Item
     {
         public Rectangle CollisionBox;
         public const int Damage = 10;

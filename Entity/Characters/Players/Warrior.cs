@@ -2,13 +2,13 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Baligo.Entity.Characters.Players.Classes.MageClass
+namespace Baligo.Entity.Characters.Players
 {
-    public class Mage : PlayerMain
+    public class Warrior : Player
     {
-        public Mage() : base()
+        public Warrior() : base()
         {
-            PlayerTexture = Assets.PlayerMage.Texture;
+            PlayerTexture = Assets.PlayerWarrior.Texture;
         }
 
         public override void Update(GameTime gmaTime)

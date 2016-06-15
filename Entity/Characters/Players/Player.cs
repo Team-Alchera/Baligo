@@ -1,8 +1,5 @@
 ﻿using System;
 using Baligo.Content.Fonts;
-using Baligo.Entity.Characters.Players.Classes.HunterClass;
-using Baligo.Entity.Characters.Players.Classes.MageClass;
-using Baligo.Entity.Characters.Players.Classes.WarriorClass;
 using Baligo.Graphics;
 using Baligo.Input;
 using Baligo.Main;
@@ -13,10 +10,10 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Baligo.Entity.Characters.Players
 {
-    public class PlayerMain : Creature
+    public class Player : Character
     {
         // Classes
-        public PlayerMain CurrentPlayerClass;
+        public Player CurrentPlayerClass;
         public Hunter HunterClass;
         public Mage MageClass;
         public Warrior WarriorClass;
@@ -51,7 +48,7 @@ namespace Baligo.Entity.Characters.Players
         public Vector2 Direction;
 
         // Constructor
-        public PlayerMain()
+        public Player()
         {
             // Set Parameters
             PlayerTexture = Assets.PlayerHunter.Texture;
