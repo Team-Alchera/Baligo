@@ -8,7 +8,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Baligo.Entity.Items
 {
+<<<<<<< HEAD
     public class Item
+=======
+    public abstract class Item
+>>>>>>> ccc4b6ac56a8694eb82516740f8bbef6b282bbd0
     {
         public Vector2 Position;
         public string Name;

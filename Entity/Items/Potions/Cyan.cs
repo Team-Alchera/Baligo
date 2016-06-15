@@ -13,6 +13,16 @@ namespace Baligo.Entity.Items.Potions
             Name = "Cyan Potion";
             Id = 1;
             PlayerTexture = Assets.Cyan.Texture;
-        }   
+        }
+
+        public override void Update(GameTime gmaTime)
+        {
+            // throw new NotImplementedException();
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            // throw new NotImplementedException();
+        }
     }
 }
