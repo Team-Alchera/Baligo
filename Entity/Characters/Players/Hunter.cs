@@ -32,7 +32,7 @@ namespace Baligo.Entity.Characters.Players
                 {
                     Arrows.Add(new Arrow(Position, new Vector2(Mouse.GetState().X, Mouse.GetState().Y), Arrows.Count + 1));
                     CountDown = 15;
-                    BaligoConsole.WriteLine("Arrow Spawned ID: " + Arrows.Count, Color.LimeGreen);
+                    BaligoConsole.WriteLine("Player arrow Spawned ID: " + Arrows.Count, Color.Red);
                 }
             }
 
@@ -45,7 +45,7 @@ namespace Baligo.Entity.Characters.Players
                 }
                 else
                 {
-                    BaligoConsole.WriteLine("Arrow Removed ID: " + Arrows[arrowId].Id, Color.Red);
+                    BaligoConsole.WriteLine("Player arrow Removed ID: " + Arrows[arrowId].Id, Color.Red);
                     Arrows.RemoveAt(arrowId);
                 }
             }
@@ -63,9 +63,7 @@ namespace Baligo.Entity.Characters.Players
             // Draw Every Arrow
             foreach (var arrow in Arrows)
                 arrow.Draw(spriteBatch);
-
-            // Draw Player with animation
-
+            
             base.Draw(spriteBatch);
         }
     }

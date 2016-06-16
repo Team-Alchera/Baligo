@@ -62,10 +62,11 @@ namespace Baligo.Graphics
             }
         }
 
-        public void DrawWithRotation(SpriteBatch spriteBatch, int x, int y, float rotation)
+        public void DrawWithRotation(SpriteBatch spriteBatch, int x, int y, float rotation,bool isEnemy = false)
         {
             Vector2 origin = new Vector2(0, 0);
-            spriteBatch.Draw(Texture, new Vector2(x, y), Bounds, Color.White, rotation, origin, 1.0f, SpriteEffects.None, 1);
+            spriteBatch.Draw(Texture, new Vector2(x, y), Bounds, isEnemy ? Color.Red : Color.White, rotation, origin,
+                1.0f, SpriteEffects.None, 1);
         }
     }
 }

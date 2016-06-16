@@ -6,5 +6,6 @@ namespace Baligo.Content.Fonts
     {
         public static SpriteFont Arial { get; set; }
         public static SpriteFont Console { get; set; }
+        public static SpriteFont HealthFont { get; set; }
     }
 }

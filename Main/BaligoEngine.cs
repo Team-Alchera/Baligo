@@ -211,6 +211,7 @@ namespace Baligo.Main
         {
             Fonts.Arial = this.Content.Load<SpriteFont>("Fonts/Arial");
             Fonts.Console = this.Content.Load<SpriteFont>("Fonts/Console");
+            Fonts.HealthFont = this.Content.Load<SpriteFont>("Fonts/Health");
         }
     }
 }

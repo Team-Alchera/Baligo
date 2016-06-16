@@ -17341,3 +17341,9 @@
 /processorParam:TextureFormat=Compressed
 /build:Fonts\Console.spritefont
 
+#begin Fonts/Health.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:Fonts/Health.spritefont
+

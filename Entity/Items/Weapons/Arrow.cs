@@ -17,8 +17,9 @@ namespace Baligo.Entity.Items.Weapons
         public Vector2 Velocity;
         public bool IsActive;
         public int Timer;
+        public bool IsEnemyArrow;
 
-        public Arrow(Vector2 position, Vector2 direction,int id)
+        public Arrow(Vector2 position, Vector2 direction,int id,bool isEnemyArrow = false)
         {
             Id = id;
 
@@ -42,6 +43,8 @@ namespace Baligo.Entity.Items.Weapons
             // Set default active state and timer
             IsActive = true;
             Timer = 900;
+
+            IsEnemyArrow = isEnemyArrow;
         }
 
         public void Update()
@@ -59,7 +62,7 @@ namespace Baligo.Entity.Items.Weapons
                 // Check Collision
                 for (int row = 0; row < 24; row++)
                 {
-                    for (int col = 0; col < 42; col++)
+                    for (int col = 0; col < 43; col++)
                     {
                         Tile currentTile = WorldManager.GetCurrentWorld().WorldData[row, col];
 
@@ -84,8 +87,15 @@ namespace Baligo.Entity.Items.Weapons
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            // Draw Arrow
-            Assets.PlayerHunterArrow.DrawWithRotation(spriteBatch, (int)Position.X, (int)Position.Y, Angle);
+            // Draw 
+            if (IsEnemyArrow)
+            {
+                Assets.PlayerHunterArrow.DrawWithRotation(spriteBatch, (int)Position.X, (int)Position.Y, Angle,true);
+            }
+            else
+            {
+                Assets.PlayerHunterArrow.DrawWithRotation(spriteBatch, (int)Position.X, (int)Position.Y, Angle);
+            }
 
             // Draw Arrow Collision if debug is active
             if (BaligoEngine.IsDebugModeActive)

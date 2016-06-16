@@ -91,12 +91,9 @@ namespace Baligo.Entity.Characters.Players
             // Set Default Class
             CurrentPlayerClass = HunterClass;
         }
-
-        private Vector2 _lastPosition;
+        
         public override void Update(GameTime gmaTime)
         {
-
-
             // Move and pick the orientation
             if (InputManager.AIsPressed)
             {
@@ -164,11 +161,22 @@ namespace Baligo.Entity.Characters.Players
             ShootArrowDown.Update(gmaTime);
             ShootStanding.Update(gmaTime);
 
-            _lastPosition = Position;
+            // Check if dead
+            if (Health <= 0)
+            {
+                this.IsAlive = false;
+                Health = 0;
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            if (!this.IsAlive)
+            {
+                spriteBatch.Draw(PlayerTexture, Position, Orientation, Color.White);
+                return;
+            }
+            
             // Pick the right animation to draw
             if (InputManager.AIsPressed)
             {

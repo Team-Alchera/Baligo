@@ -71,6 +71,7 @@
     <Compile Include="Entity\Items\Potions\Cyan.cs" />
     <Compile Include="Graphics\Animation.cs" />
     <Compile Include="Graphics\Assets.cs" />
+    <Compile Include="Graphics\MainGameUI.cs" />
     <Compile Include="Graphics\Tile.cs" />
     <Compile Include="Main\BaligoEngine.cs" />
     <Compile Include="Main\BaligoLauncher.cs" />
@@ -1564,6 +1565,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\Fonts\Health.spritefont" />
     <None Include="GameDiagram.cd" />
     <None Include="Content\Fonts\Arial.spritefont" />
     <None Include="Content\Fonts\Console.spritefont" />

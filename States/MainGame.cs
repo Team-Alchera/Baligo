@@ -1,4 +1,5 @@
-﻿using Baligo.Content.Fonts;
+﻿using System.Collections.Generic;
+using Baligo.Content.Fonts;
 using Baligo.Entity.Characters.Players;
 using Baligo.Entity.Characters.Enemies;
 using Baligo.Graphics;
@@ -11,23 +12,52 @@ namespace Baligo.States
 {
     public class MainGame : State
     {
-        protected Player Player;
-        protected Enemy Enemy;
-
+        public static Player Player;
+        public static List<Enemy> Enemies;
+        public bool DoesWin;
 
         public override void Init()
         {
             Player = new Player();
             Player.Init();
 
-            Enemy = new Enemy();
-            Enemy.Init();
+            Enemies = new List<Enemy>();
+            Enemies.Add(new Enemy(new Vector2(64 * 6, 64 + 48)));
+            Enemies.Add(new Enemy(new Vector2(64 * 20, 64 + 10)));
+
+            Enemies.Add(new Enemy(new Vector2(64 * 3, 64 * 10)));
+            Enemies.Add(new Enemy(new Vector2(64 + 20, 64 * 7)));
+            Enemies.Add(new Enemy(new Vector2(64 * 19, 64 * 9 )));
+
+            DoesWin = false;
         }
 
         public override void Update(GameTime gameTime)
         {
-            // Update current player class
-            Player.CurrentPlayerClass.Update(gameTime);
+            if (Player.CurrentPlayerClass.IsAlive)
+            {
+                // Update current player class
+                if (Player.CurrentPlayerClass.IsAlive)
+                {
+                    Player.CurrentPlayerClass.Update(gameTime);
+                }
+
+                for (int i = 0; i < Enemies.Count; i++)
+                {
+                    Enemies[i].Update(gameTime);
+
+                    if (Enemies[i].Health <= 0)
+                    {
+                        Enemies.RemoveAt(i);
+                    }
+                }
+            }
+
+            // Check if win
+            if (Enemies.Count == 0)
+            {
+                DoesWin = true;
+            }
 
             // Update World
             WorldManager.GetCurrentWorld().Update();
@@ -35,12 +65,6 @@ namespace Baligo.States
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(
-                Fonts.Arial,
-                "GAME\nPress Left Bottom to shoot\nWORK IN PROGRESS\n",
-                new Vector2(BaligoEngine.Width / 2 - 150, BaligoEngine.Height / 2 - 20),
-                Color.White);
-
             // Render World
             WorldManager.GetCurrentWorld().Draw(spriteBatch);
 
@@ -48,10 +72,36 @@ namespace Baligo.States
             Assets.Fountain.Draw(spriteBatch, 608, 608);
 
             // Draw enemy
-            Enemy.CurrentEnemy.Draw(spriteBatch);
+            foreach (var enemy in Enemies)
+            {
+                enemy.Draw(spriteBatch);
+            }
 
             // Draw current player class
-            Player.CurrentPlayerClass.Draw(spriteBatch);
+            if (Player.CurrentPlayerClass.IsAlive)
+            {
+                Player.CurrentPlayerClass.Draw(spriteBatch);
+            }
+            else
+            {
+                Player.CurrentPlayerClass.Draw(spriteBatch);
+                spriteBatch.DrawString(
+                    Fonts.Arial,
+                    "DEAD",
+                    new Vector2(BaligoEngine.Width / 2 - 150, BaligoEngine.Height / 2 - 20),
+                    Color.Red);
+            }
+
+            MainGameUI.Draw(spriteBatch);
+
+            if (DoesWin)
+            {
+                spriteBatch.DrawString(
+                    Fonts.Arial,
+                    "WIN",
+                    new Vector2(BaligoEngine.Width / 2 - 50, BaligoEngine.Height / 2 - 20),
+                    Color.GreenYellow);
+            }
         }
     }
 }
