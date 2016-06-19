@@ -1,5 +1,7 @@
 ﻿using Baligo.Console;
+using Baligo.ConsoleDebug;
 using Baligo.Content.Fonts;
+using Baligo.Entity.Characters.Players;
 using Baligo.Entity.Custom_Mouse;
 using Baligo.Graphics;
 using Baligo.Input;
@@ -18,7 +20,7 @@ namespace Baligo.Main
     {
         public readonly GraphicsDeviceManager GraphicsDeviceManager;
         private SpriteBatch _spriteBatch;
-       
+
         // States
         public static DeadMenu DeadMenuState;
         public static MainMenu MainMenuState;
@@ -33,6 +35,7 @@ namespace Baligo.Main
         // Debug Mode
         public static bool IsDebugModeActive;
         public static bool IsConsoleActive;
+        public static bool IsPlayerInGodMode;
 
         public BaligoEngine()
         {
@@ -73,6 +76,7 @@ namespace Baligo.Main
             // Set default state for debug mode
             IsDebugModeActive = false;
             IsConsoleActive = false;
+            IsPlayerInGodMode = false;
 
             // Init worlds
             WorldManager.Init();
@@ -123,6 +127,7 @@ namespace Baligo.Main
             if (InputManager.F1IsPressed && _waitTime == 0)
             {
                 IsDebugModeActive = !IsDebugModeActive;
+                IsPlayerInGodMode = !IsPlayerInGodMode;
                 BaligoConsole.WriteLine(IsDebugModeActive ? "Debug mode: ACTIVE" : "Debug mode: DISABLED", Color.Magenta);
 
                 _waitTime = 15;
@@ -134,6 +139,9 @@ namespace Baligo.Main
                 IsConsoleActive = !IsConsoleActive;
                 _waitTime = 15;
             }
+
+            // Debug Mode Update
+            DebugMode.Update();
 
             // Do not touch
             if (_waitTime - 1 >= 0)
@@ -157,22 +165,17 @@ namespace Baligo.Main
             // Draw CursorNormal
             CustomMaouse.Draw(_spriteBatch);
 
-            // Debug Mode Show
-            if (IsDebugModeActive)
-            {
-                _spriteBatch.DrawString(
-                    Fonts.Arial,
-                    "Debug",
-                    new Vector2(45, 32),
-                    Color.Red);
-            }
-
             // Console Show
             if (IsConsoleActive)
             {
                 BaligoConsole.Draw(_spriteBatch);
             }
 
+            // Debug Mode Show
+            if (IsDebugModeActive)
+            {
+                DebugMode.Draw(_spriteBatch);
+            }
             _spriteBatch.End();
 
             // Do not touch
@@ -188,9 +191,9 @@ namespace Baligo.Main
             GraphicsDeviceManager.PreferredBackBufferWidth = 1366;
 
             // Full screen
-             GraphicsDeviceManager.IsFullScreen = true;
+            // GraphicsDeviceManager.IsFullScreen = true;
 
-            // Window.IsBorderless = true;
+            Window.IsBorderless = true;
         }
 
         /// <summary>

@@ -29,6 +29,9 @@ namespace Baligo.Graphics
         // Debug Mode
         public static Tile RedRectangle1;
         public static Tile RedRectangle2;
+        public static Tile BlueDot;
+        public static Tile RedDot;
+        public static Tile GreenDot;
         // enemy
         public static Tile Enemy;
         // Console
@@ -56,8 +59,13 @@ namespace Baligo.Graphics
             LavaBackground = new Tile(content.Load<Texture2D>("Textures/Tiles/floor/lava3"), 10);
             ClosedDoor = new Tile(content.Load<Texture2D>("Textures/Tiles/dngn_closed_door"), 11);
             Fountain = new Tile(content.Load<Texture2D>("Textures/Tiles/dngn_blue_fountain"), 12);
+
+            // Custom
             RedRectangle1 = new Tile(content.Load<Texture2D>("Textures/Tiles/travel_exclusion"), 13);
             RedRectangle2 = new Tile(content.Load<Texture2D>("Textures/Tiles/travel_exclusion_centre"), 14);
+            BlueDot = new Tile(content.Load<Texture2D>("Textures/blue_dot"),18);
+            RedDot = new Tile(content.Load<Texture2D>("Textures/red_dot"),19);
+            GreenDot = new Tile(content.Load<Texture2D>("Textures/green_dot"),20);
             // Enemy
             Enemy = new Tile(content.Load<Texture2D>("Textures/Enemies/Enemy"), 15);
             // Console

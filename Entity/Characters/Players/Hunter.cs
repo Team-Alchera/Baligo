@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Baligo.Console;
+using Baligo.ConsoleDebugStats;
 using Baligo.Entity.Items.Weapons;
 using Baligo.Graphics;
 using Baligo.Input;
@@ -33,6 +34,7 @@ namespace Baligo.Entity.Characters.Players
                     Arrows.Add(new Arrow(Position, new Vector2(Mouse.GetState().X, Mouse.GetState().Y), Arrows.Count + 1));
                     CountDown = 15;
                     BaligoConsole.WriteLine("Player arrow Spawned ID: " + Arrows.Count, Color.Red);
+                    Statistics.TotalArrowsFired++;
                 }
             }
 
@@ -49,6 +51,9 @@ namespace Baligo.Entity.Characters.Players
                     Arrows.RemoveAt(arrowId);
                 }
             }
+
+            Statistics.PlayerHealth = Health;
+            Statistics.PlayerAngle = Angle;
 
             // Work with countDown
             if (CountDown - 1 >= 0)

@@ -1,4 +1,5 @@
 ﻿using System;
+using Baligo.ConsoleDebugStats;
 using Baligo.Graphics;
 using Baligo.Main;
 using Baligo.World;
@@ -69,6 +70,7 @@ namespace Baligo.Entity.Items.Weapons
                         if (currentTile.CollisionBox.Intersects(this.CollisionBox) && currentTile.IsSolid)
                         {
                             IsActive = false;
+                            Statistics.TotalArrowsMissed++;
                         }
                     }
                 }

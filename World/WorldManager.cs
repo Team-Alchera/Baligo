@@ -25,12 +25,12 @@ namespace Baligo.World
 
             // Create worlds
             Level1 = new World("Level1.txt");
+            BaligoConsole.WriteLine("Loaded level_1", Color.Magenta);
             Level2 = new World("Level2.txt");
+            BaligoConsole.WriteLine("Loaded level_2", Color.Magenta);
             Level3 = new World("Level3.txt");
+            BaligoConsole.WriteLine("Loaded level_3", Color.Magenta);
 
-            BaligoConsole.WriteLine("Loaded level_1",Color.Magenta);
-            BaligoConsole.WriteLine("Loaded level_2",Color.Magenta);
-            BaligoConsole.WriteLine("Loaded level_3",Color.Magenta);
             BaligoConsole.WriteLine("Current World: " + currentWorld, Color.Magenta);
             BaligoConsole.WriteLine("=======", Color.Yellow);
 

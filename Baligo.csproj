@@ -56,7 +56,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Console\BaligoConsole.cs" />
+    <Compile Include="ConsoleDebugStats\BaligoConsole.cs" />
+    <Compile Include="ConsoleDebugStats\DebugMode.cs" />
+    <Compile Include="ConsoleDebugStats\Statistics.cs" />
     <Compile Include="Contracts\ICharacter.cs" />
     <Compile Include="Contracts\ICollectable.cs" />
     <Compile Include="Entity\Characters\Character.cs" />
@@ -77,6 +79,8 @@
     <Compile Include="Main\BaligoLauncher.cs" />
     <Compile Include="Content\Fonts\Fonts.cs" />
     <Compile Include="Input\InputManager.cs" />
+    <Compile Include="Pathfinding\EnemyPathFinding.cs" />
+    <Compile Include="Pathfinding\Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="States\DeadMenu.cs" />
     <Compile Include="States\MainGame.cs" />

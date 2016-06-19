@@ -10,7 +10,8 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Baligo.Entity.Characters.Players
 {
-    public class Player : Character{
+    public class Player : Character
+    {
         // Classes
         public Player CurrentPlayerClass;
         public Hunter HunterClass;
@@ -91,7 +92,7 @@ namespace Baligo.Entity.Characters.Players
             // Set Default Class
             CurrentPlayerClass = HunterClass;
         }
-        
+
         public override void Update(GameTime gmaTime)
         {
             // Move and pick the orientation
@@ -135,11 +136,11 @@ namespace Baligo.Entity.Characters.Players
                 Orientation = new Rectangle(0, 64 * 10, 64, 64);
                 ShootStanding = ShootArrowDown;
             }
-            
+
             // Update the collision box
             CollisionBox.X = (int)Position.X + 10;
             CollisionBox.Y = (int)Position.Y + 10;
-            
+
             // Calculate Angle
             MousePosition = Mouse.GetState();
             Direction.X = MousePosition.X;
@@ -149,7 +150,7 @@ namespace Baligo.Entity.Characters.Players
             tempPosition.Y += 32;
             var toCalcAngle = tempPosition - Direction;
             Angle = (float)Math.Atan2(toCalcAngle.Y, toCalcAngle.X);
-            
+
             // Update all animations
             WalkLeft.Update(gmaTime);
             WalkRight.Update(gmaTime);
@@ -160,6 +161,12 @@ namespace Baligo.Entity.Characters.Players
             ShootArrowUp.Update(gmaTime);
             ShootArrowDown.Update(gmaTime);
             ShootStanding.Update(gmaTime);
+
+            // If Player in god mode
+            if (BaligoEngine.IsPlayerInGodMode)
+            {
+                Health = 100;
+            }
 
             // Check if dead
             if (Health <= 0)
@@ -176,7 +183,7 @@ namespace Baligo.Entity.Characters.Players
                 spriteBatch.Draw(PlayerTexture, Position, Orientation, Color.White);
                 return;
             }
-            
+
             // Pick the right animation to draw
             if (InputManager.AIsPressed)
             {
@@ -212,11 +219,15 @@ namespace Baligo.Entity.Characters.Players
             if (BaligoEngine.IsDebugModeActive)
             {
                 spriteBatch.Draw(Assets.RedRectangle1.Texture, new Vector2(CollisionBox.X, CollisionBox.Y), CollisionBox, Color.White);
+            }
+
+            if (BaligoEngine.IsPlayerInGodMode)
+            {
                 spriteBatch.DrawString(
-                    Fonts.Arial,
-                    Angle.ToString(),
-                    new Vector2(250, 32),
-                    Color.Wheat);
+                    Fonts.Console,
+                    "GOD",
+                    new Vector2(Position.X + 10, Position.Y),
+                    Color.Yellow);
             }
         }
 

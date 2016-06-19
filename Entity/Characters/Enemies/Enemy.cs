@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Baligo.Console;
+using Baligo.ConsoleDebugStats;
 using Baligo.Entity.Characters.Players;
 using Baligo.Entity.Items.Weapons;
 using Baligo.Graphics;
@@ -84,10 +85,10 @@ namespace Baligo.Entity.Characters.Enemies
                 PlayerPosition.Y += 32;
                 PlayerPosition.X += 16;
 
-                Arrows.Add(new Arrow(Position, PlayerPosition
-                    , Arrows.Count - 1, true));
+                Arrows.Add(new Arrow(Position, PlayerPosition, Arrows.Count - 1, true));
                 countDown = 120;
                 BaligoConsole.WriteLine("Enemy arrow Spawned ID: " + Arrows.Count, Color.Tomato);
+                Statistics.TotalArrowsFired++;
             }
 
             // Update each arrow

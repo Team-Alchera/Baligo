@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Baligo.ConsoleDebugStats;
 using Baligo.Content.Fonts;
 using Baligo.Entity.Characters.Players;
 using Baligo.Entity.Characters.Enemies;
@@ -49,6 +50,7 @@ namespace Baligo.States
                     if (Enemies[i].Health <= 0)
                     {
                         Enemies.RemoveAt(i);
+                        Statistics.TotalEnemyKilled++;
                     }
                 }
             }
