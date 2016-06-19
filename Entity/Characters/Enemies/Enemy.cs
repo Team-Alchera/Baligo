@@ -60,7 +60,7 @@ namespace Baligo.Entity.Characters.Enemies
             // Orientation
             Orientation = new Rectangle(0, 64 * 11, 64, 64);
 
-            //Collision
+            // Collision
             CollisionBox = new Rectangle((int)Position.X, (int)Position.Y, 44, 54);
 
             // Set default arrow list
@@ -98,7 +98,7 @@ namespace Baligo.Entity.Characters.Enemies
                 if (Arrows[arrowId].Timer > 0)
                 {
                     Arrows[arrowId].Update();
-                    if (Arrows[arrowId].CollisionBox.Intersects(playerCollision))
+                    if (Arrows[arrowId].CollisionBox.Intersects(playerCollision) && Arrows[arrowId].IsActive)
                     {
                         MainGame.Player.CurrentPlayerClass.Health -= this.Damage;
                         BaligoConsole.WriteLine("Damage Taken 10 | Current Health: " +

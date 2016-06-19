@@ -1,6 +1,5 @@
 ﻿using Baligo.Console;
 using Baligo.Content.Fonts;
-using Baligo.Entity.Characters;
 using Baligo.Entity.Custom_Mouse;
 using Baligo.Graphics;
 using Baligo.Input;
@@ -17,8 +16,8 @@ namespace Baligo.Main
     /// </summary>
     public class BaligoEngine : Game
     {
-        private readonly GraphicsDeviceManager graphicsDeviceManager;
-        private SpriteBatch spriteBatch;
+        public readonly GraphicsDeviceManager GraphicsDeviceManager;
+        private SpriteBatch _spriteBatch;
        
         // States
         public static DeadMenu DeadMenuState;
@@ -37,7 +36,7 @@ namespace Baligo.Main
 
         public BaligoEngine()
         {
-            graphicsDeviceManager = new GraphicsDeviceManager(this);
+            GraphicsDeviceManager = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
             SetBorderless();
@@ -88,7 +87,7 @@ namespace Baligo.Main
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             LoadTextures();
             LoadFonts();
@@ -107,8 +106,7 @@ namespace Baligo.Main
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
         /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        private int waitTime = 15;
+        private int _waitTime = 15;
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
@@ -122,48 +120,47 @@ namespace Baligo.Main
             InputManager.Update();
 
             // Update Debug Mode State
-            if (InputManager.F1IsPressed && waitTime == 0)
+            if (InputManager.F1IsPressed && _waitTime == 0)
             {
                 IsDebugModeActive = !IsDebugModeActive;
                 BaligoConsole.WriteLine(IsDebugModeActive ? "Debug mode: ACTIVE" : "Debug mode: DISABLED", Color.Magenta);
 
-                waitTime = 15;
+                _waitTime = 15;
             }
 
             // Update Console State 
-            if (InputManager.ConsoleKey && waitTime == 0)
+            if (InputManager.ConsoleKey && _waitTime == 0)
             {
                 IsConsoleActive = !IsConsoleActive;
-                waitTime = 15;
+                _waitTime = 15;
             }
 
             // Do not touch
-            if (waitTime - 1 >= 0)
-                waitTime--;
+            if (_waitTime - 1 >= 0)
+                _waitTime--;
             base.Update(gameTime);
         }
 
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin();
+            _spriteBatch.Begin();
 
             // Draw State Frame
             if (State.GetCurrentState() != null)
-                State.GetCurrentState().Draw(spriteBatch);
+                State.GetCurrentState().Draw(_spriteBatch);
 
             // Draw CursorNormal
-            CustomMaouse.Draw(spriteBatch);
+            CustomMaouse.Draw(_spriteBatch);
 
             // Debug Mode Show
             if (IsDebugModeActive)
             {
-                spriteBatch.DrawString(
+                _spriteBatch.DrawString(
                     Fonts.Arial,
                     "Debug",
                     new Vector2(45, 32),
@@ -173,10 +170,10 @@ namespace Baligo.Main
             // Console Show
             if (IsConsoleActive)
             {
-                BaligoConsole.Draw(spriteBatch);
+                BaligoConsole.Draw(_spriteBatch);
             }
 
-            spriteBatch.End();
+            _spriteBatch.End();
 
             // Do not touch
             base.Draw(gameTime);
@@ -187,11 +184,11 @@ namespace Baligo.Main
         /// </summary>
         private void SetBorderless()
         {
-            graphicsDeviceManager.PreferredBackBufferHeight = 768;
-            graphicsDeviceManager.PreferredBackBufferWidth = 1366;
+            GraphicsDeviceManager.PreferredBackBufferHeight = 768;
+            GraphicsDeviceManager.PreferredBackBufferWidth = 1366;
 
             // Full screen
-             graphicsDeviceManager.IsFullScreen = true;
+             GraphicsDeviceManager.IsFullScreen = true;
 
             // Window.IsBorderless = true;
         }
