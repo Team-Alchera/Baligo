@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Baligo", "Baligo.csproj", "{4EE8F7F2-AECF-40EF-BF51-227B61B5601D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AStar", "AStar\AStar.csproj", "{CC26FD6C-5E95-431A-80DB-E3B47528F8F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,12 @@ Global
 		{4EE8F7F2-AECF-40EF-BF51-227B61B5601D}.Release|Any CPU.ActiveCfg = Release|x86
 		{4EE8F7F2-AECF-40EF-BF51-227B61B5601D}.Release|x86.ActiveCfg = Release|x86
 		{4EE8F7F2-AECF-40EF-BF51-227B61B5601D}.Release|x86.Build.0 = Release|x86
+		{CC26FD6C-5E95-431A-80DB-E3B47528F8F9}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{CC26FD6C-5E95-431A-80DB-E3B47528F8F9}.Debug|x86.ActiveCfg = Debug|x86
+		{CC26FD6C-5E95-431A-80DB-E3B47528F8F9}.Debug|x86.Build.0 = Debug|x86
+		{CC26FD6C-5E95-431A-80DB-E3B47528F8F9}.Release|Any CPU.ActiveCfg = Release|x86
+		{CC26FD6C-5E95-431A-80DB-E3B47528F8F9}.Release|x86.ActiveCfg = Release|x86
+		{CC26FD6C-5E95-431A-80DB-E3B47528F8F9}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
