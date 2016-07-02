@@ -25,3 +25,9 @@
 /processorParam:TextureFormat=Color
 /build:box.png
 
+#begin Id.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:Id.spritefont
+
