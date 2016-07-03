@@ -28,17 +28,8 @@ namespace Baligo.Entity.Characters.Enemies
         // Collision
         public Rectangle CollisionBox;
 
-        // Animations
-        protected readonly Animation ShootArrowLeft;
-        protected readonly Animation ShootArrowRight;
-        protected readonly Animation ShootArrowUp;
-        protected readonly Animation ShootArrowDown;
-
-        // Orientation
-        protected Rectangle Orientation;
-
         // Constructor
-        public Enemy(Vector2 _position)
+        public Enemy(Vector2 position)
         {
             // Set Parameters
             EnemyTexture = Assets.Enemy.Texture;
@@ -50,7 +41,7 @@ namespace Baligo.Entity.Characters.Enemies
             
 
             // Position
-            Position = _position;
+            Position = position;
 
             // Animation
             ShootArrowLeft = new Animation(SpeedOfAnimations, 17, 12);

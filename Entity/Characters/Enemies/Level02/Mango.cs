@@ -1,44 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Baligo.Console;
 using Baligo.ConsoleDebugStats;
-using Baligo.Entity.Characters.Players;
 using Baligo.Entity.Items.Weapons;
 using Baligo.Graphics;
 using Baligo.Main;
 using Baligo.States;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
-namespace Baligo.Entity.Characters.Enemies
+namespace Baligo.Entity.Characters.Enemies.Level02
 {
-    public class L01E01DaddysPrincess : Character
+    public class Mango : Enemy
     {
-        //defines if the enemy is Boss or standard enemy
-        public bool IsBoss;
-        //stores list of item IDs to be used to defeat the enemy
-        public List<int> ItemsOfDefeat;
-        public List<Arrow> Arrows;
-
-        //Sprite Sheet
-        protected Texture2D EnemyTexture;
-        protected const int SpeedOfAnimations = 50;
-
-        // Collision
-        public Rectangle CollisionBox;
-
-        // Animations
-        protected readonly Animation ShootArrowLeft;
-        protected readonly Animation ShootArrowRight;
-        protected readonly Animation ShootArrowUp;
-        protected readonly Animation ShootArrowDown;
-
-        // Orientation
-        protected Rectangle Orientation;
 
         // Constructor
-        public L01E01DaddysPrincess(Vector2 _position)
+        public Mango(Vector2 position) : base(position)
         {
             // Set Parameters
             EnemyTexture = Assets.Enemy.Texture;
@@ -50,7 +26,7 @@ namespace Baligo.Entity.Characters.Enemies
 
 
             // Position
-            Position = _position;
+            Position = position;
 
             // Animation
             ShootArrowLeft = new Animation(SpeedOfAnimations, 17, 12);

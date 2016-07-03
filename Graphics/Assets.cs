@@ -68,15 +68,15 @@ namespace Baligo.Graphics
             GreenDot = new Tile(content.Load<Texture2D>("Textures/green_dot"),20);
             // Enemy
             Enemy = new Tile(content.Load<Texture2D>("Textures/Enemies/Enemy"), 15);
-            Enemy = new Tile(content.Load<Texture2D>("Textures/Enemies/L01E01DaddysPrincess"), 21);
-            Enemy = new Tile(content.Load<Texture2D>("Textures/Enemies/L01E02TheSmartGirl"), 22);
-            Enemy = new Tile(content.Load<Texture2D>("Textures/Enemies/L01E03TheHornyExhibitionist"), 23);
-            Enemy = new Tile(content.Load<Texture2D>("Textures/Enemies/L02E01Mango"), 15);
-            Enemy = new Tile(content.Load<Texture2D>("Textures/Enemies/L02E02Manga"), 15);
-            Enemy = new Tile(content.Load<Texture2D>("Textures/Enemies/L02E03BaiMangau"), 15);
-            Enemy = new Tile(content.Load<Texture2D>("Textures/Enemies/L03E01TheForumTroll"), 15);
-            Enemy = new Tile(content.Load<Texture2D>("Textures/Enemies/L03E02ThGirlOrcFromPernik"), 15);
-            Enemy = new Tile(content.Load<Texture2D>("Textures/Enemies/L03E03TheSkeletonOfTheLastNormalBulgarianSitizen"), 15);
+            Enemy = new Tile(content.Load<Texture2D>("Textures/Enemies/DaddysPrincess"), 21);
+            Enemy = new Tile(content.Load<Texture2D>("Textures/Enemies/TheSmartGirl"), 22);
+            Enemy = new Tile(content.Load<Texture2D>("Textures/Enemies/TheHornyExhibitionist"), 23);
+            Enemy = new Tile(content.Load<Texture2D>("Textures/Enemies/Mango"), 15);
+            Enemy = new Tile(content.Load<Texture2D>("Textures/Enemies/Manga"), 15);
+            Enemy = new Tile(content.Load<Texture2D>("Textures/Enemies/BaiMangau"), 15);
+            Enemy = new Tile(content.Load<Texture2D>("Textures/Enemies/TheForumTroll"), 15);
+            Enemy = new Tile(content.Load<Texture2D>("Textures/Enemies/ThGirlOrcFromPernik"), 15);
+            Enemy = new Tile(content.Load<Texture2D>("Textures/Enemies/TheSkeletonOfTheLastNormalBulgarianSitizen"), 15);
             // Console
             ConsoleTile = new Tile(content.Load<Texture2D>("Textures/Console"), 16);
             Cyan = new Tile(content.Load<Texture2D>("Textures/Items/potion/cyan"), 17);

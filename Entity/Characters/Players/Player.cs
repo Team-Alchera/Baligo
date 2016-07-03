@@ -24,28 +24,8 @@ namespace Baligo.Entity.Characters.Players
 
         //Mouse position
         public MouseState MousePosition { get; set; }
-
-        // Collision
         public Rectangle CollisionBox;
 
-        // Animations
-        protected readonly Animation WalkLeft;
-        protected readonly Animation WalkRight;
-        protected readonly Animation WalkUp;
-        protected readonly Animation WalkDown;
-
-        protected readonly Animation ShootArrowLeft;
-        protected readonly Animation ShootArrowRight;
-        protected readonly Animation ShootArrowUp;
-        protected readonly Animation ShootArrowDown;
-
-        // Orientation
-        protected Rectangle Orientation;
-        protected Animation ShootStanding;
-
-        // Angle
-        public float Angle;
-        public Vector2 Direction;
 
         // Constructor
         public Player()
@@ -98,7 +78,7 @@ namespace Baligo.Entity.Characters.Players
             // Move and pick the orientation
             if (InputManager.AIsPressed)
             {
-                Position.X -= Speed;
+                this.Position.X -= Speed;
                 if (CheckCollision(Position))
                 {
                     Position.X += Speed;

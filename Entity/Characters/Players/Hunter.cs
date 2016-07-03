@@ -14,26 +14,28 @@ namespace Baligo.Entity.Characters.Players
     {
         // Fields
         public readonly List<Arrow> Arrows;
-        public int CountDown;
+        public const int InitialCountDown = 15;
 
         // Constructor
         public Hunter()
         {
             PlayerTexture = Assets.PlayerHunter.Texture;
             Arrows = new List<Arrow>();
-            CountDown = 15;
+            this.CountDown = InitialCountDown;
         }
+
+        public int CountDown { get; set; }
 
         public override void Update(GameTime gmaTime)
         {
             // If an arrow is fired and countDown allows it
             if (InputManager.LeftButtomDown)
             {
-                if (CountDown == 0)
+                if (this.CountDown == 0)
                 {
-                    Arrows.Add(new Arrow(Position, new Vector2(Mouse.GetState().X, Mouse.GetState().Y), Arrows.Count + 1));
-                    CountDown = 15;
-                    BaligoConsole.WriteLine("Player arrow Spawned ID: " + Arrows.Count, Color.Red);
+                    this.Arrows.Add(new Arrow(base.Position, new Vector2(Mouse.GetState().X, Mouse.GetState().Y), this.Arrows.Count + 1));
+                    this.CountDown = 15;
+                    BaligoConsole.WriteLine("Player arrow Spawned ID: " + this.Arrows.Count, Color.Red);
                     Statistics.TotalArrowsFired++;
                 }
             }
@@ -41,14 +43,14 @@ namespace Baligo.Entity.Characters.Players
             // Update each arrow
             for (int arrowId = 0; arrowId < Arrows.Count; arrowId++)
             {
-                if (Arrows[arrowId].Timer > 0)
+                if (this.Arrows[arrowId].Timer > 0)
                 {
-                    Arrows[arrowId].Update();
+                    this.Arrows[arrowId].Update();
                 }
                 else
                 {
-                    BaligoConsole.WriteLine("Player arrow Removed ID: " + Arrows[arrowId].Id, Color.Red);
-                    Arrows.RemoveAt(arrowId);
+                    BaligoConsole.WriteLine("Player arrow Removed ID: " + this.Arrows[arrowId].Id, Color.Red);
+                    this.Arrows.RemoveAt(arrowId);
                 }
             }
 

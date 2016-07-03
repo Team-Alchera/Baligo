@@ -8,44 +8,53 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Baligo.Entity.Items.Weapons
 {
-    public class Arrow: Item
+    public class Arrow : Weapon
     {
-        public Rectangle CollisionBox;
         public const int Damage = 10;
         public const int Speed = 15;
-        public Vector2 Direction;
-        public float Angle;
-        public Vector2 Velocity;
-        public bool IsActive;
-        public int Timer;
-        public bool IsEnemyArrow;
+        private Rectangle collisionBox;
 
-        public Arrow(Vector2 position, Vector2 direction,int id,bool isEnemyArrow = false)
+        public Rectangle CollisionBox { get; set; }
+
+        public Arrow(Vector2 position, Vector2 direction, int id, bool isEnemyArrow = false)
         {
-            Id = id;
-             
+            this.Id = id;
             // Set Parameters
-            Position = position;
-            Position.X += 16;
-            Position.Y += 32;
-            Direction = direction;
+            this.Position = position;
+            this.Position.X += 16;
+            this.Position.Y += 32;
+            this.Direction = direction;
 
             // Calculate Velocity
-            Velocity = -(Position - Direction);
-            Velocity.Normalize();
+            this.Velocity = CalculateVelocity();
 
             // Calculate Angle
-            var toCalcAngle =  Position - direction;
-            Angle = (float)Math.Atan2(toCalcAngle.Y, toCalcAngle.X);
+            this.Angle = CalculateAngle(direction);
 
             // Create Collision
-            CollisionBox = new Rectangle((int)Position.X, (int)Position.Y, 10, 10);
+            this.CollisionBox = new Rectangle((int)Position.X, (int)Position.Y, 10, 10);
 
             // Set default active state and timer
-            IsActive = true;
-            Timer = 900;
+            this.IsActive = true;
+            this.Timer = 900;
 
-            IsEnemyArrow = isEnemyArrow;
+            this.IsEnemyArrow = isEnemyArrow;
+        }
+
+        private float CalculateAngle(Vector2 direction)
+        {
+            var toCalcAngle = this.Position - direction;
+            this.Angle = (float) Math.Atan2(toCalcAngle.Y, toCalcAngle.X);
+
+            return this.Angle;
+        }
+
+        private Vector2 CalculateVelocity()
+        {
+            this.Velocity = -(this.Position - this.Direction);
+            this.Velocity.Normalize();
+
+            return this.Velocity;
         }
 
         public void Update()
@@ -53,12 +62,12 @@ namespace Baligo.Entity.Items.Weapons
             if (IsActive)
             {
                 // Update Position
-                Position.X += Velocity.X * Speed;
-                Position.Y += Velocity.Y * Speed;
+                this.Position.X += this.Velocity.X * Arrow.Speed;
+                this.Position.Y += this.Velocity.Y * Arrow.Speed;
 
                 // Update Collision
-                CollisionBox.X = (int)Position.X;
-                CollisionBox.Y = (int)Position.Y -5; 
+                this.collisionBox.X = (int)this.Position.X;
+                this.collisionBox.Y = (int)this.Position.Y - 5;
 
                 // Check Collision
                 for (int row = 0; row < 24; row++)
@@ -69,7 +78,7 @@ namespace Baligo.Entity.Items.Weapons
 
                         if (currentTile.CollisionBox.Intersects(this.CollisionBox) && currentTile.IsSolid)
                         {
-                            IsActive = false;
+                            this.IsActive = false;
                             Statistics.TotalArrowsMissed++;
                         }
                     }
@@ -77,8 +86,8 @@ namespace Baligo.Entity.Items.Weapons
             }
             else
             {
-                if (Timer - 1 >= 0)
-                    Timer--;
+                if (this.Timer - 1 >= 0)
+                    this.Timer--;
             }
         }
 
@@ -92,17 +101,17 @@ namespace Baligo.Entity.Items.Weapons
             // Draw 
             if (IsEnemyArrow)
             {
-                Assets.PlayerHunterArrow.DrawWithRotation(spriteBatch, (int)Position.X, (int)Position.Y, Angle,true);
+                Assets.PlayerHunterArrow.DrawWithRotation(spriteBatch, (int)this.Position.X, (int)this.Position.Y, this.Angle, true);
             }
             else
             {
-                Assets.PlayerHunterArrow.DrawWithRotation(spriteBatch, (int)Position.X, (int)Position.Y, Angle);
+                Assets.PlayerHunterArrow.DrawWithRotation(spriteBatch, (int)this.Position.X, (int)this.Position.Y, this.Angle);
             }
 
             // Draw Arrow Collision if debug is active
             if (BaligoEngine.IsDebugModeActive)
             {
-                spriteBatch.Draw(Assets.RedRectangle2.Texture, new Vector2(CollisionBox.X, CollisionBox.Y),
+                spriteBatch.Draw(Assets.RedRectangle2.Texture, new Vector2(this.CollisionBox.X, this.CollisionBox.Y),
                     CollisionBox,
                     Color.White);
             }
