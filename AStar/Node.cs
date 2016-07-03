@@ -31,7 +31,34 @@ namespace AStar
             this.Row = row;
             this.Col = col;
 
+            GCost = 0;
+            HCost = 0;
+
             Id = row + " | " + col;
+        }
+
+        public void Calc()
+        {
+            if (Parrent != null)
+            {
+                GCost = Parrent.GCost + 1;
+            }
+            
+            HCost = Math.Abs(Col - World.FinishNode.Col) +
+                    Math.Abs(Row - World.FinishNode.Row);
+        }
+
+        public Node Clone()
+        {
+            Node a = new Node(this.Row, this.Col);
+
+            a.Id = this.Id;
+            a.GCost = this.GCost;
+            a.HCost = this.HCost;
+            a.IsSolid = this.IsSolid;
+            a.Parrent = this.Parrent;
+
+            return a;
         }
     }
 }

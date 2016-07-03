@@ -44,20 +44,18 @@ namespace AStar
                 UpdateBox();
                 _count = 7;
             }
-
             if (Keyboard.GetState().IsKeyDown(Keys.A) && _count == 0)
             {
                 SetStartPoint();
                 _count = 7;
             }
-
             if (Keyboard.GetState().IsKeyDown(Keys.S) && _count == 0)
             {
                 SetFinishPoint();
                 _count = 7;
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.W) && _count == 0)
+            if (Keyboard.GetState().IsKeyDown(Keys.F1) && _count == 0)
             {
                 Console.WriteLine("Finding...");
                 PathFinding.FindPath(StartNode, FinishNode);
@@ -65,17 +63,14 @@ namespace AStar
                 _count = 7;
             }
 
+            // =================
             if (_count - 1 >= 0)
-            {
                 _count--;
-            }
         }
 
-
-        public static List<Node> Path;
-        public static Node Current;
         public static void Draw(SpriteBatch spriteBatch)
         {
+            // Draw the basic shape with white and black
             for (int row = 0; row < 12; row++)
             {
                 for (int col = 0; col < 18; col++)
@@ -84,39 +79,42 @@ namespace AStar
                         Board[row, col].IsSolid ? Color.Black : Color.White);
                 }
             }
+            
+            // Draw Text
+            for (int row = 0; row < 12; row++)
+            {
+                for (int col = 0; col < 18; col++)
+                {
+                    spriteBatch.DrawString(Font, Board[row, col].FCost == 0 ? "X" : Board[row, col].FCost.ToString(), 
+                        new Vector2(col * 64 + 25, row * 64 + 22), Color.LightSlateGray);
+                }
+            }
+
+            if (PathFinding.Path != null)
+            {
+                int a = 1;
+                foreach (var node in PathFinding.Path)
+                {
+                    spriteBatch.Draw(Box, new Vector2(node.Col * 64, node.Row * 64),
+                        new Rectangle(0, 0, 64, 64), Color.Yellow);
+                    spriteBatch.DrawString(Font, a.ToString() + "\n" + node.FCost, 
+                        new Vector2(node.Col * 64 + 10, node.Row * 64 + 10), Color.Blue);
+                    a++;
+                }
+            }
 
             // Draw Start
             if (StartNode != null)
             {
-                spriteBatch.Draw(Box, new Vector2(StartNode.Col * 64, StartNode.Row * 64), new Rectangle(0, 0, 64, 64), Color.LimeGreen);
+                spriteBatch.Draw(Box, new Vector2(StartNode.Col * 64, StartNode.Row * 64),
+                    new Rectangle(0, 0, 64, 64), Color.LimeGreen);
             }
 
             // Draw Finish
             if (FinishNode != null)
             {
-                spriteBatch.Draw(Box, new Vector2(FinishNode.Col * 64, FinishNode.Row * 64), new Rectangle(0, 0, 64, 64), Color.Blue);
-            }
-
-            // Draw Path
-            if (Path != null)
-            {
-                foreach (var node in Path)
-                {
-                    spriteBatch.Draw(Box, new Vector2(node.Col * 64, node.Row * 64), new Rectangle(0, 0, 64, 64), Color.Yellow);
-                }
-            }
-
-            if (Current != null)
-            {
-                spriteBatch.Draw(Box, new Vector2(Current.Col * 64, Current.Row * 64), new Rectangle(0, 0, 64, 64), Color.Yellow);
-            }
-
-            for (int row = 0; row < 12; row++)
-            {
-                for (int col = 0; col < 18; col++)
-                {
-                    spriteBatch.DrawString(Font, Board[row, col].Id, new Vector2(col * 64 + 4, row * 64 + 4), Color.Black);
-                }
+                spriteBatch.Draw(Box, new Vector2(FinishNode.Col * 64, FinishNode.Row * 64),
+                    new Rectangle(0, 0, 64, 64), Color.Blue);
             }
         }
 
@@ -152,22 +150,30 @@ namespace AStar
             int col = Mouse.GetState().X / 64;
             int row = Mouse.GetState().Y / 64;
 
-            if (Board[row, col].IsSolid == false)
+            if (row >= 0 && row < 12 && col >= 0 && col < 18)
             {
-                if (row >= 0 && row < 12)
+                if (Board[row, col].IsSolid == false)
                 {
-                    if (col >= 0 && col < 18)
+                    if (row >= 0 && row < 12)
                     {
-                        StartNode = new Node(row, col);
-                        Console.WriteLine("New start point");
+                        if (col >= 0 && col < 18)
+                        {
+                            StartNode = new Node(row, col);
+                            Console.WriteLine("New start point");
+                        }
                     }
                 }
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Invalid Start Node!");
-                Console.ForegroundColor = ConsoleColor.White;
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid Start Node!");
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+
+                if (StartNode != null && FinishNode != null)
+                {
+                    PathFinding.FindPath(StartNode, FinishNode);
+                }
             }
         }
 
@@ -176,22 +182,30 @@ namespace AStar
             int col = Mouse.GetState().X / 64;
             int row = Mouse.GetState().Y / 64;
 
-            if (Board[row, col].IsSolid == false)
+            if (row>= 0 && row < 12 && col >= 0 && col < 18)
             {
-                if (row >= 0 && row < 12)
+                if (Board[row, col].IsSolid == false)
                 {
-                    if (col >= 0 && col < 18)
+                    if (row >= 0 && row < 12)
                     {
-                        FinishNode = new Node(row, col);
-                        Console.WriteLine("New Finish Node");
+                        if (col >= 0 && col < 18)
+                        {
+                            FinishNode = new Node(row, col);
+                            Console.WriteLine("New Finish Node");
+                        }
                     }
                 }
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Invalid Finish Node!");
-                Console.ForegroundColor = ConsoleColor.White;
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid Finish Node!");
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+
+                if (StartNode != null && FinishNode != null)
+                {
+                    PathFinding.FindPath(StartNode, FinishNode);
+                }
             }
         }
 
@@ -200,14 +214,24 @@ namespace AStar
             int col = Mouse.GetState().X / 64;
             int row = Mouse.GetState().Y / 64;
 
-            if (row >= 0 && row < 12)
+            if (row >= 0 && row < 12 && col >= 0 && col < 18)
             {
-                if (col >= 0 && col < 18)
+                if (row >= 0 && row < 12)
                 {
-                    Board[row, col].IsSolid = !Board[row, col].IsSolid;
-                    Console.WriteLine("Pressed");
+                    if (col >= 0 && col < 18)
+                    {
+                        Board[row, col].IsSolid = !Board[row, col].IsSolid;
+                        Console.WriteLine("Pressed");
+                    }
+                }
+
+                if (StartNode != null && FinishNode != null)
+                {
+                    PathFinding.FindPath(StartNode, FinishNode);
                 }
             }
+
+            
         }
     }
 }

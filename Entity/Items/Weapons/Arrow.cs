@@ -23,7 +23,7 @@ namespace Baligo.Entity.Items.Weapons
         public Arrow(Vector2 position, Vector2 direction,int id,bool isEnemyArrow = false)
         {
             Id = id;
-
+             
             // Set Parameters
             Position = position;
             Position.X += 16;
