@@ -64,8 +64,8 @@
     <Compile Include="Contracts\ICollectable.cs" />
     <Compile Include="Entity\Characters\Character.cs" />
     <Compile Include="Entity\Characters\Enemies\Enemy.cs" />
-    <Compile Include="Entity\Characters\Enemies\L01E01InnocentBlond.cs" />
-    <Compile Include="Entity\Characters\Enemies\L01E02PCBlackGril.cs" />
+    <Compile Include="Entity\Characters\Enemies\L01E01DaddysPrincess.cs" />
+    <Compile Include="Entity\Characters\Enemies\L01E02TheSmartGirl.cs" />
     <Compile Include="Entity\Characters\Enemies\L01E03TheHornyExhibitionist.cs" />
     <Compile Include="Entity\Characters\Enemies\L02E01Mango.cs" />
     <Compile Include="Entity\Characters\Enemies\L02E02Manga.cs" />

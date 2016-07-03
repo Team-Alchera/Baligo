@@ -13,7 +13,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Baligo.Entity.Characters.Enemies
 {
-    public class L01E02PCBlackGril : Character
+    public class L01E01DaddysPrincess : Character
     {
         //defines if the enemy is Boss or standard enemy
         public bool IsBoss;
@@ -38,7 +38,7 @@ namespace Baligo.Entity.Characters.Enemies
         protected Rectangle Orientation;
 
         // Constructor
-        public L01E02PCBlackGril(Vector2 _position)
+        public L01E01DaddysPrincess(Vector2 _position)
         {
             // Set Parameters
             EnemyTexture = Assets.Enemy.Texture;
