@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Baligo.Story.Enemy
 {
-    class L02E03Story
+    class L02E03Story : Story
     {
+        public L02E03Story()
+        {
+            this.text = "Bai Mangau has the respect of all Roma people. His main occupation is playing the very popular" +
+                        "\"Three shells and a pea\" game. Unfortunately he lost one of the shells and needs to replace is." +
+                        "You need to help him find a proper replacement or stop him deceive people on the streets";
+        }        
     }
 }
