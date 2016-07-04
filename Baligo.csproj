@@ -236,6 +236,15 @@
     <Content Include="Content\Textures\Effects\throwing_net6.png" />
     <Content Include="Content\Textures\Effects\throwing_net7.png" />
     <Content Include="Content\Textures\Enemies\Enemy.png" />
+    <Content Include="Content\Textures\Enemies\DaddysPrincess.png" />
+    <Content Include="Content\Textures\Enemies\TheSmartGirl.png" />
+    <Content Include="Content\Textures\Enemies\TheHornyExhibitionist.png" />
+    <Content Include="Content\Textures\Enemies\Mango.png" />
+    <Content Include="Content\Textures\Enemies\Manga.png" />
+    <Content Include="Content\Textures\Enemies\BaiMangau.png" />
+    <Content Include="Content\Textures\Enemies\TheForumTroll.png" />
+    <Content Include="Content\Textures\Enemies\ThGirlOrcFromPernik.png" />
+    <Content Include="Content\Textures\Enemies\TheSkeletonOfTheLastNormalBulgarianSitizen.png" />
     <Content Include="Content\Textures\Items\amulet\artefact\urand_air.png" />
     <Content Include="Content\Textures\Items\amulet\artefact\urand_bloodlust.png" />
     <Content Include="Content\Textures\Items\amulet\artefact\urand_brooch_of_shielding.png" />
