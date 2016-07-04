@@ -7,9 +7,7 @@ namespace Baligo.Entity.Characters
 {
     public abstract class Character : ICharacter
     {
-        public Vector2 Position;
-
-        
+        public Vector2 position;
 
         public string Name { get; set; }
         public int Health { get; set; }

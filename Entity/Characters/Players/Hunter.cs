@@ -13,17 +13,17 @@ namespace Baligo.Entity.Characters.Players
     public class Hunter : Player
     {
         // Fields
-        public readonly List<Arrow> Arrows;
         public const int InitialCountDown = 15;
 
         // Constructor
         public Hunter()
         {
-            PlayerTexture = Assets.PlayerHunter.Texture;
-            Arrows = new List<Arrow>();
+            this.PlayerTexture = Assets.PlayerHunter.Texture;
+            this.Arrows = new List<Arrow>();
             this.CountDown = InitialCountDown;
         }
 
+        public List<Arrow> Arrows { get; set; }
         public int CountDown { get; set; }
 
         public override void Update(GameTime gmaTime)
@@ -33,7 +33,7 @@ namespace Baligo.Entity.Characters.Players
             {
                 if (this.CountDown == 0)
                 {
-                    this.Arrows.Add(new Arrow(base.Position, new Vector2(Mouse.GetState().X, Mouse.GetState().Y), this.Arrows.Count + 1));
+                    this.Arrows.Add(new Arrow(this.position, new Vector2(Mouse.GetState().X, Mouse.GetState().Y), this.Arrows.Count + 1));
                     this.CountDown = 15;
                     BaligoConsole.WriteLine("Player arrow Spawned ID: " + this.Arrows.Count, Color.Red);
                     Statistics.TotalArrowsFired++;

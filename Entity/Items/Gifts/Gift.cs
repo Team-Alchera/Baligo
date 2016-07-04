@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Baligo.Entity.Items.Gifts
 {
-    class _0302MetalRod
+    public abstract class Gift : Item
     {
     }
 }

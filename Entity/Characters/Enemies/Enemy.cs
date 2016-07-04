@@ -1,28 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using Baligo.Console;
-using Baligo.ConsoleDebugStats;
-using Baligo.Entity.Characters.Players;
-using Baligo.Entity.Items.Weapons;
-using Baligo.Graphics;
-using Baligo.Main;
-using Baligo.States;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-
-namespace Baligo.Entity.Characters.Enemies
+﻿namespace Baligo.Entity.Characters.Enemies
 {
+    using System.Collections.Generic;
+    using Baligo.Console;
+    using Baligo.ConsoleDebugStats;
+    using Baligo.Entity.Items.Weapons;
+    using Baligo.Graphics;
+    using Baligo.Main;
+    using Baligo.States;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class Enemy : Character
     {
-        //defines if the enemy is Boss or standard enemy
-        public bool IsBoss;
-        //stores list of item IDs to be used to defeat the enemy
-        public List<int> ItemsOfDefeat;
-        public List<Arrow> Arrows;
-
-        //Sprite Sheet
-        protected Texture2D EnemyTexture;
         protected const int SpeedOfAnimations = 50;
 
         // Collision
@@ -40,8 +29,8 @@ namespace Baligo.Entity.Characters.Enemies
             Speed = 5;
             
 
-            // Position
-            Position = position;
+            // position
+            base.position = position;
 
             // Animation
             ShootArrowLeft = new Animation(SpeedOfAnimations, 17, 12);
@@ -53,11 +42,20 @@ namespace Baligo.Entity.Characters.Enemies
             Orientation = new Rectangle(0, 64 * 11, 64, 64);
 
             // Collision
-            CollisionBox = new Rectangle((int)Position.X, (int)Position.Y, 44, 54);
+            CollisionBox = new Rectangle((int)base.position.X, (int)base.position.Y, 44, 54);
 
             // Set default arrow list
             Arrows = new List<Arrow>();
         }
+
+        //defines if the enemy is Boss or standard enemy
+        public bool IsBoss { get; set; }
+        //stores list of item IDs to be used to defeat the enemy
+        public List<int> ItemsOfDefeat { get; set; }
+        public List<Arrow> Arrows { get; set; }
+
+        //Sprite Sheet
+        protected Texture2D EnemyTexture { get; set; }
 
         public override void Init()
         {
@@ -67,16 +65,16 @@ namespace Baligo.Entity.Characters.Enemies
         public override void Update(GameTime gmaTime)
         {
             // Update the collision box
-            CollisionBox.X = (int)Position.X + 10;
-            CollisionBox.Y = (int)Position.Y + 10;
+            CollisionBox.X = (int)position.X + 10;
+            CollisionBox.Y = (int)position.Y + 10;
 
             if (countDown == 0)
             {
-                Vector2 PlayerPosition = MainGame.Player.CurrentPlayerClass.Position;
+                Vector2 PlayerPosition = MainGame.Player.CurrentPlayerClass.position;
                 PlayerPosition.Y += 32;
                 PlayerPosition.X += 16;
 
-                Arrows.Add(new Arrow(Position, PlayerPosition, Arrows.Count - 1, true));
+                Arrows.Add(new Arrow(position, PlayerPosition, Arrows.Count - 1, true));
                 countDown = 120;
                 BaligoConsole.WriteLine("Enemy arrow Spawned ID: " + Arrows.Count, Color.Tomato);
                 Statistics.TotalArrowsFired++;
@@ -130,7 +128,7 @@ namespace Baligo.Entity.Characters.Enemies
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(EnemyTexture, Position, Orientation, Color.White);
+            spriteBatch.Draw(EnemyTexture, position, Orientation, Color.White);
 
             foreach (var arrow in Arrows)
             {

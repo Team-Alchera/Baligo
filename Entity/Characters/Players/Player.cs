@@ -38,8 +38,8 @@ namespace Baligo.Entity.Characters.Players
             IsAlive = true;
             Speed = 5;
 
-            // Position
-            Position = new Vector2(600, 500);
+            // position
+            position = new Vector2(600, 500);
 
             // Animation
             WalkLeft = new Animation(SpeedOfAnimations, 9, 9);
@@ -56,7 +56,7 @@ namespace Baligo.Entity.Characters.Players
             ShootStanding = ShootArrowRight;
 
             // Collision
-            CollisionBox = new Rectangle((int)Position.X, (int)Position.Y, 44, 54);
+            CollisionBox = new Rectangle((int)position.X, (int)position.Y, 44, 54);
 
             // Get First Direction
             Direction = new Vector2(MousePosition.X, MousePosition.Y);
@@ -78,54 +78,54 @@ namespace Baligo.Entity.Characters.Players
             // Move and pick the orientation
             if (InputManager.AIsPressed)
             {
-                this.Position.X -= Speed;
-                if (CheckCollision(Position))
+                this.position.X -= Speed;
+                if (CheckCollision(position))
                 {
-                    Position.X += Speed;
+                    position.X += Speed;
                 }
                 Orientation = new Rectangle(0, 64 * 9, 64, 64);
                 ShootStanding = ShootArrowLeft;
             }
             if (InputManager.DIsPressed)
             {
-                Position.X += Speed;
-                if (CheckCollision(Position))
+                position.X += Speed;
+                if (CheckCollision(position))
                 {
-                    Position.X -= Speed;
+                    position.X -= Speed;
                 }
                 Orientation = new Rectangle(0, 64 * 11, 64, 64);
                 ShootStanding = ShootArrowRight;
             }
             if (InputManager.WIsPressed)
             {
-                Position.Y -= Speed;
-                if (CheckCollision(Position))
+                position.Y -= Speed;
+                if (CheckCollision(position))
                 {
-                    Position.Y += Speed;
+                    position.Y += Speed;
                 }
                 Orientation = new Rectangle(0, 64 * 12, 64, 64);
                 ShootStanding = ShootArrowUp;
             }
             if (InputManager.SIsPressed)
             {
-                Position.Y += Speed;
-                if (CheckCollision(Position))
+                position.Y += Speed;
+                if (CheckCollision(position))
                 {
-                    Position.Y -= Speed;
+                    position.Y -= Speed;
                 }
                 Orientation = new Rectangle(0, 64 * 10, 64, 64);
                 ShootStanding = ShootArrowDown;
             }
 
             // Update the collision box
-            CollisionBox.X = (int)Position.X + 10;
-            CollisionBox.Y = (int)Position.Y + 10;
+            CollisionBox.X = (int)position.X + 10;
+            CollisionBox.Y = (int)position.Y + 10;
 
             // Calculate Angle
             MousePosition = Mouse.GetState();
             Direction.X = MousePosition.X;
             Direction.Y = MousePosition.Y;
-            Vector2 tempPosition = Position;
+            Vector2 tempPosition = position;
             tempPosition.X += 32;
             tempPosition.Y += 32;
             var toCalcAngle = tempPosition - Direction;
@@ -160,38 +160,38 @@ namespace Baligo.Entity.Characters.Players
         {
             if (!this.IsAlive)
             {
-                spriteBatch.Draw(PlayerTexture, Position, Orientation, Color.White);
+                spriteBatch.Draw(PlayerTexture, position, Orientation, Color.White);
                 return;
             }
 
             // Pick the right animation to draw
             if (InputManager.AIsPressed)
             {
-                spriteBatch.Draw(PlayerTexture, Position,
+                spriteBatch.Draw(PlayerTexture, position,
                     InputManager.LeftButtomDown ? ShootArrowLeft.GetBoundsForFrame() : WalkLeft.GetBoundsForFrame(),
                     Color.White);
             }
             else if (InputManager.DIsPressed)
             {
-                spriteBatch.Draw(PlayerTexture, Position,
+                spriteBatch.Draw(PlayerTexture, position,
                     InputManager.LeftButtomDown ? ShootArrowRight.GetBoundsForFrame() : WalkRight.GetBoundsForFrame(),
                     Color.White);
             }
             else if (InputManager.WIsPressed)
             {
-                spriteBatch.Draw(PlayerTexture, Position,
+                spriteBatch.Draw(PlayerTexture, position,
                     InputManager.LeftButtomDown ? ShootArrowUp.GetBoundsForFrame() : WalkUp.GetBoundsForFrame(),
                     Color.White);
             }
             else if (InputManager.SIsPressed)
             {
-                spriteBatch.Draw(PlayerTexture, Position,
+                spriteBatch.Draw(PlayerTexture, position,
                     InputManager.LeftButtomDown ? ShootArrowDown.GetBoundsForFrame() : WalkDown.GetBoundsForFrame(),
                     Color.White);
             }
             else // Stand Positon in last Orientation
             {
-                spriteBatch.Draw(PlayerTexture, Position,
+                spriteBatch.Draw(PlayerTexture, position,
                     InputManager.LeftButtomDown ? ShootStanding.GetBoundsForFrame() : Orientation, Color.White);
             }
 
@@ -206,7 +206,7 @@ namespace Baligo.Entity.Characters.Players
                 spriteBatch.DrawString(
                     Fonts.Console,
                     "GOD",
-                    new Vector2(Position.X + 10, Position.Y),
+                    new Vector2(position.X + 10, position.Y),
                     Color.Yellow);
             }
         }

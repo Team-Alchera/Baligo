@@ -25,8 +25,8 @@ namespace Baligo.Entity.Characters.Enemies.Level03
             Speed = 5;
 
 
-            // Position
-            Position = position;
+            // position
+            ((Character) this).position = position;
 
             // Animation
             ShootArrowLeft = new Animation(SpeedOfAnimations, 17, 12);
@@ -38,7 +38,7 @@ namespace Baligo.Entity.Characters.Enemies.Level03
             Orientation = new Rectangle(0, 64 * 11, 64, 64);
 
             // Collision
-            CollisionBox = new Rectangle((int)Position.X, (int)Position.Y, 44, 54);
+            CollisionBox = new Rectangle((int)((Character) this).position.X, (int)((Character) this).position.Y, 44, 54);
 
             // Set default arrow list
             Arrows = new List<Arrow>();
@@ -52,16 +52,16 @@ namespace Baligo.Entity.Characters.Enemies.Level03
         public override void Update(GameTime gmaTime)
         {
             // Update the collision box
-            CollisionBox.X = (int)Position.X + 10;
-            CollisionBox.Y = (int)Position.Y + 10;
+            CollisionBox.X = (int)position.X + 10;
+            CollisionBox.Y = (int)position.Y + 10;
 
             if (countDown == 0)
             {
-                Vector2 PlayerPosition = MainGame.Player.CurrentPlayerClass.Position;
+                Vector2 PlayerPosition = MainGame.Player.CurrentPlayerClass.position;
                 PlayerPosition.Y += 32;
                 PlayerPosition.X += 16;
 
-                Arrows.Add(new Arrow(Position, PlayerPosition, Arrows.Count - 1, true));
+                Arrows.Add(new Arrow(position, PlayerPosition, Arrows.Count - 1, true));
                 countDown = 120;
                 BaligoConsole.WriteLine("Enemy arrow Spawned ID: " + Arrows.Count, Color.Tomato);
                 Statistics.TotalArrowsFired++;
@@ -115,7 +115,7 @@ namespace Baligo.Entity.Characters.Enemies.Level03
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(EnemyTexture, Position, Orientation, Color.White);
+            spriteBatch.Draw(EnemyTexture, position, Orientation, Color.White);
 
             foreach (var arrow in Arrows)
             {

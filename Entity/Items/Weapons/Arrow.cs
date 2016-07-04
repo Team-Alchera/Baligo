@@ -61,7 +61,7 @@ namespace Baligo.Entity.Items.Weapons
         {
             if (IsActive)
             {
-                // Update Position
+                // Update position
                 this.Position.X += this.Velocity.X * Arrow.Speed;
                 this.Position.Y += this.Velocity.Y * Arrow.Speed;
 
