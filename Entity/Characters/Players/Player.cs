@@ -78,14 +78,16 @@ namespace Baligo.Entity.Characters.Players
             // Move and pick the orientation
             if (InputManager.AIsPressed)
             {
-                this.position.X -= Speed;
+                position.X -= Speed;
                 if (CheckCollision(position))
                 {
                     position.X += Speed;
                 }
+
                 Orientation = new Rectangle(0, 64 * 9, 64, 64);
                 ShootStanding = ShootArrowLeft;
             }
+
             if (InputManager.DIsPressed)
             {
                 position.X += Speed;
@@ -93,9 +95,11 @@ namespace Baligo.Entity.Characters.Players
                 {
                     position.X -= Speed;
                 }
+
                 Orientation = new Rectangle(0, 64 * 11, 64, 64);
                 ShootStanding = ShootArrowRight;
             }
+
             if (InputManager.WIsPressed)
             {
                 position.Y -= Speed;
@@ -103,9 +107,11 @@ namespace Baligo.Entity.Characters.Players
                 {
                     position.Y += Speed;
                 }
+
                 Orientation = new Rectangle(0, 64 * 12, 64, 64);
                 ShootStanding = ShootArrowUp;
             }
+
             if (InputManager.SIsPressed)
             {
                 position.Y += Speed;
@@ -113,6 +119,7 @@ namespace Baligo.Entity.Characters.Players
                 {
                     position.Y -= Speed;
                 }
+
                 Orientation = new Rectangle(0, 64 * 10, 64, 64);
                 ShootStanding = ShootArrowDown;
             }
@@ -135,7 +142,7 @@ namespace Baligo.Entity.Characters.Players
             WalkLeft.Update(gmaTime);
             WalkRight.Update(gmaTime);
             WalkDown.Update(gmaTime);
-            WalkUp.Update(gmaTime);
+            Update(gmaTime);
             ShootArrowLeft.Update(gmaTime);
             ShootArrowRight.Update(gmaTime);
             ShootArrowUp.Update(gmaTime);
@@ -151,14 +158,14 @@ namespace Baligo.Entity.Characters.Players
             // Check if dead
             if (Health <= 0)
             {
-                this.IsAlive = false;
+                IsAlive = false;
                 Health = 0;
             }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if (!this.IsAlive)
+            if (!IsAlive)
             {
                 spriteBatch.Draw(PlayerTexture, position, Orientation, Color.White);
                 return;
@@ -222,7 +229,7 @@ namespace Baligo.Entity.Characters.Players
                 {
                     Tile currentTile = WorldManager.GetCurrentWorld().WorldData[row, col];
 
-                    if (currentTile.CollisionBox.Intersects(this.CollisionBox) && currentTile.IsSolid)
+                    if (currentTile.CollisionBox.Intersects(CollisionBox) && currentTile.IsSolid)
                     {
                         return true;
                     }

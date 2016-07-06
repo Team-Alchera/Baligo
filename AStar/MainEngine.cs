@@ -23,14 +23,14 @@ namespace AStar
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components
+        /// related content.  Calling Initialize will enumerate through any components
         /// and initialize them as well.
         /// </summary>
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
             IsMouseVisible = true;
-            base.Initialize();
+            Initialize();
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace AStar
             spriteBatch = new SpriteBatch(GraphicsDevice);
             World.Init(Content);
 
-            // TODO: use this.Content to load your game content here
+            // TODO: use Content to load your game content here
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace AStar
 
             World.Update();
 
-            base.Update(gameTime);
+            Update(gameTime);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace AStar
             World.Draw(spriteBatch);
             spriteBatch.End();
 
-            base.Draw(gameTime);
+            Draw(gameTime);
         }
     }
 }

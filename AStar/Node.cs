@@ -28,8 +28,8 @@ namespace AStar
         public Node(int row, int col)
         {
             IsSolid = false;
-            this.Row = row;
-            this.Col = col;
+            Row = row;
+            Col = col;
 
             GCost = 0;
             HCost = 0;
@@ -50,13 +50,13 @@ namespace AStar
 
         public Node Clone()
         {
-            Node a = new Node(this.Row, this.Col);
+            Node a = new Node(Row, Col);
 
-            a.Id = this.Id;
-            a.GCost = this.GCost;
-            a.HCost = this.HCost;
-            a.IsSolid = this.IsSolid;
-            a.Parrent = this.Parrent;
+            a.Id = Id;
+            a.GCost = GCost;
+            a.HCost = HCost;
+            a.IsSolid = IsSolid;
+            a.Parrent = Parrent;
 
             return a;
         }

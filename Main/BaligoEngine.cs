@@ -48,7 +48,7 @@ namespace Baligo.Main
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.LoadAssets will enumerate through any components
+        /// related content.  Calling LoadAssets will enumerate through any components
         /// and initialize them as well.
         /// </summary>
         protected override void Initialize()
@@ -81,7 +81,7 @@ namespace Baligo.Main
             // Init worlds
             WorldManager.Init();
 
-            base.Initialize();
+            Initialize();
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Baligo.Main
             // Do not touch
             if (_waitTime - 1 >= 0)
                 _waitTime--;
-            base.Update(gameTime);
+            Update(gameTime);
         }
 
         /// <summary>
@@ -179,7 +179,7 @@ namespace Baligo.Main
             _spriteBatch.End();
 
             // Do not touch
-            base.Draw(gameTime);
+            Draw(gameTime);
         }
 
         /// <summary>
@@ -209,9 +209,9 @@ namespace Baligo.Main
         /// </summary>
         public void LoadFonts()
         {
-            Fonts.Arial = this.Content.Load<SpriteFont>("Fonts/Arial");
-            Fonts.Console = this.Content.Load<SpriteFont>("Fonts/Console");
-            Fonts.HealthFont = this.Content.Load<SpriteFont>("Fonts/Health");
+            Fonts.Arial = Content.Load<SpriteFont>("Fonts/Arial");
+            Fonts.Console = Content.Load<SpriteFont>("Fonts/Console");
+            Fonts.HealthFont = Content.Load<SpriteFont>("Fonts/Health");
         }
     }
 }
