@@ -62,7 +62,7 @@ namespace Baligo.Entity.Characters.Players
                 CountDown--;
 
             // Update the main player functions
-            Update(gmaTime);
+            base.Update(gmaTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -71,7 +71,7 @@ namespace Baligo.Entity.Characters.Players
             foreach (var arrow in Arrows)
                 arrow.Draw(spriteBatch);
             
-            Draw(spriteBatch);
+            base.Draw(spriteBatch);
         }
     }
 }

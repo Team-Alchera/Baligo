@@ -142,7 +142,7 @@ namespace Baligo.Entity.Characters.Players
             WalkLeft.Update(gmaTime);
             WalkRight.Update(gmaTime);
             WalkDown.Update(gmaTime);
-            Update(gmaTime);
+            WalkUp.Update(gmaTime);
             ShootArrowLeft.Update(gmaTime);
             ShootArrowRight.Update(gmaTime);
             ShootArrowUp.Update(gmaTime);

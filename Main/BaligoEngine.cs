@@ -81,7 +81,7 @@ namespace Baligo.Main
             // Init worlds
             WorldManager.Init();
 
-            Initialize();
+            base.Initialize();
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Baligo.Main
             // Do not touch
             if (_waitTime - 1 >= 0)
                 _waitTime--;
-            Update(gameTime);
+            base.Update(gameTime);
         }
 
         /// <summary>
@@ -179,7 +179,7 @@ namespace Baligo.Main
             _spriteBatch.End();
 
             // Do not touch
-            Draw(gameTime);
+            base.Draw(gameTime);
         }
 
         /// <summary>
