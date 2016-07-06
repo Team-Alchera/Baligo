@@ -30,6 +30,8 @@ namespace AStar
         {
             // TODO: Add your initialization logic here
             IsMouseVisible = true;
+
+            UI.Init(content:this.Content);
             base.Initialize();
         }
 
@@ -67,6 +69,11 @@ namespace AStar
 
             World.Update();
 
+            if (UI.IsUiActive)
+            {
+                UI.Update();
+            }
+
             base.Update(gameTime);
         }
 
@@ -80,6 +87,12 @@ namespace AStar
 
             spriteBatch.Begin();
             World.Draw(spriteBatch);
+
+            if (UI.IsUiActive)
+            {
+                UI.Draw(spriteBatch);
+            }
+
             spriteBatch.End();
 
             base.Draw(gameTime);

@@ -115,9 +115,9 @@ namespace AStar
 
         public static bool DoesNodeExist(int row, int col)
         {
-            if (row >= 0 && row < 12)
+            if (row >= 0 && row < 24)
             {
-                if (col >= 0 && col < 18)
+                if (col >= 0 && col < 36)
                 {
                     return true;
                 }
