@@ -10,7 +10,7 @@ namespace Baligo.Story.Level
     {
         public L01Story()
         {
-            this.text = "You already entered the magic land of Baligo. The land of наЦентАра welcomes you. Here is where your" +
+            text = "You already entered the magic land of Baligo. The land of наЦентАра welcomes you. Here is where your" +
                         "jorney starts. наЦентАра people are proud ancestors of the of the Първенюта tribe and always show off with" +
                         "wealth and knowledge. Be aware of their uncommon fetishes" +
                         "Don't forget to collect valuable itemsm, which will help you relent your enemies ";

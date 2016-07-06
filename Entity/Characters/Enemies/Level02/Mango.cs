@@ -77,7 +77,7 @@ namespace Baligo.Entity.Characters.Enemies.Level02
                     Arrows[arrowId].Update();
                     if (Arrows[arrowId].CollisionBox.Intersects(playerCollision) && Arrows[arrowId].IsActive)
                     {
-                        MainGame.Player.CurrentPlayerClass.Health -= this.Damage;
+                        MainGame.Player.CurrentPlayerClass.Health -= Damage;
                         BaligoConsole.WriteLine("Damage Taken 10 | Current Health: " +
                             MainGame.Player.CurrentPlayerClass.Health, Color.Thistle);
 
@@ -97,10 +97,10 @@ namespace Baligo.Entity.Characters.Enemies.Level02
             {
                 var arrow = MainGame.Player.HunterClass.Arrows[i];
 
-                if (arrow.CollisionBox.Intersects(this.CollisionBox))
+                if (arrow.CollisionBox.Intersects(CollisionBox))
                 {
-                    this.Health -= 25;
-                    BaligoConsole.WriteLine("Enemy hit: 25 | Health: " + this.Health, Color.Cyan);
+                    Health -= 25;
+                    BaligoConsole.WriteLine("Enemy hit: 25 | Health: " + Health, Color.Cyan);
 
                     BaligoConsole.WriteLine("Player arrow Removed ID: " + i, Color.Red);
                     MainGame.Player.HunterClass.Arrows.RemoveAt(i);

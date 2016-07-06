@@ -23,9 +23,9 @@ namespace Baligo.Graphics
         // Constructor
         public Tile(Texture2D texture, int id, bool isSolid = false)
         {
-            this.Texture = texture;
-            this.Bounds = new Rectangle(0, 0, Texture.Width, Texture.Height);
-            this.IsSolid = isSolid;
+            Texture = texture;
+            Bounds = new Rectangle(0, 0, Texture.Width, Texture.Height);
+            IsSolid = isSolid;
             Tiles[id] = this;
             ID = id;
 
@@ -34,11 +34,11 @@ namespace Baligo.Graphics
 
         public Tile(Tile tile)
         {
-            this.Texture = tile.Texture;
-            this.Bounds = tile.Bounds;
-            this.IsSolid = tile.IsSolid;
-            this.ID = tile.ID;
-            this.CollisionBox = tile.CollisionBox;
+            Texture = tile.Texture;
+            Bounds = tile.Bounds;
+            IsSolid = tile.IsSolid;
+            ID = tile.ID;
+            CollisionBox = tile.CollisionBox;
         }
         
         // Get Tile from id

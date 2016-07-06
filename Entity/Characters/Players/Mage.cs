@@ -13,12 +13,12 @@ namespace Baligo.Entity.Characters.Players
 
         public override void Update(GameTime gmaTime)
         {
-            base.Update(gmaTime);
+            Update(gmaTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
+            Draw(spriteBatch);
         }
     }
 }

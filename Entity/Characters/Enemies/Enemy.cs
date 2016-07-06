@@ -1,12 +1,12 @@
 ﻿namespace Baligo.Entity.Characters.Enemies
 {
     using System.Collections.Generic;
-    using Baligo.Console;
-    using Baligo.ConsoleDebugStats;
-    using Baligo.Entity.Items.Weapons;
-    using Baligo.Graphics;
-    using Baligo.Main;
-    using Baligo.States;
+    using Console;
+    using ConsoleDebugStats;
+    using Items.Weapons;
+    using Graphics;
+    using Main;
+    using States;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
@@ -30,7 +30,7 @@
             
 
             // position
-            base.position = position;
+            position = position;
 
             // Animation
             ShootArrowLeft = new Animation(SpeedOfAnimations, 17, 12);
@@ -42,7 +42,7 @@
             Orientation = new Rectangle(0, 64 * 11, 64, 64);
 
             // Collision
-            CollisionBox = new Rectangle((int)base.position.X, (int)base.position.Y, 44, 54);
+            CollisionBox = new Rectangle((int)position.X, (int)position.Y, 44, 54);
 
             // Set default arrow list
             Arrows = new List<Arrow>();
@@ -90,12 +90,12 @@
                     Arrows[arrowId].Update();
                     if (Arrows[arrowId].CollisionBox.Intersects(playerCollision) && Arrows[arrowId].IsActive)
                     {
-                        MainGame.Player.CurrentPlayerClass.Health -= this.Damage;
+                        MainGame.Player.CurrentPlayerClass.Health -= Damage;
                         BaligoConsole.WriteLine("Damage Taken 10 | Current Health: " +
                             MainGame.Player.CurrentPlayerClass.Health, Color.Thistle);
 
                         BaligoConsole.WriteLine("Arrow Removed ID: " + Arrows[arrowId].Id + " Player Collision!", Color.Tomato);
-                        Arrows.RemoveAt(arrowId);
+                       Arrows.RemoveAt(arrowId);
                     }
                 }
                 else
@@ -110,10 +110,10 @@
             {
                 var arrow = MainGame.Player.HunterClass.Arrows[i];
 
-                if (arrow.CollisionBox.Intersects(this.CollisionBox))
+                if (arrow.CollisionBox.Intersects(CollisionBox))
                 {
-                    this.Health -= 25;
-                    BaligoConsole.WriteLine("Enemy hit: 25 | Health: " + this.Health, Color.Cyan);
+                    Health -= 25;
+                    BaligoConsole.WriteLine("Enemy hit: 25 | Health: " + Health, Color.Cyan);
 
                     BaligoConsole.WriteLine("Player arrow Removed ID: " + i, Color.Red);
                     MainGame.Player.HunterClass.Arrows.RemoveAt(i);
