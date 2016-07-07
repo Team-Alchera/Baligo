@@ -10,11 +10,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Baligo.Entity.Characters.Enemies.Level03
 {
-    public class TheSkeletonOfTheLastNormalBulgarianSitizen : Enemy
+    public class TheSkeletonOfTheLastNormalBulgarianCitizen : Enemy
     {
 
         // Constructor
-        public TheSkeletonOfTheLastNormalBulgarianSitizen(Vector2 position) : base(position)
+        public TheSkeletonOfTheLastNormalBulgarianCitizen(Vector2 position) : base(position)
         {
             // Set Parameters
             EnemyTexture = Assets.Enemy.Texture;

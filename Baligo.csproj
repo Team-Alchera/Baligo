@@ -72,7 +72,7 @@
     <Compile Include="Entity\Characters\Enemies\Level02\BaiMangau.cs" />
     <Compile Include="Entity\Characters\Enemies\Level03\TheForumTroll.cs" />
     <Compile Include="Entity\Characters\Enemies\Level03\ThGirlOrcFromPernik.cs" />
-    <Compile Include="Entity\Characters\Enemies\Level03\TheSkeletonOfTheLastNormalBulgarianSitizen.cs" />
+    <Compile Include="Entity\Characters\Enemies\Level03\TheSkeletonOfTheLastNormalBulgarianCitizen.cs" />
     <Compile Include="Entity\Items\Gifts\Gift.cs" />
     <Compile Include="Entity\Items\Gifts\Level01\GoldenTiara.cs" />
     <Compile Include="Entity\Items\Gifts\Level01\BookOfKnowledge.cs" />

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Baligo.Console;
+﻿using System.Linq;
 using Baligo.Graphics;
 using Baligo.Main;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using File = System.IO.File;
 using Point = Baligo.Pathfinding.Point;
