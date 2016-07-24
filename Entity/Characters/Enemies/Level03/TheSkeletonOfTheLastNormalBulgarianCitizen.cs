@@ -47,7 +47,10 @@ namespace Baligo.Entity.Characters.Enemies.Level03
             // Set default arrow list
             Arrows = new List<Arrow>();
         }
-
+        public string Story { get; set; }
+        public void GetStory()
+        {
+        }
         public override void Init()
         {
         }

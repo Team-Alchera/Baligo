@@ -49,6 +49,9 @@ namespace Baligo.Entity.Characters
         public float Angle { get; set; }
 
         public Vector2 Direction;
+        public void GetStory()
+        {
+        }
 
         public abstract void Update(GameTime gmaTime);
         public abstract void Draw(SpriteBatch spriteBatch);

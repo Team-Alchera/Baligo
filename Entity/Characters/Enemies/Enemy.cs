@@ -60,7 +60,7 @@
 
         public string Story { get; set; }
 
-        public override void ShowStory()
+        public override void GetStory()
         {
         }
 
