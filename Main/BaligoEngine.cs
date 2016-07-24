@@ -70,7 +70,7 @@ namespace Baligo.Main
             State.SetCurrentState(MainGameState);
             MainGameState.Init();
             BaligoConsole.WriteLine("All states initialized !", Color.Magenta);
-            BaligoConsole.WriteLine("Current state is: Nain Game", Color.Magenta);
+            BaligoConsole.WriteLine("Current state is: Main Game", Color.Magenta);
             BaligoConsole.WriteLine("=======", Color.Yellow);
 
             // Set default state for debug mode

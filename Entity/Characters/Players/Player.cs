@@ -48,10 +48,16 @@ namespace Baligo.Entity.Characters.Players
             WalkRight = new Animation(SpeedOfAnimations, 11, 9);
             WalkUp = new Animation(SpeedOfAnimations, 8, 9);
             WalkDown = new Animation(SpeedOfAnimations, 10, 9);
+
             ShootArrowLeft = new Animation(SpeedOfAnimations, 17, 12);
             ShootArrowRight = new Animation(SpeedOfAnimations, 19, 12);
             ShootArrowUp = new Animation(SpeedOfAnimations, 16, 12);
             ShootArrowDown = new Animation(SpeedOfAnimations, 18, 12);
+
+            SwingBatLeft = new Animation(SpeedOfAnimations, 23, 12);
+            SwingBatRight = new Animation(SpeedOfAnimations, 19, 12);
+            SwingBatUp = new Animation(SpeedOfAnimations, 22, 12);
+            SwingBatDown = new Animation(SpeedOfAnimations, 18, 12);
 
             // Orientation
             Orientation = new Rectangle(0, 64 * 11, 64, 64);
@@ -74,7 +80,7 @@ namespace Baligo.Entity.Characters.Players
 
             // Set Default Class
             // Player Class Selection
-            CurrentPlayerClass = HunterClass;
+            CurrentPlayerClass = WarriorClass;
 
             if (CurrentPlayerClass == HunterClass)
             {
@@ -176,14 +182,14 @@ namespace Baligo.Entity.Characters.Players
             // Check if dead
             if (Health <= 0)
             {
-                IsAlive = false;
+                this.IsAlive = false;
                 Health = 0;
             }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if (!IsAlive)
+            if (!this.IsAlive)
             {
                 spriteBatch.Draw(PlayerTexture, position, Orientation, Color.White);
                 return;
@@ -247,7 +253,7 @@ namespace Baligo.Entity.Characters.Players
                 {
                     Tile currentTile = WorldManager.GetCurrentWorld().WorldData[row, col];
 
-                    if (currentTile.CollisionBox.Intersects(CollisionBox) && currentTile.IsSolid)
+                    if (currentTile.CollisionBox.Intersects(this.CollisionBox) && currentTile.IsSolid)
                     {
                         return true;
                     }
