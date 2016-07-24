@@ -7,8 +7,12 @@ using Baligo.Contracts;
 
 namespace Baligo.Entity.Levels
 {
-    class Level : IStory
+    abstract class Level : IStory
     {
-
+        public Level()
+        {
+        }
+        public string Story { get; set; }
+        public abstract void GetStory();
     }
 }

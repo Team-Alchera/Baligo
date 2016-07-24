@@ -9,6 +9,6 @@ namespace Baligo.Contracts
     public interface IStory
     {
         string Story { get; set; }
-        void ShowStory();
+        void GetStory();
     }
 }
