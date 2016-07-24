@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Baligo.Entity.Characters
 {
-    public abstract class Character : ICharacter, IStory
+    public abstract class Character : ICharacter
     {
         public Vector2 position;
 
@@ -15,7 +15,6 @@ namespace Baligo.Entity.Characters
         public int Damage { get; set; }
         public int Speed { get; set; }
         public bool IsAlive { get; set; }
-        public string Story { get; set; }
 
         // Collision
         private Rectangle collisionBox;
@@ -49,9 +48,6 @@ namespace Baligo.Entity.Characters
         public float Angle { get; set; }
 
         public Vector2 Direction;
-        public void GetStory()
-        {
-        }
 
         public abstract void Update(GameTime gmaTime);
         public abstract void Draw(SpriteBatch spriteBatch);

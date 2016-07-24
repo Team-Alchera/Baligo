@@ -1,4 +1,6 @@
-﻿namespace Baligo.Entity.Characters.Enemies
+﻿using Baligo.Contracts;
+
+namespace Baligo.Entity.Characters.Enemies
 {
     using System.Collections.Generic;
     using Console;
@@ -10,7 +12,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class Enemy : Character
+    public class Enemy : Character, IStory
     {
         protected const int SpeedOfAnimations = 50;
 
@@ -60,7 +62,7 @@
 
         public string Story { get; set; }
 
-        public override void GetStory()
+        public void GetStory()
         {
         }
 
