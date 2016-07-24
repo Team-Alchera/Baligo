@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Baligo.Contracts;
 
-namespace Baligo.Story
+namespace Baligo.Entity.Levels
 {
-    class Story
+    class Level : IStory
     {
-        public string text;
+
     }
 }

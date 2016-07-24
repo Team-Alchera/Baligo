@@ -23,6 +23,9 @@ namespace Baligo.Entity.Characters.Enemies.Level02
             Damage = 10;
             IsAlive = true;
             Speed = 5;
+            Story = "Young Mango is a very poor Roma boy. His parents left him at his uncles house and moved to Spain, where" +
+                        "they are enjoying the gastarbeiter's dream. Mango knows someone, who knows someone, whos grandfather tasted" +
+                        "the legendary Goornooryahovski Suzdhuk. Help Mango to enjoy a nice meal or kill the starving";
 
 
             // position

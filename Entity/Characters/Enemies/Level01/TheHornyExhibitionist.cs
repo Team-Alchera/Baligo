@@ -22,6 +22,9 @@ namespace Baligo.Entity.Characters.Enemies.Level01
             Damage = 10;
             IsAlive = true;
             Speed = 5;
+            Story = "He is a respected sitizen, has a loving family and a position in the local parliament. You say" +
+                        "a normal person, except his desire to walk naked on the streets, which pleases him. Local doctor says" +
+                        "he needs a professional therapy. You can try to cure him or finally protect the local dignity";
 
             // position
             ((Character) this).position = position;

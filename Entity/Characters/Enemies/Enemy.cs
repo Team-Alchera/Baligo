@@ -28,6 +28,7 @@
             IsAlive = true;
             Speed = 5;
             
+            
 
             // position
             position = position;
@@ -56,6 +57,12 @@
 
         //Sprite Sheet
         protected Texture2D EnemyTexture { get; set; }
+
+        public string Story { get; set; }
+
+        public override void ShowStory()
+        {
+        }
 
         public override void Init()
         {
