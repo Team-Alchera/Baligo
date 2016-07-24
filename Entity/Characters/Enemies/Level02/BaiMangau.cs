@@ -22,6 +22,9 @@ namespace Baligo.Entity.Characters.Enemies.Level02
             Damage = 10;
             IsAlive = true;
             Speed = 5;
+            Story = "Bai Mangau has the respect of all Roma people. His main occupation is playing the very popular" +
+                        "\"Three shells and a pea\" game. Unfortunately he lost one of the shells and needs to replace is." +
+                        "You need to help him find a proper replacement or stop him deceive people on the streets";
 
 
             // position
