@@ -26,6 +26,11 @@ namespace Baligo.Entity.Characters.Players
         public MouseState MousePosition { get; set; }
         public Rectangle CollisionBox;
 
+        public string Story { get; set; }
+
+        public void GetStory()
+        {
+        }
 
         // Constructor
         public Player()

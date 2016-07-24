@@ -56,6 +56,5 @@ namespace Baligo.Entity.Characters
         public abstract void Update(GameTime gmaTime);
         public abstract void Draw(SpriteBatch spriteBatch);
         public abstract void Init();
-        public abstract void ShowStory();
     }
 }
