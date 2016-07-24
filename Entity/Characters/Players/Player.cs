@@ -31,7 +31,10 @@ namespace Baligo.Entity.Characters.Players
         public Player()
         {
             // Set Parameters
-            PlayerTexture = Assets.PlayerHunter.Texture;
+
+            //Original Player Asset
+            //PlayerTexture = Assets.PlayerHunter.Texture;
+
             Health = 100;
             Armor = 100;
             Damage = 10;
@@ -69,8 +72,24 @@ namespace Baligo.Entity.Characters.Players
             MageClass = new Mage();
             WarriorClass = new Warrior();
 
+
             // Set Default Class
-            CurrentPlayerClass = HunterClass;
+            // Player Class Selection
+            CurrentPlayerClass = WarriorClass;
+
+            if (CurrentPlayerClass == HunterClass)
+            {
+                PlayerTexture = Assets.PlayerHunter.Texture;
+            }
+            else if (CurrentPlayerClass == WarriorClass)
+            {
+                PlayerTexture = Assets.PlayerWarrior.Texture;
+            }
+            else if (CurrentPlayerClass == MageClass)
+            {
+                PlayerTexture = Assets.PlayerMage.Texture;
+            }
+
         }
 
         public override void Update(GameTime gmaTime)

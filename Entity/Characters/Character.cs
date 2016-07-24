@@ -30,6 +30,16 @@ namespace Baligo.Entity.Characters
         protected Animation ShootArrowUp { get; set; }
         protected Animation ShootArrowDown { get; set; }
 
+        protected Animation ShootSpellLeft { get; set; }
+        protected Animation ShootSpellRight { get; set; }
+        protected Animation ShootSpellUp { get; set; }
+        protected Animation ShootSpellDown { get; set; }
+
+        protected Animation SwingBatLeft { get; set; }
+        protected Animation SwingBatRight { get; set; }
+        protected Animation SwingBatUp { get; set; }
+        protected Animation SwingBatDown { get; set; }
+
         // Orientation
         protected Rectangle Orientation { get; set; }
         protected Animation ShootStanding { get; set; }

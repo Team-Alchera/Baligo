@@ -892,7 +892,9 @@
     <Content Include="Content\Textures\Items\weapon\war_axe2.png" />
     <Content Include="Content\Textures\Player\arrow.png" />
     <Content Include="Content\Textures\Player\arrow1.png" />
-    <Content Include="Content\Textures\Player\Player.png" />
+    <Content Include="Content\Textures\Player\PlayerFighter.png" />
+    <Content Include="Content\Textures\Player\PlayerHunter.png" />
+    <Content Include="Content\Textures\Player\PlayerWizard.png" />
     <Content Include="Content\Textures\Spells\air\airstrike.png" />
     <Content Include="Content\Textures\Spells\air\chain_lightning.png" />
     <Content Include="Content\Textures\Spells\air\conjure_ball_lightning.png" />

@@ -46,9 +46,9 @@ namespace Baligo.Graphics
             // 2. ID - Integer
             // 3. IsSolid - Boolean (optional)
 
-            PlayerHunter = new Tile(content.Load<Texture2D>("Textures/Player/Player"), 0);
-            PlayerMage = new Tile(content.Load<Texture2D>("Textures/Player/Player"), 1);
-            PlayerWarrior = new Tile(content.Load<Texture2D>("Textures/Player/Player"), 2);
+            PlayerHunter = new Tile(content.Load<Texture2D>("Textures/Player/PlayerHunter"), 0);
+            PlayerMage = new Tile(content.Load<Texture2D>("Textures/Player/PlayerWizard"), 1);
+            PlayerWarrior = new Tile(content.Load<Texture2D>("Textures/Player/PlayerFighter"), 2);
             CursorNormal = new Tile(content.Load<Texture2D>("Textures/Cursor/pointer"), 3);
             CursorActive = new Tile(content.Load<Texture2D>("Textures/Cursor/pointer_active"), 4);
             PlayerHunterArrow = new Tile(content.Load<Texture2D>("Textures/Player/arrow"), 5);
