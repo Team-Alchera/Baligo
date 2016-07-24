@@ -15,12 +15,12 @@ namespace Baligo.Graphics
 
         public Animation(int speed, int row, int totalCols)
         {
-            _speed = speed;
+            this._speed = speed;
 
-            _rowOfAnimation = row;
-            _totalCols = totalCols;
+            this._rowOfAnimation = row;
+            this._totalCols = totalCols;
 
-            _frames = 0;
+            this._frames = 0;
         }
 
         public void Update(GameTime gameTime)

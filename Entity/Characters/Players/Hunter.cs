@@ -31,11 +31,14 @@ namespace Baligo.Entity.Characters.Players
             // If an arrow is fired and countDown allows it
             if (InputManager.LeftButtomDown)
             {
-                if (CountDown == 0)
+                if (CountDown > 0)
                 {
                     Arrows.Add(new Arrow(position, new Vector2(Mouse.GetState().X, Mouse.GetState().Y), Arrows.Count + 1));
-                    CountDown = 15;
+                    // Adding shooting only if there are enough arrows
+                    //CountDown = 15; // old code
                     BaligoConsole.WriteLine("Player arrow Spawned ID: " + Arrows.Count, Color.Red);
+                    //Decrement arrows
+                    CountDown-- ;
                     Statistics.TotalArrowsFired++;
                 }
             }
@@ -57,9 +60,10 @@ namespace Baligo.Entity.Characters.Players
             Statistics.PlayerHealth = Health;
             Statistics.PlayerAngle = Angle;
 
+            // old code
             // Work with countDown
-            if (CountDown - 1 >= 0)
-                CountDown--;
+            //if (CountDown - 1 >= 0)
+            //    CountDown--;
 
             // Update the main player functions
             base.Update(gmaTime);
@@ -69,7 +73,9 @@ namespace Baligo.Entity.Characters.Players
         {
             // Draw Every Arrow
             foreach (var arrow in Arrows)
+            {
                 arrow.Draw(spriteBatch);
+            }
             
             base.Draw(spriteBatch);
         }

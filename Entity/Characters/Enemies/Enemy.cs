@@ -33,7 +33,7 @@ namespace Baligo.Entity.Characters.Enemies
             
 
             // position
-            position = position;
+            base.position = position;
 
             // Animation
             ShootArrowLeft = new Animation(SpeedOfAnimations, 17, 12);
@@ -45,7 +45,7 @@ namespace Baligo.Entity.Characters.Enemies
             Orientation = new Rectangle(0, 64 * 11, 64, 64);
 
             // Collision
-            CollisionBox = new Rectangle((int)position.X, (int)position.Y, 44, 54);
+            CollisionBox = new Rectangle((int)base.position.X, (int)base.position.Y, 44, 54);
 
             // Set default arrow list
             Arrows = new List<Arrow>();
@@ -83,10 +83,11 @@ namespace Baligo.Entity.Characters.Enemies
                 PlayerPosition.Y += 32;
                 PlayerPosition.X += 16;
 
-                Arrows.Add(new Arrow(position, PlayerPosition, Arrows.Count - 1, true));
-                countDown = 120;
-                BaligoConsole.WriteLine("Enemy arrow Spawned ID: " + Arrows.Count, Color.Tomato);
-                Statistics.TotalArrowsFired++;
+                //Enemies do not shoot for the time being
+                //Arrows.Add(new Arrow(position, PlayerPosition, Arrows.Count - 1, true));
+                //countDown = 120;
+                //BaligoConsole.WriteLine("Enemy arrow Spawned ID: " + Arrows.Count, Color.Tomato);
+                //Statistics.TotalArrowsFired++;
             }
 
             // Update each arrow
