@@ -15,10 +15,10 @@ namespace Baligo.Entity.Levels.Lands
                  "from the other tribes. They are aggressive, yet very timid if you approach them in the right way" +
                  "Don't forget to collect valuable itemsm, which will help you relent your enemies ";
         }
-
         public string Story { get; set; }
-        public override void GetStory()
+        public override string GetStory()
         {
+            return this.Story;
         }
     }
 }

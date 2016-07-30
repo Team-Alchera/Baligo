@@ -105,6 +105,7 @@
     <Compile Include="Main\BaligoLauncher.cs" />
     <Compile Include="Content\Fonts\Fonts.cs" />
     <Compile Include="Input\InputManager.cs" />
+    <Compile Include="States\StoryLine.cs" />
     <Compile Include="Pathfinding\EnemyPathFinding.cs" />
     <Compile Include="Pathfinding\Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

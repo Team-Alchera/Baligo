@@ -46,8 +46,9 @@ namespace Baligo.Entity.Characters.Enemies.Level01
         }
 
         public string Story { get; set; }
-        public void GetStory()
+        public string GetStory()
         {
+            return this.Story;
         }
 
         public override void Init()

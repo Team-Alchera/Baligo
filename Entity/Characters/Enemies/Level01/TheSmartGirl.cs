@@ -46,10 +46,10 @@ namespace Baligo.Entity.Characters.Enemies.Level01
             Arrows = new List<Arrow>();
         }
         public string Story { get; set; }
-        public void GetStory()
+        public string GetStory()
         {
+            return this.Story;
         }
-
         public override void Init()
         {
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using Baligo.Content.Fonts;
+using Baligo.Contracts;
 using Baligo.Graphics;
 using Baligo.Input;
 using Baligo.Main;
@@ -10,7 +11,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Baligo.Entity.Characters.Players
 {
-    public class Player : Character
+    public class Player : Character, IStory
     {
         // Classes
         public Player CurrentPlayerClass;
@@ -26,6 +27,9 @@ namespace Baligo.Entity.Characters.Players
         public MouseState MousePosition { get; set; }
         public Rectangle CollisionBox;
 
+        //Story text
+        public string Story { get; set; }
+
         // Constructor
         public Player()
         {
@@ -39,6 +43,7 @@ namespace Baligo.Entity.Characters.Players
             Damage = 10;
             IsAlive = true;
             Speed = 5;
+            Story = "";
 
             // position
             position = new Vector2(600, 500);
@@ -68,6 +73,11 @@ namespace Baligo.Entity.Characters.Players
 
             // Get First Direction
             Direction = new Vector2(MousePosition.X, MousePosition.Y);
+        }
+
+        public override string GetStory()
+        {
+            return this.Story;
         }
 
         public override void Init()

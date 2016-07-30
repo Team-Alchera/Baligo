@@ -11,6 +11,7 @@ namespace Baligo.Entity.Characters.Enemies
     using States;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+    using System;
 
     public class Enemy : Character, IStory
     {
@@ -29,7 +30,7 @@ namespace Baligo.Entity.Characters.Enemies
             Damage = 10;
             IsAlive = true;
             Speed = 5;
-            
+            Story = "";
             
 
             // position
@@ -62,8 +63,9 @@ namespace Baligo.Entity.Characters.Enemies
 
         public string Story { get; set; }
 
-        public void GetStory()
+        public override string GetStory()
         {
+            return this.Story;
         }
 
         public override void Init()

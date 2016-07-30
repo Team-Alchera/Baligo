@@ -13,6 +13,6 @@ namespace Baligo.Entity.Levels
         {
         }
         public string Story { get; set; }
-        public abstract void GetStory();
+        public abstract string GetStory();
     }
 }

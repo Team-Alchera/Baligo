@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Baligo.Entity.Characters
 {
-    public abstract class Character : ICharacter
+    public abstract class Character : ICharacter, IStory
     {
         public Vector2 position;
 
@@ -53,5 +53,9 @@ namespace Baligo.Entity.Characters
         public abstract void Update(GameTime gmaTime);
         public abstract void Draw(SpriteBatch spriteBatch);
         public abstract void Init();
+
+        //Story text
+        public string Story { get; set; }
+        public abstract string GetStory();
     }
 }

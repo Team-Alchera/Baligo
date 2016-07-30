@@ -16,8 +16,9 @@ namespace Baligo.Entity.Levels.Lands
                           "Don't forget to collect valuable itemsm, which will help you relent your enemies ";
         }
         public string Story { get; set; }
-        public override void GetStory()
+        public override string GetStory()
         {
+            return this.Story;
         }
     }
 }
