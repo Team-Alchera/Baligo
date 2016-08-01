@@ -44,7 +44,7 @@ namespace Baligo.Entity.Items.Weapons
         private float CalculateAngle(Vector2 direction)
         {
             var toCalcAngle = Position - direction;
-            Angle = (float) Math.Atan2(toCalcAngle.Y, toCalcAngle.X);
+            Angle = (float)Math.Atan2(toCalcAngle.Y, toCalcAngle.X);
 
             return Angle;
         }
@@ -66,8 +66,8 @@ namespace Baligo.Entity.Items.Weapons
                 Position.Y += Velocity.Y * Arrow.Speed;
 
                 // Update Collision
-                collisionBox.X = (int)Position.X;
-                collisionBox.Y = (int)Position.Y - 5;
+                // CollisionBox.X = (int)Position.X;
+                // CollisionBox.Y = (int)Position.Y - 5;
 
                 // Check Collision
                 for (int row = 0; row < 24; row++)

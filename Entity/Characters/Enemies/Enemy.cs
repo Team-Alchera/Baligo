@@ -30,7 +30,7 @@
             
 
             // position
-            position = position;
+            // position = position;
 
             // Animation
             ShootArrowLeft = new Animation(SpeedOfAnimations, 17, 12);

@@ -123,6 +123,23 @@ namespace AStar
                     if (row == 0 && col == 0)
                         continue;
 
+                    if (row == 1 && col == 1)
+                    {
+                        continue;
+                    }
+                    if (row == 1 && col == -1)
+                    {
+                        continue;
+                    }
+                    if (row == -1 && col == 1)
+                    {
+                        continue;
+                    }
+                    if (row == -1 && col == -1)
+                    {
+                        continue;
+                    }
+
                     int checkRow = node.Row + row;
                     int checkCol = node.Col + col;
 
@@ -131,6 +148,7 @@ namespace AStar
                         if (!Board[checkRow, checkCol].IsSolid)
                         {
                             neighbours.Add(Board[checkRow, checkCol]);
+                            Console.WriteLine("AA");
                         }
                     }
                 }
