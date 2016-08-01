@@ -22,6 +22,9 @@ namespace Baligo.Entity.Characters.Enemies.Level01
             Damage = 10;
             IsAlive = true;
             Speed = 5;
+            Story = "She is the smartest human being in the state. Always looking for knowledge, she doesn't have a social live" +
+                        "and doesn't know how to enjoy the presence of the opposite sex. This rises strange negative emotional power" +
+                        "in her body, which is lethal for the people near by. Try to suppress this emotions with more knowledge or fight it.";
 
 
             // position
@@ -42,7 +45,11 @@ namespace Baligo.Entity.Characters.Enemies.Level01
             // Set default arrow list
             Arrows = new List<Arrow>();
         }
-
+        public string Story { get; set; }
+        public string GetStory()
+        {
+            return this.Story;
+        }
         public override void Init()
         {
         }

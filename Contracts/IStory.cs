@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Baligo.Story
+namespace Baligo.Contracts
 {
-    class Story
+    public interface IStory
     {
-        public string text;
+        string Story { get; set; }
+        string GetStory();
     }
 }

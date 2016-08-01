@@ -7,8 +7,8 @@ using Microsoft.Xna.Framework;
 
 namespace Baligo.Entity.Items.Weapons
 {
-    public abstract class Weapon: Item
-    { 
+    public abstract class Weapon : Item
+    {
         public Vector2 Direction { get; set; }
         public float Angle { get; set; }
         public Vector2 Velocity { get; set; }

@@ -25,7 +25,6 @@ namespace Baligo.States
             Enemies = new List<Enemy>();
             Enemies.Add(new Enemy(new Vector2(64 * 6, 64 + 48)));
             Enemies.Add(new Enemy(new Vector2(64 * 20, 64 + 10)));
-
             Enemies.Add(new Enemy(new Vector2(64 * 3, 64 * 10)));
             Enemies.Add(new Enemy(new Vector2(64 + 20, 64 * 7)));
             Enemies.Add(new Enemy(new Vector2(64 * 19, 64 * 9 )));

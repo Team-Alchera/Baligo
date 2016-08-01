@@ -1,5 +1,6 @@
 ﻿using System;
 using Baligo.Content.Fonts;
+using Baligo.Contracts;
 using Baligo.Graphics;
 using Baligo.Input;
 using Baligo.Main;
@@ -10,7 +11,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Baligo.Entity.Characters.Players
 {
-    public class Player : Character
+    public class Player : Character, IStory
     {
         // Classes
         public Player CurrentPlayerClass;
@@ -26,17 +27,23 @@ namespace Baligo.Entity.Characters.Players
         public MouseState MousePosition { get; set; }
         public Rectangle CollisionBox;
 
+        //Story text
+        public string Story { get; set; }
 
         // Constructor
         public Player()
         {
             // Set Parameters
-            PlayerTexture = Assets.PlayerHunter.Texture;
+
+            //Original Player Asset
+            //PlayerTexture = Assets.PlayerHunter.Texture;
+
             Health = 100;
             Armor = 100;
             Damage = 10;
             IsAlive = true;
             Speed = 5;
+            Story = "";
 
             // position
             position = new Vector2(600, 500);
@@ -46,10 +53,16 @@ namespace Baligo.Entity.Characters.Players
             WalkRight = new Animation(SpeedOfAnimations, 11, 9);
             WalkUp = new Animation(SpeedOfAnimations, 8, 9);
             WalkDown = new Animation(SpeedOfAnimations, 10, 9);
+
             ShootArrowLeft = new Animation(SpeedOfAnimations, 17, 12);
             ShootArrowRight = new Animation(SpeedOfAnimations, 19, 12);
             ShootArrowUp = new Animation(SpeedOfAnimations, 16, 12);
             ShootArrowDown = new Animation(SpeedOfAnimations, 18, 12);
+
+            SwingBatLeft = new Animation(SpeedOfAnimations, 23, 12);
+            SwingBatRight = new Animation(SpeedOfAnimations, 19, 12);
+            SwingBatUp = new Animation(SpeedOfAnimations, 22, 12);
+            SwingBatDown = new Animation(SpeedOfAnimations, 18, 12);
 
             // Orientation
             Orientation = new Rectangle(0, 64 * 11, 64, 64);
@@ -62,6 +75,11 @@ namespace Baligo.Entity.Characters.Players
             Direction = new Vector2(MousePosition.X, MousePosition.Y);
         }
 
+        public override string GetStory()
+        {
+            return this.Story;
+        }
+
         public override void Init()
         {
             // Init Player Classes
@@ -69,8 +87,24 @@ namespace Baligo.Entity.Characters.Players
             MageClass = new Mage();
             WarriorClass = new Warrior();
 
+
             // Set Default Class
+            // Player Class Selection
             CurrentPlayerClass = HunterClass;
+
+            if (CurrentPlayerClass == HunterClass)
+            {
+                PlayerTexture = Assets.PlayerHunter.Texture;
+            }
+            else if (CurrentPlayerClass == WarriorClass)
+            {
+                PlayerTexture = Assets.PlayerWarrior.Texture;
+            }
+            else if (CurrentPlayerClass == MageClass)
+            {
+                PlayerTexture = Assets.PlayerMage.Texture;
+            }
+
         }
 
         public override void Update(GameTime gmaTime)
@@ -158,14 +192,14 @@ namespace Baligo.Entity.Characters.Players
             // Check if dead
             if (Health <= 0)
             {
-                IsAlive = false;
+                this.IsAlive = false;
                 Health = 0;
             }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if (!IsAlive)
+            if (!this.IsAlive)
             {
                 spriteBatch.Draw(PlayerTexture, position, Orientation, Color.White);
                 return;
@@ -229,7 +263,7 @@ namespace Baligo.Entity.Characters.Players
                 {
                     Tile currentTile = WorldManager.GetCurrentWorld().WorldData[row, col];
 
-                    if (currentTile.CollisionBox.Intersects(CollisionBox) && currentTile.IsSolid)
+                    if (currentTile.CollisionBox.Intersects(this.CollisionBox) && currentTile.IsSolid)
                     {
                         return true;
                     }

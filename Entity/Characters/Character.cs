@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Baligo.Entity.Characters
 {
-    public abstract class Character : ICharacter
+    public abstract class Character : ICharacter, IStory
     {
         public Vector2 position;
 
@@ -30,16 +30,32 @@ namespace Baligo.Entity.Characters
         protected Animation ShootArrowUp { get; set; }
         protected Animation ShootArrowDown { get; set; }
 
+        //Preparing following animations for new characters
+        protected Animation ShootSpellLeft { get; set; }
+        protected Animation ShootSpellRight { get; set; }
+        protected Animation ShootSpellUp { get; set; }
+        protected Animation ShootSpellDown { get; set; }
+
+        protected Animation SwingBatLeft { get; set; }
+        protected Animation SwingBatRight { get; set; }
+        protected Animation SwingBatUp { get; set; }
+        protected Animation SwingBatDown { get; set; }
+
         // Orientation
         protected Rectangle Orientation { get; set; }
         protected Animation ShootStanding { get; set; }
 
         // Angle
         public float Angle { get; set; }
+
         public Vector2 Direction;
 
         public abstract void Update(GameTime gmaTime);
         public abstract void Draw(SpriteBatch spriteBatch);
         public abstract void Init();
+
+        //Story text
+        public string Story { get; set; }
+        public abstract string GetStory();
     }
 }

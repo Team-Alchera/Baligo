@@ -1,4 +1,6 @@
-﻿namespace Baligo.Entity.Characters.Enemies
+﻿using Baligo.Contracts;
+
+namespace Baligo.Entity.Characters.Enemies
 {
     using System.Collections.Generic;
     using Console;
@@ -9,8 +11,9 @@
     using States;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+    using System;
 
-    public class Enemy : Character
+    public class Enemy : Character, IStory
     {
         protected const int SpeedOfAnimations = 50;
 
@@ -27,10 +30,15 @@
             Damage = 10;
             IsAlive = true;
             Speed = 5;
-            
+            Story = "";
+
 
             // position
+<<<<<<< HEAD
             // position = position;
+=======
+            base.position = position;
+>>>>>>> b4d4a473237b70d6c9ab4334809a61b7feeb972a
 
             // Animation
             ShootArrowLeft = new Animation(SpeedOfAnimations, 17, 12);
@@ -42,7 +50,7 @@
             Orientation = new Rectangle(0, 64 * 11, 64, 64);
 
             // Collision
-            CollisionBox = new Rectangle((int)position.X, (int)position.Y, 44, 54);
+            CollisionBox = new Rectangle((int)base.position.X, (int)base.position.Y, 44, 54);
 
             // Set default arrow list
             Arrows = new List<Arrow>();
@@ -56,6 +64,13 @@
 
         //Sprite Sheet
         protected Texture2D EnemyTexture { get; set; }
+
+        public string Story { get; set; }
+
+        public override string GetStory()
+        {
+            return this.Story;
+        }
 
         public override void Init()
         {
@@ -95,7 +110,7 @@
                             MainGame.Player.CurrentPlayerClass.Health, Color.Thistle);
 
                         BaligoConsole.WriteLine("Arrow Removed ID: " + Arrows[arrowId].Id + " Player Collision!", Color.Tomato);
-                       Arrows.RemoveAt(arrowId);
+                        Arrows.RemoveAt(arrowId);
                     }
                 }
                 else
@@ -119,7 +134,7 @@
                     MainGame.Player.HunterClass.Arrows.RemoveAt(i);
                 }
             }
-            
+
             if (countDown - 1 >= 0)
             {
                 countDown--;

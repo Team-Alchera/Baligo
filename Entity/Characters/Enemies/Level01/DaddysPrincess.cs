@@ -22,6 +22,9 @@ namespace Baligo.Entity.Characters.Enemies.Level01
             Damage = 10;
             IsAlive = true;
             Speed = 5;
+            Story = "Daddy's princess looks cute, but she is very dangerous, when not satisfied. Her iPigeon" +
+                    "communication device broke and she is unable to talk with her best friend the duchess" +
+                    "Mutzka of Kifland. Give her something shiny or try to fight her anger off";
 
 
             // position
@@ -42,7 +45,11 @@ namespace Baligo.Entity.Characters.Enemies.Level01
             // Set default arrow list
             Arrows = new List<Arrow>();
         }
-
+        public string Story { get; set; }
+        public string GetStory()
+        {
+            return this.Story;
+        }
         public override void Init()
         {
         }

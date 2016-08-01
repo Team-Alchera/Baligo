@@ -22,6 +22,10 @@ namespace Baligo.Entity.Characters.Enemies.Level03
             Damage = 10;
             IsAlive = true;
             Speed = 5;
+            Story = "She grew up in the inhostpitable land of Pernik, where she had a lot of bushon before become a rigid" +
+                        "female orc, scaring the average citizens and proudly working in the deep furnaces of Stomana. She is about" +
+                        "to lose her job, because she lost her primary tool to mix the molten metal. Help the female Orc continue" +
+                        "her duties or protect the people from an unemployeed green beast";
 
 
             // position
@@ -42,7 +46,11 @@ namespace Baligo.Entity.Characters.Enemies.Level03
             // Set default arrow list
             Arrows = new List<Arrow>();
         }
-
+        public string Story { get; set; }
+        public string GetStory()
+        {
+            return this.Story;
+        }
         public override void Init()
         {
         }

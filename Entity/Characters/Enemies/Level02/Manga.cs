@@ -22,6 +22,9 @@ namespace Baligo.Entity.Characters.Enemies.Level02
             Damage = 10;
             IsAlive = true;
             Speed = 5;
+            Story = "Manga - named after the first nude japanese comics smuggled in the country from Yugoslav lands " +
+                        "by her father, an owner of a shooting gallery trailer, during the reign of house of Communists.She is now" +
+                        "fortune teller. Help her see the future or kill";
 
 
             // position
@@ -42,7 +45,11 @@ namespace Baligo.Entity.Characters.Enemies.Level02
             // Set default arrow list
             Arrows = new List<Arrow>();
         }
-
+        public string Story { get; set; }
+        public string GetStory()
+        {
+            return this.Story;
+        }
         public override void Init()
         {
         }

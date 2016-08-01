@@ -5,7 +5,7 @@
 
     public class PorkSteak : Gift
     {
-        public override void Update(GameTime gmaTime)
+        public override void Update()
         {
             throw new System.NotImplementedException();
         }

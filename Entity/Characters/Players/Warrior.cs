@@ -6,19 +6,12 @@ namespace Baligo.Entity.Characters.Players
 {
     public class Warrior : Player
     {
-        public Warrior() : base()
+        // Constructor
+        public Warrior()
         {
             PlayerTexture = Assets.PlayerWarrior.Texture;
         }
 
-        public override void Update(GameTime gmaTime)
-        {
-            Update(gmaTime);
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-            Draw(spriteBatch);
-        }
+       
     }
 }

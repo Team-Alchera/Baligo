@@ -12,6 +12,9 @@ namespace Baligo.Entity.Characters.Players
 {
     public class Hunter : Player
     {
+        public List<Arrow> Arrows { get; set; }
+        public int CountDown { get; set; }
+
         // Fields
         public const int InitialCountDown = 15;
 
@@ -22,10 +25,7 @@ namespace Baligo.Entity.Characters.Players
             Arrows = new List<Arrow>();
             CountDown = InitialCountDown;
         }
-
-        public List<Arrow> Arrows { get; set; }
-        public int CountDown { get; set; }
-
+        
         public override void Update(GameTime gmaTime)
         {
             // If an arrow is fired and countDown allows it
@@ -33,10 +33,12 @@ namespace Baligo.Entity.Characters.Players
             {
                 if (CountDown == 0)
                 {
-                    Arrows.Add(new Arrow(position, new Vector2(Mouse.GetState().X, Mouse.GetState().Y), Arrows.Count + 1));
-                    CountDown = 15;
-                    BaligoConsole.WriteLine("Player arrow Spawned ID: " + Arrows.Count, Color.Red);
-                    Statistics.TotalArrowsFired++;
+                  Arrows.Add(new Arrow(position, new Vector2(Mouse.GetState().X, Mouse.GetState().Y), Arrows.Count + 1));
+                  // Adding shooting only if there are enough arrows
+                  CountDown = 15;
+                  BaligoConsole.WriteLine("Player arrow Spawned ID: " + Arrows.Count, Color.Red);
+                  
+                  Statistics.TotalArrowsFired++;
                 }
             }
 
@@ -56,7 +58,7 @@ namespace Baligo.Entity.Characters.Players
 
             Statistics.PlayerHealth = Health;
             Statistics.PlayerAngle = Angle;
-
+            
             // Work with countDown
             if (CountDown - 1 >= 0)
                 CountDown--;
@@ -67,9 +69,13 @@ namespace Baligo.Entity.Characters.Players
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+
             // Draw Every Arrow
             foreach (var arrow in Arrows)
+            {
+                
                 arrow.Draw(spriteBatch);
+            }
             
             base.Draw(spriteBatch);
         }
