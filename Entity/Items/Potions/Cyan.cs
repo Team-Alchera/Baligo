@@ -7,6 +7,7 @@ namespace Baligo.Entity.Items.Potions
     public class Cyan : Item
     {
         protected Texture2D PlayerTexture;
+
         public Cyan()
         {
             Position = new Vector2(150 , 150);
@@ -15,7 +16,7 @@ namespace Baligo.Entity.Items.Potions
             PlayerTexture = Assets.Cyan.Texture;
         }
 
-        public override void Update(GameTime gmaTime)
+        public override void Update()
         {
             // throw new NotImplementedException();
         }

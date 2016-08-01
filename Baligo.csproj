@@ -83,13 +83,13 @@
     <Compile Include="Entity\Items\Gifts\Level03\ShinyArmour.cs" />
     <Compile Include="Entity\Items\Gifts\Level03\MetalRod.cs" />
     <Compile Include="Entity\Items\Gifts\Level03\BookOfTheGreatAncestors.cs" />
+    <Compile Include="Entity\Items\Item.cs" />
     <Compile Include="Entity\Items\Weapons\Arrow.cs" />
     <Compile Include="Entity\Characters\Players\Hunter.cs" />
     <Compile Include="Entity\Characters\Players\Mage.cs" />
     <Compile Include="Entity\Characters\Players\Warrior.cs" />
     <Compile Include="Entity\Characters\Players\Player.cs" />
     <Compile Include="Entity\Custom Mouse\CustomMaouse.cs" />
-    <Compile Include="Entity\Items\Item.cs" />
     <Compile Include="Entity\Items\Potions\Cyan.cs" />
     <Compile Include="Entity\Items\Weapons\Weapon.cs" />
     <Compile Include="Entity\Levels\Lands\Mahalata.cs" />

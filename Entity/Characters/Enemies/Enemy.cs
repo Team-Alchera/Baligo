@@ -31,7 +31,7 @@ namespace Baligo.Entity.Characters.Enemies
             IsAlive = true;
             Speed = 5;
             Story = "";
-            
+
 
             // position
             base.position = position;
@@ -85,11 +85,10 @@ namespace Baligo.Entity.Characters.Enemies
                 PlayerPosition.Y += 32;
                 PlayerPosition.X += 16;
 
-                //Enemies do not shoot for the time being
-                //Arrows.Add(new Arrow(position, PlayerPosition, Arrows.Count - 1, true));
-                //countDown = 120;
-                //BaligoConsole.WriteLine("Enemy arrow Spawned ID: " + Arrows.Count, Color.Tomato);
-                //Statistics.TotalArrowsFired++;
+                Arrows.Add(new Arrow(position, PlayerPosition, Arrows.Count - 1, true));
+                countDown = 120;
+                BaligoConsole.WriteLine("Enemy arrow Spawned ID: " + Arrows.Count, Color.Tomato);
+                Statistics.TotalArrowsFired++;
             }
 
             // Update each arrow
@@ -107,7 +106,7 @@ namespace Baligo.Entity.Characters.Enemies
                             MainGame.Player.CurrentPlayerClass.Health, Color.Thistle);
 
                         BaligoConsole.WriteLine("Arrow Removed ID: " + Arrows[arrowId].Id + " Player Collision!", Color.Tomato);
-                       Arrows.RemoveAt(arrowId);
+                        Arrows.RemoveAt(arrowId);
                     }
                 }
                 else
@@ -131,7 +130,7 @@ namespace Baligo.Entity.Characters.Enemies
                     MainGame.Player.HunterClass.Arrows.RemoveAt(i);
                 }
             }
-            
+
             if (countDown - 1 >= 0)
             {
                 countDown--;

@@ -1,4 +1,5 @@
 ﻿using System;
+using Baligo.Console;
 using Baligo.ConsoleDebugStats;
 using Baligo.Graphics;
 using Baligo.Main;
@@ -11,10 +12,10 @@ namespace Baligo.Entity.Items.Weapons
     public class Arrow : Weapon
     {
         public const int Damage = 10;
-        public const int Speed = 15;
-        private Rectangle collisionBox;
+        public const int Speed = 4;
+        public int Id;
 
-        public Rectangle CollisionBox { get; set; }
+        public Rectangle CollisionBox;
 
         public Arrow(Vector2 position, Vector2 direction, int id, bool isEnemyArrow = false)
         {
@@ -57,17 +58,18 @@ namespace Baligo.Entity.Items.Weapons
             return this.Velocity;
         }
 
-        public void Update()
+        public override void Update()
         {
             if (IsActive)
             {
                 // Update position
-                this.Position.X += this.Velocity.X * Arrow.Speed;
-                this.Position.Y += this.Velocity.Y * Arrow.Speed;
+                this.Position.X += this.Velocity.X / 100 * Speed;
+                this.Position.Y += this.Velocity.Y / 100 * Speed;
 
                 // Update Collision
-                this.collisionBox.X = (int)this.Position.X;
-                this.collisionBox.Y = (int)this.Position.Y - 5;
+
+                this.CollisionBox.X = (int)this.Position.X;
+                this.CollisionBox.Y = (int)this.Position.Y - 5;
 
                 // Check Collision
                 for (int row = 0; row < 24; row++)
@@ -91,11 +93,6 @@ namespace Baligo.Entity.Items.Weapons
             }
         }
 
-        public override void Update(GameTime gmaTime)
-        {
-            throw new NotImplementedException();
-        }
-
         public override void Draw(SpriteBatch spriteBatch)
         {
             // Draw 
@@ -107,6 +104,8 @@ namespace Baligo.Entity.Items.Weapons
             {
                 Assets.PlayerHunterArrow.DrawWithRotation(spriteBatch, (int)this.Position.X, (int)this.Position.Y, this.Angle);
             }
+
+           // Assets.Enemy.Draw(spriteBatch,(int)this.Position.X,(int)this.Position.Y);
 
             // Draw Arrow Collision if debug is active
             if (BaligoEngine.IsDebugModeActive)

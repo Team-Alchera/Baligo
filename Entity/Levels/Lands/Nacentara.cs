@@ -8,6 +8,8 @@ namespace Baligo.Entity.Levels.Lands
 {
     class Nacentara : Level
     {
+        public string Story { get; set; }
+
         public Nacentara()
         {
             this.Story = "You already entered the magic land of Baligo. The land of наЦентАра welcomes you. Here is where your" +
@@ -15,7 +17,7 @@ namespace Baligo.Entity.Levels.Lands
                           "wealth and knowledge. Be aware of their uncommon fetishes" +
                           "Don't forget to collect valuable itemsm, which will help you relent your enemies ";
         }
-        public string Story { get; set; }
+        
         public override string GetStory()
         {
             return this.Story;

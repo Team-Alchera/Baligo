@@ -90,7 +90,7 @@ namespace Baligo.Entity.Characters.Players
 
             // Set Default Class
             // Player Class Selection
-            CurrentPlayerClass = WarriorClass;
+            CurrentPlayerClass = HunterClass;
 
             if (CurrentPlayerClass == HunterClass)
             {

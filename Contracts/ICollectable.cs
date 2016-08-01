@@ -5,7 +5,5 @@ namespace Baligo.Contracts
 {
     public interface ICollectable
     {
-        void Update(GameTime gmaTime);
-        void Draw(SpriteBatch spriteBatch);
     }
 }
